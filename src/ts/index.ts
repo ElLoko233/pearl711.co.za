@@ -1,10 +1,11 @@
 import { initializeApp } from "firebase/app";
-import { collection, getDocs, getFirestore, query, where } from "firebase/firestore";
+import { collection, getDocs, getFirestore, increment, query, where } from "firebase/firestore";
 
 
 import WriteToCollection from "./writetocollection";
 import ReadFromCollection from "./readfromcollection";
 import DeleteFromCollection from "./deletefromcollection";
+import UpdateToCollection from "./updatetocollection";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -28,6 +29,7 @@ const INVENTORYREF = '/Inventory Manager/inventory/inventory';
 const collectionReader = new ReadFromCollection(db, INVENTORYREF);
 const collectionDeleter = new DeleteFromCollection(db, INVENTORYREF);
 const collectionWriter = new WriteToCollection(db, INVENTORYREF);
+const collectionUpdater = new UpdateToCollection(db, INVENTORYREF);
 
 collectionReader.listenToCollectionDocs( (snapshot) => {
   snapshot.docChanges().forEach( (change) => {
