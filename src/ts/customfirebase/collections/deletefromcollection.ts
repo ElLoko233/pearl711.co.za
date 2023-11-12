@@ -12,6 +12,7 @@ export default class DeleteFromCollection extends CustomCollection {
    * @param collectionRef - Path to the Firestore collection.
    */
   constructor(db: Firestore, collectionRef: string) {
+    // Call the superclass constructor to initialize Firestore and collection reference.
     super(db, collectionRef);
   }
 
