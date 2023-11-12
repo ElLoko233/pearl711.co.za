@@ -14,7 +14,10 @@ class CustomCollection {
      * Constructor to initialize CustomCollection with Firestore instance and collection reference.
      */
     constructor(db: Firestore, collectionRef: string) {
+        // Set the Firestore instance for the collection
         this._db = db;
+    
+        // Set the path to the Firestore collection
         this._collectionRef = collectionRef;
     }
 
@@ -22,6 +25,7 @@ class CustomCollection {
      * Get the collection reference string.
      */
     get collectionRef(): string {
+        // Retrieve the collection reference string.
         return this._collectionRef;
     }
 
@@ -29,6 +33,7 @@ class CustomCollection {
      * Set the collection reference string.
      */
     set collectionRef(collectionRef: string) {
+        // Set the collection reference string.
         this._collectionRef = collectionRef;
     }
 
@@ -37,6 +42,7 @@ class CustomCollection {
      * @returns Firestore instance.
      */
     get db(): Firestore {
+        // Retrieve the Firestore instance.
         return this._db;
     }
 
@@ -45,6 +51,7 @@ class CustomCollection {
      * @param db - Firestore instance to set.
      */
     set db(db: Firestore) {
+        // Set the Firestore instance.
         this._db = db;
     }
 
@@ -53,6 +60,7 @@ class CustomCollection {
      * @returns CollectionReference.
      */
     getCollectionRef(): CollectionReference {
+        // Retrieve the Firestore CollectionReference for the current collection.
         return collection(this._db, this._collectionRef);
     }
 }

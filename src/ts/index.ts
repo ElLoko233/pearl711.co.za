@@ -2,7 +2,9 @@ import { initializeApp } from "firebase/app";
 import { collection, getDocs, getFirestore, query, where } from "firebase/firestore";
 
 
+import WriteToCollection from "./writetocollection";
 import ReadFromCollection from "./readfromcollection";
+import DeleteFromCollection from "./deletefromcollection";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -21,6 +23,22 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 
-// creating an instance of the ReadFromCollection class
-const readFromCollection = new ReadFromCollection(db, '/Inventory Manager/inventory/inventory');
+const INVENTORYREF = '/Inventory Manager/inventory/inventory';
 
+const collectionReader = new ReadFromCollection(db, INVENTORYREF);
+const collectionDeleter = new DeleteFromCollection(db, INVENTORYREF);
+const collectionWriter = new WriteToCollection(db, INVENTORYREF);
+
+collectionReader.listenToCollectionDocs( (snapshot) => {
+  snapshot.docChanges().forEach( (change) => {
+    if (change.type === 'added') {
+      console.log('New document: ', change.doc.data());
+    }
+    if (change.type === 'modified') {
+      console.log('Modified document: ', change.doc.data());
+    }
+    if (change.type === 'removed') {
+      console.log('Removed document: ', change.doc.data());
+    }
+  });
+});
