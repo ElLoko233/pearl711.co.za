@@ -35,3 +35,20 @@ export default class DeleteFromDocument extends CustomDocument {
     }
 
 };
+
+// Defines a generic type for class constructors.
+type Constructor<T = {}> = new (...args: any[]) => T;
+
+// Higher-order function that creates a mixin adding deleteField method.
+export function WithDeleteToDocument<TBase extends Constructor<CustomDocument>>(Base: TBase) {
+    return class extends Base {
+      /**
+      * Deletes a specific field from the document.
+      * @param fieldName - Name of the field to be deleted.
+      * @returns Promise<void>
+      */
+      async deleteField(fieldName: string): Promise<void> {
+        return await new DeleteFromDocument(this.db, this.collectionRef, this.docId).deleteField(fieldName);
+      }
+    };
+}

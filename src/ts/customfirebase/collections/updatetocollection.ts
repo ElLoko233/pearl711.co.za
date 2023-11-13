@@ -30,3 +30,22 @@ export default class UpdateToCollection extends CustomCollection {
     return await updateDoc(docRef, newDocData);
   }
 }
+
+// Defines a generic type for class constructors.
+type Constructor<T = {}> = new (...args: any[]) => T;
+
+// Higher-order function that creates a mixin adding updateDoc method.
+export function WithUpdateToCollection<TBase extends Constructor<CustomCollection>>(Base: TBase) {
+  return class extends Base {
+    /**
+    * Update a specific document in the Firestore collection.
+    * @param newDocData - Data to update in the document.
+    * @param docId - ID of the document to be updated.
+    * @returns Promise<void>
+    */
+    async updateDoc(newDocData: object, docId: string): Promise<void> {
+      return await new UpdateToCollection(this.db, this.collectionRef).updateDoc(newDocData, docId);
+    }
+  };
+}
+

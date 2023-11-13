@@ -26,3 +26,21 @@ export default class WriteToCollection extends CustomCollection {
     return await addDoc(this.getCollectionRef(), data);
   }
 }
+
+
+// Defines a generic type for class constructors.
+type Constructor<T = {}> = new (...args: any[]) => T;
+
+// Higher-order function that creates a mixin adding createDoc method.
+export function WithWriteToCollection<TBase extends Constructor<CustomCollection>>(Base: TBase) {
+  return class extends Base {
+    /**
+    * Creates a new document in the Firestore collection.
+    * @param data - Data for the new document.
+    * @returns Promise<void>
+    */
+    async createDoc(data: object): Promise<DocumentReference<object, DocumentData>> {
+      return await new WriteToCollection(this.db, this.collectionRef).createDoc(data);
+    }
+  };
+}

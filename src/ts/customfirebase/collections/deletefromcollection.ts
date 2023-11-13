@@ -29,3 +29,21 @@ export default class DeleteFromCollection extends CustomCollection {
     return await deleteDoc(docRef);
   }
 }
+
+
+// Defines a generic type for class constructors.
+type Constructor<T = {}> = new (...args: any[]) => T;
+
+// Higher-order function that creates a mixin adding deleteDoc method.
+export function WithDeleteFromCollection<TBase extends Constructor<CustomCollection>>(Base: TBase) {
+  return class extends Base {
+    /**
+    * Deletes a specific document from the Firestore collection.
+    * @param docId - ID of the document to be deleted.
+    * @returns Promise<void>
+    */
+    async deleteDoc(docId: string): Promise<void> {
+      return await new DeleteFromCollection(this.db, this.collectionRef).deleteDoc(docId);
+    }
+  };
+}

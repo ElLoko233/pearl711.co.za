@@ -28,7 +28,7 @@ export default class CustomDocument extends CustomCollection {
     get docId(): string {
         // Return the private docId attribute.
         return this._docId;
-      }
+    }
 
     /**
      * Set the document ID.

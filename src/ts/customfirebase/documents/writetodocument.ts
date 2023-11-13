@@ -39,3 +39,21 @@ export default class WriteToDocument extends CustomDocument {
         return await setDoc(docRef, newFields, { merge: true });
     }
 }
+
+// Defines a generic type for class constructors.
+type Constructor<T = {}> = new (...args: any[]) => T;
+
+// Higher-order function that creates a mixin adding createField method.
+export function WithWriteToDocument<TBase extends Constructor<CustomDocument>>(Base: TBase) {
+  return class extends Base {
+    /**
+     * Adds new fields to an existing document.
+     * @throws an error if a field already exists in the document.
+     * @param newFields - Object containing new fields to be added.
+     * @returns Promise<void>
+     */
+    async createField(newFields: object): Promise<void> {
+      return await new WriteToDocument(this.db, this.collectionRef, this.docId).createField(newFields);
+    }
+  };
+}

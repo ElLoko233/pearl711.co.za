@@ -63,6 +63,7 @@ class CustomCollection {
         // Retrieve the Firestore CollectionReference for the current collection.
         return collection(this._db, this._collectionRef);
     }
-}
+};
+ 
 
 export default CustomCollection;

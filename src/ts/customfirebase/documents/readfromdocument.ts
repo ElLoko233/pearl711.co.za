@@ -44,3 +44,28 @@ export default class ReadFromDocument extends CustomDocument {
         return unsubscribe;
     }
 }
+
+// Defines a generic type for class constructors.
+type Constructor<T = {}> = new (...args: any[]) => T;
+
+// Higher-order function that creates a mixin adding getDocumentData method.
+export function WithReadFromDocument<TBase extends Constructor<CustomDocument>>(Base: TBase) {
+  return class extends Base {
+    /**
+     * Get up-to-date data from the document.
+     * @returns Promise containing an object with the document ID and its data.
+     */
+    async getDocumentData(): Promise<any> {
+      return await new ReadFromDocument(this.db, this.collectionRef, this.docId).getDocumentData();
+    }
+
+    /**
+     * Listen to modifications to the document and execute the given function.
+     * @param impulse - Function to handle updated data.
+     * @returns Unsubscribe function.
+     */
+    listenToDocument(impulse: (snapshot: DocumentSnapshot<DocumentData>) => void): Unsubscribe {
+      return new ReadFromDocument(this.db, this.collectionRef, this.docId).listenToDocument(impulse);
+    }
+  };
+}

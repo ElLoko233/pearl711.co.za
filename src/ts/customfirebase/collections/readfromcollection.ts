@@ -14,7 +14,7 @@ import {
 // Import the CustomCollection class
 import CustomCollection from './customcollection'; 
 
-class ReadFromCollection extends CustomCollection {
+export default class ReadFromCollection extends CustomCollection {
   constructor(db: Firestore, collectionRef: string) {
     // Call the superclass constructor to initialize Firestore and collection reference.
     super(db, collectionRef);
@@ -118,5 +118,65 @@ class ReadFromCollection extends CustomCollection {
   }
 }
 
-export default ReadFromCollection;
+// Defines a generic type for class constructors.
+type Constructor<T = {}> = new (...args: any[]) => T;
+
+// Higher-order function that creates a mixin for ReadFromCollection methods.
+export function WithReadFromCollection<TBase extends Constructor<CustomCollection>>(Base: TBase) {
+  return class extends Base {
+
+    /**
+    * Get the documents from the snapshot.
+    * @returns Promise containing an array of Firestore QueryDocumentSnapshot.
+    */
+    async getCollectionDocs(): Promise<QueryDocumentSnapshot<DocumentData, DocumentData>[]> {
+      return await new ReadFromCollection(this.db, this.collectionRef).getCollectionDocs();
+    }
+
+    /**
+    * Get an array of objects containing data and doc id.
+    * @returns Promise containing an array of objects with document data and id.
+    * 
+    * */
+    async getCollectionData(): Promise<({ id: string } & DocumentData)[]> {
+      return await new ReadFromCollection(this.db, this.collectionRef).getCollectionData();
+    }
+
+    /**
+    * Listen to modifications to the collection docs.
+    * @param impulse - Function to handle updated data.
+    * @returns Unsubscribe function.
+    */
+    listenToCollectionDocs(impulse: (docs: QuerySnapshot<DocumentData, DocumentData>) => void): Unsubscribe {
+      return new ReadFromCollection(this.db, this.collectionRef).listenToCollectionDocs(impulse);
+    }
+
+    /**
+    * Get the documents from the query snapshot.
+    * @param constraints - Firestore QueryConstraints.
+    * @returns An array of Firestore DocumentData.
+    */
+    async getCollectionQueryDocs(...constraints: QueryConstraint[]): Promise<QueryDocumentSnapshot<DocumentData, DocumentData>[]> {
+      return await new ReadFromCollection(this.db, this.collectionRef).getCollectionQueryDocs(...constraints);
+    }
+
+    /**
+    * Get an array of objects containing data and doc id from the query snapshot.
+    * @param constraints - Firestore QueryConstraints.
+    * @returns An array of objects containing data and doc id.
+    */
+    async getCollectionQueryData(...constraints: QueryConstraint[]): Promise<({ id: string } & DocumentData)[]> {
+      return await new ReadFromCollection(this.db, this.collectionRef).getCollectionQueryData(...constraints);
+    }
+
+    /**
+    * Listen to modifications to the collection query docs.
+    * @param impulse - Function to handle updated data.
+    * @returns Unsubscribe function.
+    */
+    listenToCollectionQueryDocs(impulse: (docs: QuerySnapshot<DocumentData, DocumentData>) => void, ...constraints: QueryConstraint[]): Unsubscribe {
+      return new ReadFromCollection(this.db, this.collectionRef).listenToCollectionQueryDocs(impulse, ...constraints);
+    }
+  };
+}
 

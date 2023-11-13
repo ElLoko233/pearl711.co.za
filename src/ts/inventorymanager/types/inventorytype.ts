@@ -2,7 +2,7 @@
 // Description: Contains custom data types for the inventory management system.
 
 // Custom data type for metadata related to the inventory.
-type InventoryMetadata = {
+export type InventoryMetadata = {
     /**
      * Total number of products in the inventory.
      */
@@ -15,7 +15,7 @@ type InventoryMetadata = {
   };
   
   // Custom data type for individual inventory items.
-  type InventoryItem = {
+export  type InventoryItem = {
     /**
      * Name of the product.
      */
@@ -59,11 +59,16 @@ type InventoryMetadata = {
     /**
      * Size unit for the product.
      */
-    size_unit: number;
+    size_unit: string;
   
     /**
      * Unique identifier for the product.
      */
-    id: string;
+    id?: string;
+
+    /**
+     * category of the product.
+     */
+    category: string;
   };
   

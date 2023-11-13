@@ -31,14 +31,32 @@ export default class UpdateToDocument extends CustomDocument {
         // Get the existing data in the document.
         const existingData = (await getDoc(docRef)).data();
 
-        // Throw an error if the specified field is not found in the document.
-        for( const field in newFields ) {
-            if (!existingData || !(field in existingData)) {
-              throw new Error(`Field "${field}" not found in the document.`);
-            }
-        }
+        // // Throw an error if the specified field is not found in the document.
+        // for( const field in newFields ) {
+        //     if (!existingData || !(field in existingData)) {
+        //       throw new Error(`Field "${field}" not found in the document.`);
+        //     }
+        // }
       
         // Update the specified field with the new data.
         return await updateDoc(docRef, newFields);
       }
 };
+
+// Defines a generic type for class constructors.
+type Constructor<T = {}> = new (...args: any[]) => T;
+
+ // Higher-order function that creates a mixin adding updateField method.
+export function WithUpdateToDocument<TBase extends Constructor<CustomDocument>>(Base: TBase) {
+  return class extends Base {
+    /**
+     * Update a specific field in the document.
+     * @param fieldName - Name of the field to update.
+     * @param newData - New value for the specified field.
+     * @returns Promise<void>
+     */
+    async updateField(newField: object): Promise<void> {
+      return await new UpdateToDocument(this.db, this.collectionRef, this.docId).updateField(newField);
+    }
+  };
+}
