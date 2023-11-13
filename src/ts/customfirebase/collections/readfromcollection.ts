@@ -39,7 +39,7 @@ class ReadFromCollection extends CustomCollection {
    * @returns Promise containing an array of objects with document data and id.
    * 
    * */
-  async getCollectionData(): Promise<{ id: string }[]> {
+  async getCollectionData():Promise<({ id: string } & DocumentData)[]> {
     // Retrieve documents from the collection.
     const docs = await this.getCollectionDocs();
     
@@ -80,7 +80,7 @@ class ReadFromCollection extends CustomCollection {
    * @param constraints - Firestore QueryConstraints.
    * @returns An array of objects containing data and doc id.
    */
-  async getCollectionQueryData(...constraints: QueryConstraint[]): Promise<{ id: string }[]> {
+  async getCollectionQueryData(...constraints: QueryConstraint[]): Promise<({ id: string } & DocumentData)[]> {
     // Fetch documents from the query snapshot.
     const docs = await this.getCollectionQueryDocs(...constraints);
 

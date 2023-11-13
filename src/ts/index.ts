@@ -7,6 +7,9 @@ import ReadFromCollection from "./customfirebase/collections/readfromcollection"
 import DeleteFromCollection from "./customfirebase/collections/deletefromcollection";
 import UpdateToCollection from "./customfirebase/collections/updatetocollection";
 
+import ReadFromDocument from "./customfirebase/documents/readfromdocument";
+import WriteToDocument from "./customfirebase/documents/writetodocument";
+
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -25,11 +28,20 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const INVENTORYREF = '/Inventory Manager/inventory/inventory';
+const DOCUMENTID = 're149H9mroK9VkkmXf97';
 
 const collectionReader = new ReadFromCollection(db, INVENTORYREF);
 const collectionDeleter = new DeleteFromCollection(db, INVENTORYREF);
 const collectionWriter = new WriteToCollection(db, INVENTORYREF);
 const collectionUpdater = new UpdateToCollection(db, INVENTORYREF);
+
+const documentReader = new ReadFromDocument(db, INVENTORYREF, DOCUMENTID);
+const documentWriter = new WriteToDocument(db, INVENTORYREF, DOCUMENTID);
+
+
+documentReader.listenToDocument( (snapshot) => {
+  console.log(snapshot.data());
+});
 
 collectionReader.listenToCollectionDocs( (snapshot) => {
   snapshot.docChanges().forEach( (change) => {
