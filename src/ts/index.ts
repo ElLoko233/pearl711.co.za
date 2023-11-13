@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { collection, getDocs, getFirestore, increment, query, where } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
 
 
 import WriteToCollection from "./customfirebase/collections/writetocollection";
@@ -9,6 +9,8 @@ import UpdateToCollection from "./customfirebase/collections/updatetocollection"
 
 import ReadFromDocument from "./customfirebase/documents/readfromdocument";
 import WriteToDocument from "./customfirebase/documents/writetodocument";
+import UpdateToDocument from "./customfirebase/documents/updatetodocument";
+import DeleteFromDocument from "./customfirebase/documents/deletefromdocument";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -37,7 +39,18 @@ const collectionUpdater = new UpdateToCollection(db, INVENTORYREF);
 
 const documentReader = new ReadFromDocument(db, INVENTORYREF, DOCUMENTID);
 const documentWriter = new WriteToDocument(db, INVENTORYREF, DOCUMENTID);
+const documentUpdater = new UpdateToDocument(db, INVENTORYREF, DOCUMENTID);
+const documentDeleter = new DeleteFromDocument(db, INVENTORYREF, DOCUMENTID);
 
+// documentDeleter.deleteField('inStock');
+
+// documentUpdater.updateField('name', 'Chicken Feet');
+
+// documentWriter.createField({
+//   "name": "Chicken Feet",
+//   "price": 2.99,
+//   "inStock": true,
+// });
 
 documentReader.listenToDocument( (snapshot) => {
   console.log(snapshot.data());
