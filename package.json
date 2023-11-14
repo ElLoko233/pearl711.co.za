@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "bundle": "webpack",
+    "build-css": "tailwindcss -i ./src/css/tailwind/styles.css -o ./Public/css/tailwind/styles.css --watch"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +16,9 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.7",
     "firebase": "^10.6.0"
   }
 }

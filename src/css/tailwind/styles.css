@@ -1,0 +1,14 @@
+/* Importing the custom google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nav-link{
+    @apply font-body text-slate-200 text-opacity-70 hover:text-opacity-90 hover:font-medium;
+
+}
+
+.active.nav-link {
+    @apply text-primary-500;
+}
