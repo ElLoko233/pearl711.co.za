@@ -12,3 +12,7 @@
 .active.nav-link {
     @apply text-primary-500;
 }
+
+.brand-logo{
+    @apply w-32 h-fit opacity-80 my-auto hover:scale-110 transition-all duration-75 ease-in-out;
+}

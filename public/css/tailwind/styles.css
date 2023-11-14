@@ -997,8 +997,16 @@ select{
   gap: 0px;
 }
 
+.gap-10{
+  gap: 2.5rem;
+}
+
 .gap-12{
   gap: 3rem;
+}
+
+.gap-16{
+  gap: 4rem;
 }
 
 .gap-3{
@@ -1011,14 +1019,6 @@ select{
 
 .gap-5{
   gap: 1.25rem;
-}
-
-.gap-10{
-  gap: 2.5rem;
-}
-
-.gap-16{
-  gap: 4rem;
 }
 
 .gap-8{
@@ -1257,6 +1257,24 @@ select{
   color: rgb(212 175 55 / var(--tw-text-opacity));
 }
 
+.brand-logo{
+  margin-top: auto;
+  margin-bottom: auto;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 8rem;
+  opacity: 0.8;
+  transition-property: all;
+  transition-duration: 75ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.brand-logo:hover{
+  --tw-scale-x: 1.1;
+  --tw-scale-y: 1.1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .hover\:rounded-none:hover{
   border-radius: 0px;
 }
@@ -1271,19 +1289,9 @@ select{
   background-color: rgb(209 209 209 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-tertiary-500:hover{
-  --tw-bg-opacity: 1;
-  background-color: rgb(65 56 86 / var(--tw-bg-opacity));
-}
-
 .hover\:text-primary-500:hover{
   --tw-text-opacity: 1;
   color: rgb(212 175 55 / var(--tw-text-opacity));
-}
-
-.hover\:text-secondary-500:hover{
-  --tw-text-opacity: 1;
-  color: rgb(25 25 25 / var(--tw-text-opacity));
 }
 
 .hover\:opacity-100:hover{
@@ -1325,22 +1333,6 @@ select{
 
   .md\:items-center{
     align-items: center;
-  }
-
-  .md\:justify-normal{
-    justify-content: normal;
-  }
-
-  .md\:justify-end{
-    justify-content: flex-end;
-  }
-
-  .md\:justify-between{
-    justify-content: space-between;
-  }
-
-  .md\:justify-around{
-    justify-content: space-around;
   }
 
   .md\:gap-0{
