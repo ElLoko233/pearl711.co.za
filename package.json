@@ -1,13 +1,13 @@
 {
   "name": "pearl711.co.za",
   "version": "1.0.0",
-  "description": "",
+  "description": "Pearl711 delivers comprehensive services, from car washing to pet care products and beverages. Expanding its offerings, the business features a customer-friendly environment with free Wi-Fi. Convenient card payments are accepted, showcasing an ambitious management team committed to excellence.",
   "main": "index.js",
   "scripts": {
     "bundle": "webpack",
     "build-css": "tailwindcss -i ./src/css/tailwind/styles.css -o ./Public/css/tailwind/styles.css --watch"
   },
-  "keywords": [],
+  "keywords": ["refreshments", "beverages", "car", "wash", "food", "dogs", "wifi", "medicine", "Dog-friendly", "Car wash service" ,"Dog-friendly", "Free Wi-Fi", "Medicinal products"],
   "author": "",
   "license": "ISC",
   "devDependencies": {
