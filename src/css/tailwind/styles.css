@@ -16,3 +16,31 @@
 .brand-logo{
     @apply w-32 h-fit opacity-80 my-auto hover:scale-110 transition-all duration-75 ease-in-out;
 }
+
+.perk-container{
+    @apply w-fit flex flex-row gap-5 justify-center items-center;
+}
+
+.perk-svg{
+    @apply w-16 h-16 border-4 border-primary-500 border-dashed rounded-full flex justify-center items-center;
+}
+
+.perk-svg svg{
+    @apply text-primary-500 w-8 p-0;
+}
+
+.perk-heading{
+    @apply font-heading font-bold text-xs lg:text-lg text-secondary-500 text-opacity-95 md:text-opacity-90;
+}
+
+.perk-subheading{
+    @apply text-xs font-body leading-relaxed text-secondary-500 text-opacity-80 md:text-opacity-90;
+}
+
+.container-xl{
+    @apply md:px-12 xl:w-3/4 max-w-7xl mx-auto;
+}
+
+footer .social-icon{
+    @apply w-8 h-8 hover:scale-110 transition-all duration-75 ease-in-out text-gray-50 text-opacity-70 hover:text-opacity-80;
+}
