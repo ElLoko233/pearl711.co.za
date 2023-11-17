@@ -44,3 +44,11 @@
 footer .social-icon{
     @apply w-8 h-8 hover:scale-110 transition-all duration-75 ease-in-out text-gray-50 text-opacity-70 hover:text-opacity-80;
 }
+
+.form-item{
+    @apply w-full ring-0 outline-none rounded-md bg-gray-50 border border-gray-300 text-opacity-80 text-secondary-500 font-body placeholder-opacity-80 placeholder-gray-400 focus:border-primary-500 focus:ring-primary-500 focus:ring-opacity-50;
+}
+
+.contact-links{
+    @apply font-body text-sm text-secondary-500 text-opacity-75 transition-all duration-75 ease-in-out hover:text-opacity-90 hover:text-primary-500;
+}
