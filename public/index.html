@@ -24,6 +24,9 @@
         <!-- importing the js -->
         <script defer type="module" src="/public/js/bundle-index.js"></script>
 
+        <!-- setting the theme bar color -->
+        <meta name="theme-color" content="#191919">
+
         <!-- importing tab icon -->
         <link rel="icon" href="/public/assets/pearl771_shape.svg">
 
@@ -160,15 +163,15 @@
                     <div class="flex flex-col gap-10 w-full md:w-7/12">
                         <!-- headline and subheadline -->
                         <div class="flex flex-col gap-3">
-                            <h1 class="text-slate-200 font-heading text-5xl sm:text-6xl text-opacity-95 font-medium leading-tight">Where Every Service Exceeds Expectations</h1>
+                            <h1 class="hero-headline">Where Every Service Exceeds Expectations</h1>
 
-                            <p class="text-slate-200 font-heading text-lg sm:text-xl text-opacity-70 leading-tight w-9/12">Setting New Standards in Car Care, Pet Products, and Refreshment</p>
+                            <p class="hero-subheadline">Setting New Standards in Car Care, Pet Products, and Refreshment</p>
                         </div>
 
                         <!-- cta -->
-                        <div class="flex justify-center items-center w-28 h-10 bg-tertiary-500 hover:bg-primary-600 bg-opacity-90 py-5  rounded-md hover:rounded-sm transition-all duration-100 ease-in-out group drop-shadow-md">
+                        <div class="cta-button">
                             <a href="contact.html"
-                                class="text-slate-200 font-body font-medium text-opacity-95"
+                                class=""
                                 role="button">
                                 Get In touch
                             </a>
@@ -177,7 +180,7 @@
 
                     <!-- hero image -->
                     <div>
-                        <div class="text-primary-500 hidden md:block">
+                        <div class="hero-img">
                             <svg 
                             fill="currentColor" class="w-56 mx-auto" viewBox="0 0 27.774005 32.393822" version="1.1" id="svg1"
                                 inkscape:version="1.3 (0e150ed6c4, 2023-07-21)" sodipodi:docname="pearl771_shape.svg" xml:space="preserve"
@@ -318,12 +321,15 @@
         </section>
         <!-- End Perks section -->
 
+        <!-- Start what we offer section -->
+        <!-- End what we offer section -->
+
         <!-- Start Products overview section -->
         <section class="mt-24 p-5">
             <div class="container-xl flex flex-col gap-5 justify-center">
                 <!-- section title -->
                 <div>
-                    <h3 class="text-3xl font-heading font-bold tracking-tight text-secondary-500 text-opacity-90 sm:text-4xl">
+                    <h3 class="text-2xl font-heading font-bold tracking-tight text-secondary-500 text-opacity-90 sm:text-4xl">
                         Product Overview
                     </h3>
                 </div>
@@ -332,9 +338,9 @@
                 <div class="w-full h-fit flex flex-col justify-center item-center gap-3">
                     <!-- search button -->
                     <div class="flex flex-row-reverse">
-                        <button type="button" class="font-body text-secondary-500 text-sm tracking-wider hover:text-gray-50 text-opacity-80 hover:bg-secondary-500 hover:bg-opacity-80 ring-1 ring-secondary-500 ring-opacity-80 outline-none rounded px-5 py-2.5 text-center w-fit flex flex-row items-center justify-between gap-2 transition-all duration-100 ease-linear">
+                        <button type="button" class="font-body text-secondary-500 text-[0.65rem] lg:text-sm tracking-wider hover:text-gray-50 text-opacity-80 hover:bg-secondary-500 hover:bg-opacity-80 ring-1 ring-secondary-500 ring-opacity-80 outline-none rounded px-3 lg:px-5 py-1 lg:py-2.5 text-center w-fit flex flex-row items-center justify-between gap-2 transition-all duration-100 ease-linear">
                             <!-- search icon -->
-                            <svg id="searchIcon" class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <svg id="searchIcon" class="w-3 lg:w-4 h-3 lg:h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m18 11l-6-6"/>
                             </svg>
                             <!-- close search icon -->
@@ -350,35 +356,35 @@
                     
                     <!-- Search form -->
                     <form id="searchForm" class="">
-                        <input class="text-sm sm:text-base form-input w-full rounded ring-0 outline-none border-1 border-secondary-500 focus:border-primary-500 border-opacity-80 p-3 focus:ring-0 focus:outline-none bg-gray-50 placeholder-inherit placeholder-secondary-500 placeholder-opacity-50 transition-all duration-100 ease-linear" type="search" name="search-product" placeholder="Search for product">
+                        <input class="text-xs sm:text-base form-input w-full rounded ring-0 outline-none border-1 border-secondary-500 focus:border-primary-500 border-opacity-80 p-2 lg:p-3 focus:ring-0 focus:outline-none bg-gray-50 placeholder-inherit placeholder-secondary-500 placeholder-opacity-50 transition-all duration-100 ease-linear" type="search" name="search-product" placeholder="Search for product">
                     </form>
                 </div>
 
                 <!-- porduct overveiw content -->
-                <div class="[column-fill\:_balance] sm:columns-2 sm:gap-6 lg:columns-3 lg:gap-8">
+                <div class="[column-fill\:_balance] columns-2 sm:columns-3 sm:gap-0 lg:columns-4 lg:gap-8">
                     <!-- product item template -->
-                    <div class="sm:break-inside-avoid bg-white max-w-[18rem] mx-auto mb-10">
+                    <div class="break-inside-avoid bg-white max-w-[9rem] lg:max-w-[18rem] mx-auto mb-5 lg:mb-10 hover:scale-105 md:hover:scale-110 transition-all duration-100 ease-linear group">
                         <!-- front page -->
-                        <div class="hidden w-full h-full flex flex-col items-center justify-center rounded-md ring-1 ring-secondary-500 ring-opacity-30">
+                        <div class="w-full h-full flex flex-col items-center justify-center rounded-md ring-1 ring-secondary-500 ring-opacity-30 group-hover:ring-opacity-80 transition-all duration-100 ease-linear">
                             <!-- product image -->
-                            <div class="w-9/12 pt-5">
+                            <div class="w-9/12 pt-3 md:pt-5">
                                 <a>
                                     <img id="productImg" class="w-full h-full" src="./assets/images/dog-pack.png" alt="montego dog food">
                                 </a>
                             </div>
     
                             <!-- product details -->
-                            <div class="px-5 pb-5 flex flex-col item-center justify-between gap-5">
+                            <div class="px-1 pb-3 md:px-5 md:pb-5 flex flex-col item-center justify-between gap-5">
                                 <!-- product name -->
                                 <div>
                                     <a>
-                                        <h4 id="productName" class="text-secondary-500 text-opacity-90 text-center font-heading font-semibold text-xl sm:text-2xl sm:text-opacity-[0.85] tracking-tight">Montego Classic Dog Food Adult
+                                        <h4 id="productName" class="text-secondary-500 text-opacity-90 text-center font-heading font-semibold text-sm text-wrap lg:text-xl sm:text-opacity-[0.85] tracking-tight">Montego Classic Dog Food Adult
                                         </h4>
                                     </a>
                                 </div>
     
                                 <!-- product average rating -->
-                                <div class="hidden flex items-center mt-2.5 mb-5">
+                                <!-- <div class="hidden flex items-center mt-2.5 mb-5">
                                         <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -410,19 +416,19 @@
                                             </path>
                                         </svg>
                                         <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
-                                </div>
+                                </div> -->
                                 
                                 <!-- product buttons -->
-                                <div class="flex items-center justify-center gap-5">
+                                <div class="flex items-center justify-center gap-2 lg:gap-5">
                                     <!-- product price -->
-                                    <div class="flex justify-center items-center text-white text-opacity-90 bg-primary-500 bg-opacity-80 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out px-8 py-1 text-lg font-body font-semibold">
+                                    <div class="flex justify-center items-center text-white text-opacity-100 bg-primary-500 bg-opacity-95 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out px-2 lg:px-4 py-1 text-[0.5rem] lg:text-[0.85rem] font-body font-medium">
                                         <p id="productPrice">
                                             R500
                                         </p>
                                     </div>
     
                                     <!-- product readmore -->
-                                    <button class="flex justify-center items-center py-1 px-3 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-md text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-medium">
+                                    <button class="flex justify-center items-center py-0.5 px-2 lg:py-1 lg:px-5 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-[0.5rem] lg:text-[0.80rem] text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-medium">
                                         Read More
                                     </button>
                                 </div>
@@ -430,17 +436,17 @@
                         </div>
 
                         <!-- back page -->
-                        <div class="w-full h-full flex flex-col items-center justify-center bg-secondary-900 bg-opacity-95 pt-5 rounded-md">    
+                        <div class="hidden w-full h-full flex flex-col items-center justify-center bg-secondary-900 bg-opacity-95 pt-5 rounded-md">    
                             <!-- product details -->
-                            <div class="px-5 pb-5 flex flex-col item-center justify-between gap-16">
+                            <div class="px-2 lg:px-5 py-2 lg:pb-5 flex flex-col item-center justify-between gap-10 lg:gap-16">
                                 <!-- product details -->
                                 <div class="flex flex-col gap-5">
-                                    <p id="productDetails" class="text-white text-opacity-90 font-body font-normal">
+                                    <p id="productDetails" class="text-white text-opacity-90 font-body font-normal text-[0.65rem] lg:text-sm">
                                         Lorem ipsum dolor sit amet e autem, temporibus rem accusantium perspiciatis repudiandae fugit voluptatem dolor eos illo beatae provident fuga.
                                     </p>
 
                                     <!-- product detail points -->
-                                    <div class="flex flex-row flex-wrap gap-3" role="group">
+                                    <div class="flex flex-row flex-wrap gap-2 lg:gap-3" role="group">
                                         <div class="productDetailPoint">
                                           145kg
                                         </div>
@@ -452,9 +458,9 @@
                                 </div>
                                 
                                 <!-- product buttons -->
-                                <div class="flex items-center justify-end gap-5">
+                                <div class="flex items-center justify-end">
                                     <!-- product detail close -->
-                                    <button class="flex justify-center items-center py-1 px-3 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-md text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-medium">
+                                    <button class="flex justify-center items-center py-1 px-2 lg:px-3 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-xs lg:text-md text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-normal lg:font-medium">
                                         Close
                                     </button>
                                 </div>
@@ -462,29 +468,29 @@
                         </div>
                     </div>
 
-                    <!-- product item -->
-                    <div class="sm:break-inside-avoid bg-white max-w-[18rem] mx-auto mb-10">
+                    <!-- product items -->
+                    <div class="break-inside-avoid bg-white max-w-[9rem] lg:max-w-[18rem] mx-auto mb-5 lg:mb-10 hover:scale-105 md:hover:scale-110 transition-all duration-100 ease-linear group">
                         <!-- front page -->
-                        <div class="hidden w-full h-full flex flex-col items-center justify-center rounded-md ring-1 ring-secondary-500 ring-opacity-30">
+                        <div class="w-full h-full flex flex-col items-center justify-center rounded-md ring-1 ring-secondary-500 ring-opacity-30 group-hover:ring-opacity-80 transition-all duration-100 ease-linear">
                             <!-- product image -->
-                            <div class="w-9/12 pt-5">
+                            <div class="w-9/12 pt-3 md:pt-5">
                                 <a>
                                     <img id="productImg" class="w-full h-full" src="./assets/images/dog-pack.png" alt="montego dog food">
                                 </a>
                             </div>
     
                             <!-- product details -->
-                            <div class="px-5 pb-5 flex flex-col item-center justify-between gap-5">
+                            <div class="px-1 pb-3 md:px-5 md:pb-5 flex flex-col item-center justify-between gap-5">
                                 <!-- product name -->
                                 <div>
                                     <a>
-                                        <h4 id="productName" class="text-secondary-500 text-opacity-90 text-center font-heading font-semibold text-xl sm:text-2xl sm:text-opacity-[0.85] tracking-tight">Montego Classic Dog Food Adult
+                                        <h4 id="productName" class="text-secondary-500 text-opacity-90 text-center font-heading font-semibold text-sm text-wrap lg:text-xl sm:text-opacity-[0.85] tracking-tight">Montego Classic Dog Food Adult
                                         </h4>
                                     </a>
                                 </div>
     
                                 <!-- product average rating -->
-                                <div class="hidden flex items-center mt-2.5 mb-5">
+                                <!-- <div class="hidden flex items-center mt-2.5 mb-5">
                                         <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -516,19 +522,19 @@
                                             </path>
                                         </svg>
                                         <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
-                                </div>
+                                </div> -->
                                 
                                 <!-- product buttons -->
-                                <div class="flex items-center justify-center gap-5">
+                                <div class="flex items-center justify-center gap-2 lg:gap-5">
                                     <!-- product price -->
-                                    <div class="flex justify-center items-center text-white text-opacity-90 bg-primary-500 bg-opacity-80 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out px-8 py-1 text-lg font-body font-semibold">
+                                    <div class="flex justify-center items-center text-white text-opacity-100 bg-primary-500 bg-opacity-95 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out px-2 lg:px-4 py-1 text-[0.5rem] lg:text-[0.85rem] font-body font-medium">
                                         <p id="productPrice">
                                             R500
                                         </p>
                                     </div>
     
                                     <!-- product readmore -->
-                                    <button class="flex justify-center items-center py-1 px-3 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-md text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-medium">
+                                    <button class="flex justify-center items-center py-0.5 px-2 lg:py-1 lg:px-5 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-[0.5rem] lg:text-[0.80rem] text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-medium">
                                         Read More
                                     </button>
                                 </div>
@@ -536,17 +542,17 @@
                         </div>
 
                         <!-- back page -->
-                        <div class="w-full h-full flex flex-col items-center justify-center bg-secondary-900 bg-opacity-95 pt-5 rounded-md">    
+                        <div class="hidden w-full h-full flex flex-col items-center justify-center bg-secondary-900 bg-opacity-95 pt-5 rounded-md">    
                             <!-- product details -->
-                            <div class="px-5 pb-5 flex flex-col item-center justify-between gap-16">
+                            <div class="px-2 lg:px-5 py-2 lg:pb-5 flex flex-col item-center justify-between gap-10 lg:gap-16">
                                 <!-- product details -->
                                 <div class="flex flex-col gap-5">
-                                    <p id="productDetails" class="text-white text-opacity-90 font-body font-normal">
+                                    <p id="productDetails" class="text-white text-opacity-90 font-body font-normal text-[0.65rem] lg:text-sm">
                                         Lorem ipsum dolor sit amet e autem, temporibus rem accusantium perspiciatis repudiandae fugit voluptatem dolor eos illo beatae provident fuga.
                                     </p>
 
                                     <!-- product detail points -->
-                                    <div class="flex flex-row flex-wrap gap-3" role="group">
+                                    <div class="flex flex-row flex-wrap gap-2 lg:gap-3" role="group">
                                         <div class="productDetailPoint">
                                           145kg
                                         </div>
@@ -558,9 +564,9 @@
                                 </div>
                                 
                                 <!-- product buttons -->
-                                <div class="flex items-center justify-end gap-5">
+                                <div class="flex items-center justify-end">
                                     <!-- product detail close -->
-                                    <button class="flex justify-center items-center py-1 px-3 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-md text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-medium">
+                                    <button class="flex justify-center items-center py-1 px-2 lg:px-3 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-xs lg:text-md text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-normal lg:font-medium">
                                         Close
                                     </button>
                                 </div>
@@ -568,242 +574,28 @@
                         </div>
                     </div>
 
-                    <!-- product item -->
-                    <div class="sm:break-inside-avoid bg-white rounded-md max-w-[18rem] ring-1 ring-secondary-500 ring-opacity-30 flex flex-col items-center justify-center mx-auto mb-10">
-                        <!-- product image -->
-                        <div class="w-9/12 pt-5 ">
-                            <a>
-                                <img id="productImg" class="w-full h-full" src="./assets/images/dog-pack.png" alt="montego dog food">
-                            </a>
-                        </div>
-
-                        <!-- product details -->
-                        <div class="px-5 pb-5 flex flex-col justify-between gap-5">
-                            <!-- product name -->
-                            <div>
-                                <a>
-                                    <h4 id="productName" class="text-secondary-500 text-opacity-90 text-center font-heading font-semibold text-xl sm:text-2xl sm:text-opacity-[0.85] tracking-tight">Montego Classic Dog Food Adult
-                                    </h4>
-                                </a>
-                            </div>
-
-                            <!-- product average rating -->
-                            <div class="hidden flex items-center mt-2.5 mb-5">
-                                    <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                        </path>
-                                    </svg>
-                                    <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                        </path>
-                                    </svg>
-                                    <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                        </path>
-                                    </svg>
-                                    <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                        </path>
-                                    </svg>
-                                    <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                        </path>
-                                    </svg>
-                                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
-                            </div>
-                            
-                            <!-- product buttons -->
-                            <div class="flex items-center justify-center gap-5">
-                                <!-- product price -->
-                                <div class="flex justify-center items-center text-white text-opacity-90 bg-primary-500 bg-opacity-80 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out px-8 py-1 text-lg font-body font-semibold">
-                                    <p id="productPrice">
-                                        R500
-                                    </p>
-                                </div>
-
-                                <!-- product readmore -->
-                                <button class="flex justify-center items-center py-1 px-3 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-md text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-medium">
-                                    Read More
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- product item -->
-                    <div class="sm:break-inside-avoid bg-white rounded-md max-w-[18rem] ring-1 ring-secondary-500 ring-opacity-30 flex flex-col items-center justify-center mx-auto mb-10">
-                        <!-- product image -->
-                        <div class="w-9/12 pt-5 ">
-                            <a>
-                                <img id="productImg" class="w-full h-full" src="./assets/images/dog-pack.png" alt="montego dog food">
-                            </a>
-                        </div>
-
-                        <!-- product details -->
-                        <div class="px-5 pb-5 flex flex-col justify-between gap-5">
-                            <!-- product name -->
-                            <div>
-                                <a>
-                                    <h4 id="productName" class="text-secondary-500 text-opacity-90 text-center font-heading font-semibold text-xl sm:text-2xl sm:text-opacity-[0.85] tracking-tight">Montego Classic Dog Food Adult
-                                    </h4>
-                                </a>
-                            </div>
-
-                            <!-- product average rating -->
-                            <div class="hidden flex items-center mt-2.5 mb-5">
-                                    <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                        </path>
-                                    </svg>
-                                    <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                        </path>
-                                    </svg>
-                                    <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                        </path>
-                                    </svg>
-                                    <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                        </path>
-                                    </svg>
-                                    <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                        </path>
-                                    </svg>
-                                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
-                            </div>
-                            
-                            <!-- product buttons -->
-                            <div class="flex items-center justify-center gap-5">
-                                <!-- product price -->
-                                <div class="flex justify-center items-center text-white text-opacity-90 bg-primary-500 bg-opacity-80 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out px-8 py-1 text-lg font-body font-semibold">
-                                    <p id="productPrice">
-                                        R500
-                                    </p>
-                                </div>
-
-                                <!-- product readmore -->
-                                <button class="flex justify-center items-center py-1 px-3 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-md text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-medium">
-                                    Read More
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- product item -->
-                    <div class="sm:break-inside-avoid bg-white rounded-md max-w-[18rem] ring-1 ring-secondary-500 ring-opacity-30 flex flex-col items-center justify-center mx-auto mb-10">
-                        <!-- product image -->
-                        <div class="w-9/12 pt-5 ">
-                            <a>
-                                <img id="productImg" class="w-full h-full" src="./assets/images/dog-pack.png" alt="montego dog food">
-                            </a>
-                        </div>
-
-                        <!-- product details -->
-                        <div class="px-5 pb-5 flex flex-col justify-between gap-5">
-                            <!-- product name -->
-                            <div>
-                                <a>
-                                    <h4 id="productName" class="text-secondary-500 text-opacity-90 text-center font-heading font-semibold text-xl sm:text-2xl sm:text-opacity-[0.85] tracking-tight">Montego Classic Dog Food Adult
-                                    </h4>
-                                </a>
-                            </div>
-
-                            <!-- product average rating -->
-                            <div class="hidden flex items-center mt-2.5 mb-5">
-                                    <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                        </path>
-                                    </svg>
-                                    <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                        </path>
-                                    </svg>
-                                    <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                        </path>
-                                    </svg>
-                                    <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                        </path>
-                                    </svg>
-                                    <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                        </path>
-                                    </svg>
-                                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
-                            </div>
-                            
-                            <!-- product buttons -->
-                            <div class="flex items-center justify-center gap-5">
-                                <!-- product price -->
-                                <div class="flex justify-center items-center text-white text-opacity-90 bg-primary-500 bg-opacity-80 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out px-8 py-1 text-lg font-body font-semibold">
-                                    <p id="productPrice">
-                                        R500
-                                    </p>
-                                </div>
-
-                                <!-- product readmore -->
-                                <button class="flex justify-center items-center py-1 px-3 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-md text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-medium">
-                                    Read More
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- product item -->
-                    <div class="sm:break-inside-avoid bg-white max-w-[18rem] mx-auto mb-10">
+                    <div class="break-inside-avoid bg-white max-w-[9rem] lg:max-w-[18rem] mx-auto mb-5 lg:mb-10 hover:scale-105 md:hover:scale-110 transition-all duration-100 ease-linear group">
                         <!-- front page -->
-                        <div class="hidden w-full h-full flex flex-col items-center justify-center rounded-md ring-1 ring-secondary-500 ring-opacity-30">
+                        <div class="w-full h-full flex flex-col items-center justify-center rounded-md ring-1 ring-secondary-500 ring-opacity-30 group-hover:ring-opacity-80 transition-all duration-100 ease-linear">
                             <!-- product image -->
-                            <div class="w-9/12 pt-5">
+                            <div class="w-9/12 pt-3 md:pt-5">
                                 <a>
                                     <img id="productImg" class="w-full h-full" src="./assets/images/dog-pack.png" alt="montego dog food">
                                 </a>
                             </div>
     
                             <!-- product details -->
-                            <div class="px-5 pb-5 flex flex-col item-center justify-between gap-5">
+                            <div class="px-1 pb-3 md:px-5 md:pb-5 flex flex-col item-center justify-between gap-5">
                                 <!-- product name -->
                                 <div>
                                     <a>
-                                        <h4 id="productName" class="text-secondary-500 text-opacity-90 text-center font-heading font-semibold text-xl sm:text-2xl sm:text-opacity-[0.85] tracking-tight">Montego Classic Dog Food Adult
+                                        <h4 id="productName" class="text-secondary-500 text-opacity-90 text-center font-heading font-semibold text-sm text-wrap lg:text-xl sm:text-opacity-[0.85] tracking-tight">Montego Classic Dog Food Adult
                                         </h4>
                                     </a>
                                 </div>
     
                                 <!-- product average rating -->
-                                <div class="hidden flex items-center mt-2.5 mb-5">
+                                <!-- <div class="hidden flex items-center mt-2.5 mb-5">
                                         <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -835,19 +627,19 @@
                                             </path>
                                         </svg>
                                         <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
-                                </div>
+                                </div> -->
                                 
                                 <!-- product buttons -->
-                                <div class="flex items-center justify-center gap-5">
+                                <div class="flex items-center justify-center gap-2 lg:gap-5">
                                     <!-- product price -->
-                                    <div class="flex justify-center items-center text-white text-opacity-90 bg-primary-500 bg-opacity-80 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out px-8 py-1 text-lg font-body font-semibold">
+                                    <div class="flex justify-center items-center text-white text-opacity-100 bg-primary-500 bg-opacity-95 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out px-2 lg:px-4 py-1 text-[0.5rem] lg:text-[0.85rem] font-body font-medium">
                                         <p id="productPrice">
                                             R500
                                         </p>
                                     </div>
     
                                     <!-- product readmore -->
-                                    <button class="flex justify-center items-center py-1 px-3 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-md text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-medium">
+                                    <button class="flex justify-center items-center py-0.5 px-2 lg:py-1 lg:px-5 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-[0.5rem] lg:text-[0.80rem] text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-medium">
                                         Read More
                                     </button>
                                 </div>
@@ -855,17 +647,17 @@
                         </div>
 
                         <!-- back page -->
-                        <div class="w-full h-full flex flex-col items-center justify-center bg-secondary-900 bg-opacity-95 pt-5 rounded-md">    
+                        <div class="hidden w-full h-full flex flex-col items-center justify-center bg-secondary-900 bg-opacity-95 pt-5 rounded-md">    
                             <!-- product details -->
-                            <div class="px-5 pb-5 flex flex-col item-center justify-between gap-16">
+                            <div class="px-2 lg:px-5 py-2 lg:pb-5 flex flex-col item-center justify-between gap-10 lg:gap-16">
                                 <!-- product details -->
                                 <div class="flex flex-col gap-5">
-                                    <p id="productDetails" class="text-white text-opacity-90 font-body font-normal">
+                                    <p id="productDetails" class="text-white text-opacity-90 font-body font-normal text-[0.65rem] lg:text-sm">
                                         Lorem ipsum dolor sit amet e autem, temporibus rem accusantium perspiciatis repudiandae fugit voluptatem dolor eos illo beatae provident fuga.
                                     </p>
 
                                     <!-- product detail points -->
-                                    <div class="flex flex-row flex-wrap gap-3" role="group">
+                                    <div class="flex flex-row flex-wrap gap-2 lg:gap-3" role="group">
                                         <div class="productDetailPoint">
                                           145kg
                                         </div>
@@ -877,9 +669,430 @@
                                 </div>
                                 
                                 <!-- product buttons -->
-                                <div class="flex items-center justify-end gap-5">
+                                <div class="flex items-center justify-end">
                                     <!-- product detail close -->
-                                    <button class="flex justify-center items-center py-1 px-3 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-md text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-medium">
+                                    <button class="flex justify-center items-center py-1 px-2 lg:px-3 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-xs lg:text-md text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-normal lg:font-medium">
+                                        Close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="break-inside-avoid bg-white max-w-[9rem] lg:max-w-[18rem] mx-auto mb-5 lg:mb-10 hover:scale-105 md:hover:scale-110 transition-all duration-100 ease-linear group">
+                        <!-- front page -->
+                        <div class="hidden w-full h-full flex flex-col items-center justify-center rounded-md ring-1 ring-secondary-500 ring-opacity-30 group-hover:ring-opacity-80 transition-all duration-100 ease-linear">
+                            <!-- product image -->
+                            <div class="w-9/12 pt-3 md:pt-5">
+                                <a>
+                                    <img id="productImg" class="w-full h-full" src="./assets/images/dog-pack.png" alt="montego dog food">
+                                </a>
+                            </div>
+    
+                            <!-- product details -->
+                            <div class="px-1 pb-3 md:px-5 md:pb-5 flex flex-col item-center justify-between gap-5">
+                                <!-- product name -->
+                                <div>
+                                    <a>
+                                        <h4 id="productName" class="text-secondary-500 text-opacity-90 text-center font-heading font-semibold text-sm text-wrap lg:text-xl sm:text-opacity-[0.85] tracking-tight">Montego Classic Dog Food Adult
+                                        </h4>
+                                    </a>
+                                </div>
+    
+                                <!-- product average rating -->
+                                <!-- <div class="hidden flex items-center mt-2.5 mb-5">
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
+                                </div> -->
+                                
+                                <!-- product buttons -->
+                                <div class="flex items-center justify-center gap-2 lg:gap-5">
+                                    <!-- product price -->
+                                    <div class="flex justify-center items-center text-white text-opacity-100 bg-primary-500 bg-opacity-95 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out px-2 lg:px-4 py-1 text-[0.5rem] lg:text-[0.85rem] font-body font-medium">
+                                        <p id="productPrice">
+                                            R500
+                                        </p>
+                                    </div>
+    
+                                    <!-- product readmore -->
+                                    <button class="flex justify-center items-center py-0.5 px-2 lg:py-1 lg:px-5 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-[0.5rem] lg:text-[0.80rem] text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-medium">
+                                        Read More
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- back page -->
+                        <div class="w-full h-full flex flex-col items-center justify-center bg-secondary-900 bg-opacity-95 pt-5 rounded-md">    
+                            <!-- product details -->
+                            <div class="px-2 lg:px-5 py-2 lg:pb-5 flex flex-col item-center justify-between gap-10 lg:gap-16">
+                                <!-- product details -->
+                                <div class="flex flex-col gap-5">
+                                    <p id="productDetails" class="text-white text-opacity-90 font-body font-normal text-[0.65rem] lg:text-sm">
+                                        Lorem ipsum dolor sit amet e autem, temporibus rem accusantium perspiciatis repudiandae fugit voluptatem dolor eos illo beatae provident fuga.
+                                    </p>
+
+                                    <!-- product detail points -->
+                                    <div class="flex flex-row flex-wrap gap-2 lg:gap-3" role="group">
+                                        <div class="productDetailPoint">
+                                          145kg
+                                        </div>
+
+                                        <button type="button" class="productDetailPoint">
+                                          Adult Dogs
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <!-- product buttons -->
+                                <div class="flex items-center justify-end">
+                                    <!-- product detail close -->
+                                    <button class="flex justify-center items-center py-1 px-2 lg:px-3 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-xs lg:text-md text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-normal lg:font-medium">
+                                        Close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="break-inside-avoid bg-white max-w-[9rem] lg:max-w-[18rem] mx-auto mb-5 lg:mb-10 hover:scale-105 md:hover:scale-110 transition-all duration-100 ease-linear group">
+                        <!-- front page -->
+                        <div class="w-full h-full flex flex-col items-center justify-center rounded-md ring-1 ring-secondary-500 ring-opacity-30 group-hover:ring-opacity-80 transition-all duration-100 ease-linear">
+                            <!-- product image -->
+                            <div class="w-9/12 pt-3 md:pt-5">
+                                <a>
+                                    <img id="productImg" class="w-full h-full" src="./assets/images/dog-pack.png" alt="montego dog food">
+                                </a>
+                            </div>
+    
+                            <!-- product details -->
+                            <div class="px-1 pb-3 md:px-5 md:pb-5 flex flex-col item-center justify-between gap-5">
+                                <!-- product name -->
+                                <div>
+                                    <a>
+                                        <h4 id="productName" class="text-secondary-500 text-opacity-90 text-center font-heading font-semibold text-sm text-wrap lg:text-xl sm:text-opacity-[0.85] tracking-tight">Montego Classic Dog Food Adult
+                                        </h4>
+                                    </a>
+                                </div>
+    
+                                <!-- product average rating -->
+                                <!-- <div class="hidden flex items-center mt-2.5 mb-5">
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
+                                </div> -->
+                                
+                                <!-- product buttons -->
+                                <div class="flex items-center justify-center gap-2 lg:gap-5">
+                                    <!-- product price -->
+                                    <div class="flex justify-center items-center text-white text-opacity-100 bg-primary-500 bg-opacity-95 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out px-2 lg:px-4 py-1 text-[0.5rem] lg:text-[0.85rem] font-body font-medium">
+                                        <p id="productPrice">
+                                            R500
+                                        </p>
+                                    </div>
+    
+                                    <!-- product readmore -->
+                                    <button class="flex justify-center items-center py-0.5 px-2 lg:py-1 lg:px-5 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-[0.5rem] lg:text-[0.80rem] text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-medium">
+                                        Read More
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- back page -->
+                        <div class="hidden w-full h-full flex flex-col items-center justify-center bg-secondary-900 bg-opacity-95 pt-5 rounded-md">    
+                            <!-- product details -->
+                            <div class="px-2 lg:px-5 py-2 lg:pb-5 flex flex-col item-center justify-between gap-10 lg:gap-16">
+                                <!-- product details -->
+                                <div class="flex flex-col gap-5">
+                                    <p id="productDetails" class="text-white text-opacity-90 font-body font-normal text-[0.65rem] lg:text-sm">
+                                        Lorem ipsum dolor sit amet e autem, temporibus rem accusantium perspiciatis repudiandae fugit voluptatem dolor eos illo beatae provident fuga.
+                                    </p>
+
+                                    <!-- product detail points -->
+                                    <div class="flex flex-row flex-wrap gap-2 lg:gap-3" role="group">
+                                        <div class="productDetailPoint">
+                                          145kg
+                                        </div>
+
+                                        <button type="button" class="productDetailPoint">
+                                          Adult Dogs
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <!-- product buttons -->
+                                <div class="flex items-center justify-end">
+                                    <!-- product detail close -->
+                                    <button class="flex justify-center items-center py-1 px-2 lg:px-3 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-xs lg:text-md text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-normal lg:font-medium">
+                                        Close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="break-inside-avoid bg-white max-w-[9rem] lg:max-w-[18rem] mx-auto mb-5 lg:mb-10 hover:scale-105 md:hover:scale-110 transition-all duration-100 ease-linear group">
+                        <!-- front page -->
+                        <div class="hidden w-full h-full flex flex-col items-center justify-center rounded-md ring-1 ring-secondary-500 ring-opacity-30 group-hover:ring-opacity-80 transition-all duration-100 ease-linear">
+                            <!-- product image -->
+                            <div class="w-9/12 pt-3 md:pt-5">
+                                <a>
+                                    <img id="productImg" class="w-full h-full" src="./assets/images/dog-pack.png" alt="montego dog food">
+                                </a>
+                            </div>
+    
+                            <!-- product details -->
+                            <div class="px-1 pb-3 md:px-5 md:pb-5 flex flex-col item-center justify-between gap-5">
+                                <!-- product name -->
+                                <div>
+                                    <a>
+                                        <h4 id="productName" class="text-secondary-500 text-opacity-90 text-center font-heading font-semibold text-sm text-wrap lg:text-xl sm:text-opacity-[0.85] tracking-tight">Montego Classic Dog Food Adult
+                                        </h4>
+                                    </a>
+                                </div>
+    
+                                <!-- product average rating -->
+                                <!-- <div class="hidden flex items-center mt-2.5 mb-5">
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
+                                </div> -->
+                                
+                                <!-- product buttons -->
+                                <div class="flex items-center justify-center gap-2 lg:gap-5">
+                                    <!-- product price -->
+                                    <div class="flex justify-center items-center text-white text-opacity-100 bg-primary-500 bg-opacity-95 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out px-2 lg:px-4 py-1 text-[0.5rem] lg:text-[0.85rem] font-body font-medium">
+                                        <p id="productPrice">
+                                            R500
+                                        </p>
+                                    </div>
+    
+                                    <!-- product readmore -->
+                                    <button class="flex justify-center items-center py-0.5 px-2 lg:py-1 lg:px-5 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-[0.5rem] lg:text-[0.80rem] text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-medium">
+                                        Read More
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- back page -->
+                        <div class="w-full h-full flex flex-col items-center justify-center bg-secondary-900 bg-opacity-95 pt-5 rounded-md">    
+                            <!-- product details -->
+                            <div class="px-2 lg:px-5 py-2 lg:pb-5 flex flex-col item-center justify-between gap-10 lg:gap-16">
+                                <!-- product details -->
+                                <div class="flex flex-col gap-5">
+                                    <p id="productDetails" class="text-white text-opacity-90 font-body font-normal text-[0.65rem] lg:text-sm">
+                                        Lorem ipsum dolor sit amet e autem, temporibus rem accusantium perspiciatis repudiandae fugit voluptatem dolor eos illo beatae provident fuga.
+                                    </p>
+
+                                    <!-- product detail points -->
+                                    <div class="flex flex-row flex-wrap gap-2 lg:gap-3" role="group">
+                                        <div class="productDetailPoint">
+                                          145kg
+                                        </div>
+
+                                        <button type="button" class="productDetailPoint">
+                                          Adult Dogs
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <!-- product buttons -->
+                                <div class="flex items-center justify-end">
+                                    <!-- product detail close -->
+                                    <button class="flex justify-center items-center py-1 px-2 lg:px-3 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-xs lg:text-md text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-normal lg:font-medium">
+                                        Close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="break-inside-avoid bg-white max-w-[9rem] lg:max-w-[18rem] mx-auto mb-5 lg:mb-10 hover:scale-105 md:hover:scale-110 transition-all duration-100 ease-linear group">
+                        <!-- front page -->
+                        <div class="w-full h-full flex flex-col items-center justify-center rounded-md ring-1 ring-secondary-500 ring-opacity-30 group-hover:ring-opacity-80 transition-all duration-100 ease-linear">
+                            <!-- product image -->
+                            <div class="w-9/12 pt-3 md:pt-5">
+                                <a>
+                                    <img id="productImg" class="w-full h-full" src="./assets/images/dog-pack.png" alt="montego dog food">
+                                </a>
+                            </div>
+    
+                            <!-- product details -->
+                            <div class="px-1 pb-3 md:px-5 md:pb-5 flex flex-col item-center justify-between gap-5">
+                                <!-- product name -->
+                                <div>
+                                    <a>
+                                        <h4 id="productName" class="text-secondary-500 text-opacity-90 text-center font-heading font-semibold text-sm text-wrap lg:text-xl sm:text-opacity-[0.85] tracking-tight">Montego Classic Dog Food Adult
+                                        </h4>
+                                    </a>
+                                </div>
+    
+                                <!-- product average rating -->
+                                <!-- <div class="hidden flex items-center mt-2.5 mb-5">
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
+                                </div> -->
+                                
+                                <!-- product buttons -->
+                                <div class="flex items-center justify-center gap-2 lg:gap-5">
+                                    <!-- product price -->
+                                    <div class="flex justify-center items-center text-white text-opacity-100 bg-primary-500 bg-opacity-95 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out px-2 lg:px-4 py-1 text-[0.5rem] lg:text-[0.85rem] font-body font-medium">
+                                        <p id="productPrice">
+                                            R500
+                                        </p>
+                                    </div>
+    
+                                    <!-- product readmore -->
+                                    <button class="flex justify-center items-center py-0.5 px-2 lg:py-1 lg:px-5 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-[0.5rem] lg:text-[0.80rem] text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-medium">
+                                        Read More
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- back page -->
+                        <div class="hidden w-full h-full flex flex-col items-center justify-center bg-secondary-900 bg-opacity-95 pt-5 rounded-md">    
+                            <!-- product details -->
+                            <div class="px-2 lg:px-5 py-2 lg:pb-5 flex flex-col item-center justify-between gap-10 lg:gap-16">
+                                <!-- product details -->
+                                <div class="flex flex-col gap-5">
+                                    <p id="productDetails" class="text-white text-opacity-90 font-body font-normal text-[0.65rem] lg:text-sm">
+                                        Lorem ipsum dolor sit amet e autem, temporibus rem accusantium perspiciatis repudiandae fugit voluptatem dolor eos illo beatae provident fuga.
+                                    </p>
+
+                                    <!-- product detail points -->
+                                    <div class="flex flex-row flex-wrap gap-2 lg:gap-3" role="group">
+                                        <div class="productDetailPoint">
+                                          145kg
+                                        </div>
+
+                                        <button type="button" class="productDetailPoint">
+                                          Adult Dogs
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <!-- product buttons -->
+                                <div class="flex items-center justify-end">
+                                    <!-- product detail close -->
+                                    <button class="flex justify-center items-center py-1 px-2 lg:px-3 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-xs lg:text-md text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-normal lg:font-medium">
                                         Close
                                     </button>
                                 </div>
@@ -890,7 +1103,7 @@
 
                 <!-- Load more button -->
                 <div class="mx-auto">
-                    <button type="button" class="font-body text-secondary-500 text-sm tracking-wider hover:text-gray-50 text-opacity-80 hover:bg-secondary-500 hover:bg-opacity-80 ring-1 ring-secondary-500 ring-opacity-80 outline-none rounded px-5 py-2.5 text-center w-fit flex flex-row items-center justify-between gap-2 transition-all duration-100 ease-linear">
+                    <button type="button" class="font-body font-medium text-secondary-500 text-[0.65rem] lg:text-sm hover:text-gray-50 text-opacity-80 hover:bg-secondary-500 hover:bg-opacity-80 ring-1 ring-secondary-500 ring-opacity-80 outline-none rounded px-2 lg:px-5 py-1 lg:py-2.5 text-center w-fit flex flex-row items-center justify-between gap-2 transition-all duration-100 ease-linear">
                         Load More
                     </button>
                 </div>
@@ -900,27 +1113,27 @@
         
         <!-- Start Testimonial section -->
         <section id="testimonials" class="bg-white py-20">
-            <div class="container-xl p-5 lg:p-0">
+            <div class="container-xl p-5 xl:p-0">
                 <!-- section title -->
-                <h2 class="text-center font-heading text-3xl font-bold tracking-tight text-secondary-500 text-opacity-90 sm:text-4xl">
+                <h2 class="text-center font-heading text-2xl font-bold tracking-tight text-secondary-500 text-opacity-90 lg:text-4xl">
                     Read trusted reviews from our customers
                 </h2>
           
-                <div class="mt-8 [column-fill\:_balance] sm:columns-2 sm:gap-6 lg:columns-3 lg:gap-8">
+                <div class="mt-8 [column-fill\:_balance] sm:columns-2 lg:columns-3 sm:gap-6 lg:gap-8">
                     <!-- testimonial item template -->
-                    <div id="testimonial-template-item" class="hidden mb-8 sm:break-inside-avoid hover:scale-105 md:hover:scale-110 transition-all duration-100 ease-linear group">
-                        <blockquote class="rounded-lg outline outline-2 outline-transparent group-hover:outline-primary-500 bg-gray-50 transition-all duration-100 ease-linear p-6 shadow-sm sm:p-8">
+                    <div id="testimonial-template-item" class="hidden mb-8 break-inside-avoid hover:scale-105 md:hover:scale-110 transition-all duration-100 ease-linear group">
+                        <blockquote class="rounded-lg outline outline-2 outline-transparent group-hover:outline-primary-500 bg-gray-50 transition-all duration-100 ease-linear p-5 shadow-sm sm:p-8">
                         <!-- testimonial header -->
                         <div class="flex items-center gap-4">
                             <!-- testimonial image -->
-                            <img id="testimonial-image" class="h-14 w-14 rounded-full object-cover" alt="past client image" src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"/>
+                            <img id="testimonial-image" class="h-10 lg:h-14 w-10 lg:w-14 rounded-full object-cover" alt="past client image" src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"/>
                 
                             <div>
                             <!-- testimonial rating -->
-                            <div class="flex justify-center gap-0.5 text-primary-500">
+                            <div class="flex justify-start gap-0.5 text-primary-500">
                                 <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5"
+                                class="h-3 lg:h-5 w-3 lg:w-5"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
                                 >
@@ -930,7 +1143,7 @@
                                 </svg>
                                 <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5"
+                                class="h-3 lg:h-5 w-3 lg:w-5"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
                                 >
@@ -940,7 +1153,7 @@
                                 </svg>
                                 <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5"
+                                class="h-3 lg:h-5 w-3 lg:w-5"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
                                 >
@@ -951,11 +1164,11 @@
                             </div>
                             
                             <!-- Testimonial client name -->
-                            <p class="mt-0.5 text-lg font-medium text-primary-900">Paul Starr</p>
+                            <p class="mt-0.5 text-base lg:text-lg font-medium text-secondary-500 text-opacity-90">Paul Starr</p>
                             </div>
                         </div>
                 
-                        <p id="testimonial-content" class="mt-4 text-gray-700">
+                        <p id="testimonial-content" class="mt-4 text-gray-700 text-xs md:text-sm lg:text-base">
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit
                             rerum incidunt, a consequuntur recusandae ab saepe illo est quia
                             obcaecati neque quibusdam eius accusamus error officiis atque
@@ -964,19 +1177,20 @@
                         </blockquote>
                     </div>
 
-                    <div id="testimonial-template-item" class="mb-8 sm:break-inside-avoid hover:scale-105 md:hover:scale-110 transition-all duration-100 ease-linear group">
-                        <blockquote class="rounded-lg outline outline-2 outline-transparent group-hover:outline-primary-500 bg-gray-50 transition-all duration-100 ease-linear p-6 shadow-sm sm:p-8">
+
+                    <div id="testimonial-template-item" class="mb-8 break-inside-avoid hover:scale-105 md:hover:scale-110 transition-all duration-100 ease-linear group">
+                        <blockquote class="rounded-lg outline outline-2 outline-transparent group-hover:outline-primary-500 bg-gray-50 transition-all duration-100 ease-linear p-5 shadow-sm sm:p-8">
                         <!-- testimonial header -->
                         <div class="flex items-center gap-4">
                             <!-- testimonial image -->
-                            <img id="testimonial-image" class="h-14 w-14 rounded-full object-cover" alt="past client image" src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"/>
+                            <img id="testimonial-image" class="h-10 lg:h-14 w-10 lg:w-14 rounded-full object-cover" alt="past client image" src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"/>
                 
                             <div>
                             <!-- testimonial rating -->
-                            <div class="flex justify-center gap-0.5 text-primary-500">
+                            <div class="flex justify-start gap-0.5 text-primary-500">
                                 <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5"
+                                class="h-3 lg:h-5 w-3 lg:w-5"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
                                 >
@@ -986,7 +1200,7 @@
                                 </svg>
                                 <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5"
+                                class="h-3 lg:h-5 w-3 lg:w-5"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
                                 >
@@ -996,7 +1210,7 @@
                                 </svg>
                                 <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5"
+                                class="h-3 lg:h-5 w-3 lg:w-5"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
                                 >
@@ -1007,11 +1221,11 @@
                             </div>
                             
                             <!-- Testimonial client name -->
-                            <p class="mt-0.5 text-lg font-medium text-primary-900">Paul Starr</p>
+                            <p class="mt-0.5 text-base lg:text-lg font-medium text-secondary-500 text-opacity-90">Paul Starr</p>
                             </div>
                         </div>
                 
-                        <p id="testimonial-content" class="mt-4 text-gray-700">
+                        <p id="testimonial-content" class="mt-4 text-gray-700 text-xs md:text-sm lg:text-base">
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit
                             rerum incidunt, a consequuntur recusandae ab saepe illo est quia
                             obcaecati neque quibusdam eius accusamus error officiis atque
@@ -1020,19 +1234,19 @@
                         </blockquote>
                     </div>
 
-                    <div id="testimonial-template-item" class="mb-8 sm:break-inside-avoid hover:scale-105 md:hover:scale-110 transition-all duration-100 ease-linear group">
-                        <blockquote class="rounded-lg outline outline-2 outline-transparent group-hover:outline-primary-500 bg-gray-50 transition-all duration-100 ease-linear p-6 shadow-sm sm:p-8">
+                    <div id="testimonial-template-item" class="mb-8 break-inside-avoid hover:scale-105 md:hover:scale-110 transition-all duration-100 ease-linear group">
+                        <blockquote class="rounded-lg outline outline-2 outline-transparent group-hover:outline-primary-500 bg-gray-50 transition-all duration-100 ease-linear p-5 shadow-sm sm:p-8">
                         <!-- testimonial header -->
                         <div class="flex items-center gap-4">
                             <!-- testimonial image -->
-                            <img id="testimonial-image" class="h-14 w-14 rounded-full object-cover" alt="past client image" src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"/>
+                            <img id="testimonial-image" class="h-10 lg:h-14 w-10 lg:w-14 rounded-full object-cover" alt="past client image" src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"/>
                 
                             <div>
                             <!-- testimonial rating -->
-                            <div class="flex justify-center gap-0.5 text-primary-500">
+                            <div class="flex justify-start gap-0.5 text-primary-500">
                                 <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5"
+                                class="h-3 lg:h-5 w-3 lg:w-5"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
                                 >
@@ -1042,7 +1256,7 @@
                                 </svg>
                                 <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5"
+                                class="h-3 lg:h-5 w-3 lg:w-5"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
                                 >
@@ -1052,7 +1266,7 @@
                                 </svg>
                                 <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5"
+                                class="h-3 lg:h-5 w-3 lg:w-5"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
                                 >
@@ -1063,77 +1277,11 @@
                             </div>
                             
                             <!-- Testimonial client name -->
-                            <p class="mt-0.5 text-lg font-medium text-primary-900">Paul Starr</p>
+                            <p class="mt-0.5 text-base lg:text-lg font-medium text-secondary-500 text-opacity-90">Paul Starr</p>
                             </div>
                         </div>
                 
-                        <p id="testimonial-content" class="mt-4 text-gray-700">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit
-                            rerum incidunt, a consequuntur recusandae ab saepe illo est quia
-                            obcaecati neque quibusdam eius accusamus error officiis atque
-                            voluptates magnam!
-
-                            dolor sit, amet consectetur adipisicing elit. Culpa sit
-                            rerum incidunt, a consequuntur recusandae ab saepe illo est quia
-                            obcaecati neque quibusdam eius accusamus error officiis atque
-                            voluptates magnam!
-                        </p>
-                        </blockquote>
-                    </div>
-
-                    <div id="testimonial-template-item" class="mb-8 sm:break-inside-avoid hover:scale-105 md:hover:scale-110 transition-all duration-100 ease-linear group">
-                        <blockquote class="rounded-lg outline outline-2 outline-transparent group-hover:outline-primary-500 bg-gray-50 transition-all duration-100 ease-linear p-6 shadow-sm sm:p-8">
-                        <!-- testimonial header -->
-                        <div class="flex items-center gap-4">
-                            <!-- testimonial image -->
-                            <img id="testimonial-image" class="h-14 w-14 rounded-full object-cover" alt="past client image" src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"/>
-                
-                            <div>
-                            <!-- testimonial rating -->
-                            <div class="flex justify-center gap-0.5 text-primary-500">
-                                <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                                >
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                />
-                                </svg>
-                                <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                                >
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                />
-                                </svg>
-                                <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                                >
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                />
-                                </svg>
-                            </div>
-                            
-                            <!-- Testimonial client name -->
-                            <p class="mt-0.5 text-lg font-medium text-primary-900">Paul Starr</p>
-                            </div>
-                        </div>
-                
-                        <p id="testimonial-content" class="mt-4 text-gray-700">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit
-                            rerum incidunt, a consequuntur recusandae ab saepe illo est quia
-                            obcaecati neque quibusdam eius accusamus error officiis atque
-                            voluptates magnam!
-
+                        <p id="testimonial-content" class="mt-4 text-gray-700 text-xs md:text-sm lg:text-base">
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit
                             rerum incidunt, a consequuntur recusandae ab saepe illo est quia
                             obcaecati neque quibusdam eius accusamus error officiis atque
@@ -1142,19 +1290,19 @@
                         </blockquote>
                     </div>
 
-                    <div id="testimonial-template-item" class="mb-8 sm:break-inside-avoid hover:scale-105 md:hover:scale-110 transition-all duration-100 ease-linear group">
-                        <blockquote class="rounded-lg outline outline-2 outline-transparent group-hover:outline-primary-500 bg-gray-50 transition-all duration-100 ease-linear p-6 shadow-sm sm:p-8">
+                    <div id="testimonial-template-item" class="mb-8 break-inside-avoid hover:scale-105 md:hover:scale-110 transition-all duration-100 ease-linear group">
+                        <blockquote class="rounded-lg outline outline-2 outline-transparent group-hover:outline-primary-500 bg-gray-50 transition-all duration-100 ease-linear p-5 shadow-sm sm:p-8">
                         <!-- testimonial header -->
                         <div class="flex items-center gap-4">
                             <!-- testimonial image -->
-                            <img id="testimonial-image" class="h-14 w-14 rounded-full object-cover" alt="past client image" src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"/>
+                            <img id="testimonial-image" class="h-10 lg:h-14 w-10 lg:w-14 rounded-full object-cover" alt="past client image" src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"/>
                 
                             <div>
                             <!-- testimonial rating -->
-                            <div class="flex justify-center gap-0.5 text-primary-500">
+                            <div class="flex justify-start gap-0.5 text-primary-500">
                                 <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5"
+                                class="h-3 lg:h-5 w-3 lg:w-5"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
                                 >
@@ -1164,7 +1312,7 @@
                                 </svg>
                                 <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5"
+                                class="h-3 lg:h-5 w-3 lg:w-5"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
                                 >
@@ -1174,7 +1322,7 @@
                                 </svg>
                                 <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5"
+                                class="h-3 lg:h-5 w-3 lg:w-5"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
                                 >
@@ -1185,11 +1333,11 @@
                             </div>
                             
                             <!-- Testimonial client name -->
-                            <p class="mt-0.5 text-lg font-medium text-primary-900">Paul Starr</p>
+                            <p class="mt-0.5 text-base lg:text-lg font-medium text-secondary-500 text-opacity-90">Paul Starr</p>
                             </div>
                         </div>
                 
-                        <p id="testimonial-content" class="mt-4 text-gray-700">
+                        <p id="testimonial-content" class="mt-4 text-gray-700 text-xs md:text-sm lg:text-base">
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit
                             rerum incidunt, a consequuntur recusandae ab saepe illo est quia
                             obcaecati neque quibusdam eius accusamus error officiis atque
@@ -1198,19 +1346,19 @@
                         </blockquote>
                     </div>
 
-                    <div id="testimonial-template-item" class="mb-8 sm:break-inside-avoid hover:scale-105 md:hover:scale-110 transition-all duration-100 ease-linear group">
-                        <blockquote class="rounded-lg outline outline-2 outline-transparent group-hover:outline-primary-500 bg-gray-50 transition-all duration-100 ease-linear p-6 shadow-sm sm:p-8">
+                    <div id="testimonial-template-item" class="mb-8 break-inside-avoid hover:scale-105 md:hover:scale-110 transition-all duration-100 ease-linear group">
+                        <blockquote class="rounded-lg outline outline-2 outline-transparent group-hover:outline-primary-500 bg-gray-50 transition-all duration-100 ease-linear p-5 shadow-sm sm:p-8">
                         <!-- testimonial header -->
                         <div class="flex items-center gap-4">
                             <!-- testimonial image -->
-                            <img id="testimonial-image" class="h-14 w-14 rounded-full object-cover" alt="past client image" src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"/>
+                            <img id="testimonial-image" class="h-10 lg:h-14 w-10 lg:w-14 rounded-full object-cover" alt="past client image" src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"/>
                 
                             <div>
                             <!-- testimonial rating -->
-                            <div class="flex justify-center gap-0.5 text-primary-500">
+                            <div class="flex justify-start gap-0.5 text-primary-500">
                                 <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5"
+                                class="h-3 lg:h-5 w-3 lg:w-5"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
                                 >
@@ -1220,7 +1368,7 @@
                                 </svg>
                                 <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5"
+                                class="h-3 lg:h-5 w-3 lg:w-5"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
                                 >
@@ -1230,7 +1378,7 @@
                                 </svg>
                                 <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5"
+                                class="h-3 lg:h-5 w-3 lg:w-5"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
                                 >
@@ -1241,15 +1389,125 @@
                             </div>
                             
                             <!-- Testimonial client name -->
-                            <p class="mt-0.5 text-lg font-medium text-primary-900">Paul Starr</p>
+                            <p class="mt-0.5 text-base lg:text-lg font-medium text-secondary-500 text-opacity-90">Paul Starr</p>
                             </div>
                         </div>
                 
-                        <p id="testimonial-content" class="mt-4 text-gray-700">
+                        <p id="testimonial-content" class="mt-4 text-gray-700 text-xs md:text-sm lg:text-base">
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit
                             rerum incidunt, a consequuntur recusandae ab saepe illo est quia
                             obcaecati neque quibusdam eius accusamus error officiis atque
-                            voluptates magnam!a consequuntur recusandae ab saepe illo est quia
+                            voluptates magnam!
+                        </p>
+                        </blockquote>
+                    </div>
+
+                    <div id="testimonial-template-item" class="mb-8 break-inside-avoid hover:scale-105 md:hover:scale-110 transition-all duration-100 ease-linear group">
+                        <blockquote class="rounded-lg outline outline-2 outline-transparent group-hover:outline-primary-500 bg-gray-50 transition-all duration-100 ease-linear p-5 shadow-sm sm:p-8">
+                        <!-- testimonial header -->
+                        <div class="flex items-center gap-4">
+                            <!-- testimonial image -->
+                            <img id="testimonial-image" class="h-10 lg:h-14 w-10 lg:w-14 rounded-full object-cover" alt="past client image" src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"/>
+                
+                            <div>
+                            <!-- testimonial rating -->
+                            <div class="flex justify-start gap-0.5 text-primary-500">
+                                <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-3 lg:h-5 w-3 lg:w-5"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                >
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                />
+                                </svg>
+                                <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-3 lg:h-5 w-3 lg:w-5"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                >
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                />
+                                </svg>
+                                <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-3 lg:h-5 w-3 lg:w-5"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                >
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                />
+                                </svg>
+                            </div>
+                            
+                            <!-- Testimonial client name -->
+                            <p class="mt-0.5 text-base lg:text-lg font-medium text-secondary-500 text-opacity-90">Paul Starr</p>
+                            </div>
+                        </div>
+                
+                        <p id="testimonial-content" class="mt-4 text-gray-700 text-xs md:text-sm lg:text-base">
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit
+                            rerum incidunt, a consequuntur recusandae ab saepe illo est quia
+                            obcaecati neque quibusdam eius accusamus error officiis atque
+                            voluptates magnam!
+                        </p>
+                        </blockquote>
+                    </div>
+
+                    <div id="testimonial-template-item" class="mb-8 break-inside-avoid hover:scale-105 md:hover:scale-110 transition-all duration-100 ease-linear group">
+                        <blockquote class="rounded-lg outline outline-2 outline-transparent group-hover:outline-primary-500 bg-gray-50 transition-all duration-100 ease-linear p-5 shadow-sm sm:p-8">
+                        <!-- testimonial header -->
+                        <div class="flex items-center gap-4">
+                            <!-- testimonial image -->
+                            <img id="testimonial-image" class="h-10 lg:h-14 w-10 lg:w-14 rounded-full object-cover" alt="past client image" src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"/>
+                
+                            <div>
+                            <!-- testimonial rating -->
+                            <div class="flex justify-start gap-0.5 text-primary-500">
+                                <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-3 lg:h-5 w-3 lg:w-5"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                >
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                />
+                                </svg>
+                                <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-3 lg:h-5 w-3 lg:w-5"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                >
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                />
+                                </svg>
+                                <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-3 lg:h-5 w-3 lg:w-5"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                >
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                />
+                                </svg>
+                            </div>
+                            
+                            <!-- Testimonial client name -->
+                            <p class="mt-0.5 text-base lg:text-lg font-medium text-secondary-500 text-opacity-90">Paul Starr</p>
+                            </div>
+                        </div>
+                
+                        <p id="testimonial-content" class="mt-4 text-gray-700 text-xs md:text-sm lg:text-base">
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit
+                            rerum incidunt, a consequuntur recusandae ab saepe illo est quia
                             obcaecati neque quibusdam eius accusamus error officiis atque
                             voluptates magnam!
                         </p>

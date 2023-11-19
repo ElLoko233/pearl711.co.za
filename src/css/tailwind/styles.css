@@ -9,6 +9,13 @@
 
 }
 
+.cta-button{
+    @apply flex w-24 lg:w-28 h-10 lg:h-10 justify-center items-center bg-tertiary-500 hover:bg-primary-600 bg-opacity-90 py-5 rounded-md hover:rounded-sm transition-all duration-100 ease-linear;
+}
+.cta-button a{
+    @apply text-sm lg:text-base text-slate-200 font-body font-medium text-opacity-95;
+}
+
 .active.nav-link {
     @apply text-primary-500;
 }
@@ -22,11 +29,11 @@
 }
 
 .perk-svg{
-    @apply w-16 h-16 border-4 border-primary-500 border-dashed rounded-full flex justify-center items-center;
+    @apply w-10 lg:w-16 h-10 lg:h-16 border-4 border-primary-500 border-dashed rounded-full flex justify-center items-center;
 }
 
 .perk-svg svg{
-    @apply text-primary-500 w-8 p-0;
+    @apply text-primary-500 w-5 lg:w-8 p-0;
 }
 
 .perk-heading{
@@ -54,5 +61,18 @@ footer .social-icon{
 }
 
 .productDetailPoint{
-    @apply px-4 py-2 text-sm font-body font-medium text-white text-opacity-70 bg-transparent border border-tertiary-500 rounded ;
+    @apply px-1 lg:px-3 py-1 text-[0.55rem] lg:text-xs font-body font-normal lg:font-medium text-white text-opacity-70 bg-transparent border border-tertiary-500 rounded ;
 }
+
+.hero-headline{
+    @apply text-slate-200 font-heading text-4xl sm:text-6xl text-opacity-95 font-medium leading-tight;
+}
+
+.hero-subheadline{
+    @apply text-slate-200 font-heading text-sm sm:text-xl text-opacity-70 leading-tight w-9/12;
+}
+
+.hero-img{
+    @apply text-primary-500 hidden md:block;
+}
+
