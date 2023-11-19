@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "site":"pearl711",
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/node_modules/**"
+    ]
+  }
+  }

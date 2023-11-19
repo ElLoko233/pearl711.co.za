@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  mode: "development", // "production" | "development" | "none"
+  mode: "production", // "production" | "development" | "none"
   entry: {
     index: './src/ts/index.ts',        // Entry point for the index page codebase
     products: './src/ts/products.ts', // Entry point for the product page codebase
