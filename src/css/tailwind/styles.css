@@ -52,3 +52,7 @@ footer .social-icon{
 .contact-links{
     @apply font-body text-sm text-secondary-500 text-opacity-75 transition-all duration-75 ease-in-out hover:text-opacity-90 hover:text-primary-500;
 }
+
+.productDetailPoint{
+    @apply px-4 py-2 text-sm font-body font-medium text-white text-opacity-70 bg-transparent border border-tertiary-500 rounded ;
+}
