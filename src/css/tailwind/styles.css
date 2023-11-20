@@ -4,6 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
+nav{
+    @apply w-screen h-fit sticky z-30 top-0 left-0 bg-secondary-500 opacity-100;
+}
+
+.navlinks-toggler{
+    @apply w-fit ml-auto flex;
+}
+
 .nav-link{
     @apply font-body text-slate-200 text-opacity-70 hover:text-opacity-90 hover:font-medium;
 
@@ -60,7 +68,7 @@ footer .social-icon{
     @apply font-body text-sm text-secondary-500 text-opacity-75 transition-all duration-75 ease-in-out hover:text-opacity-90 hover:text-primary-500;
 }
 
-.productDetailPoint{
+.productDescPoint{
     @apply px-1 lg:px-3 py-1 text-[0.55rem] lg:text-xs font-body font-normal lg:font-medium text-white text-opacity-70 bg-transparent border border-tertiary-500 rounded ;
 }
 
@@ -76,3 +84,64 @@ footer .social-icon{
     @apply text-primary-500 hidden md:block;
 }
 
+.productItem{
+    @apply break-inside-avoid bg-white max-w-[9rem] lg:max-w-[18rem] mx-auto mb-5 lg:mb-10 hover:scale-105 md:hover:scale-110 transition-all duration-100 ease-linear rounded-md;
+}
+
+.productItem-front{
+    @apply w-full h-full flex flex-col items-center justify-center rounded-md ring-1 ring-secondary-500 ring-opacity-30 group-hover:ring-opacity-80 transition-all duration-100 ease-linear;
+}
+.productItem-front-hidden{
+    @apply hidden;
+}
+
+.productItem-front .productItem-img{
+    @apply w-9/12 pt-3 md:pt-5;
+}
+
+.productItem-front .productItem-details{
+    @apply px-1 pb-3 md:px-5 md:pb-5 flex flex-col justify-between gap-5 ;
+}
+
+.productItem-front .productItem-name{
+    @apply text-secondary-500 text-opacity-90 text-center font-heading font-semibold text-sm lg:text-xl sm:text-opacity-[0.85] tracking-tight;
+}
+
+.productItem-front .productItem-buttons{
+    @apply flex items-center justify-center gap-2 lg:gap-5;
+}
+
+.productItem-front .productItem-buttons .productItem-price{
+    @apply flex justify-center items-center text-white text-opacity-100 bg-primary-500 hover:bg-tertiary-600 bg-opacity-95 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out px-2 lg:px-4 py-1 text-[0.5rem] lg:text-[0.85rem] font-body font-medium;
+}
+
+.productItem-front .productItem-buttons .productItem-readmore{
+    @apply flex justify-center items-center py-0.5 px-2 lg:py-[0.35vh] lg:px-[1.35vh] xl:py-1 xl:px-2 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-[0.5rem] lg:text-[1.62vh] xl:text-sm text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-medium;
+}
+
+.productItem-back{
+    @apply w-full h-full flex flex-col justify-center bg-secondary-900 bg-opacity-95 pt-5 rounded-md gap-5 lg:gap-10 p-2 lg:p-3;
+}
+.productItem-back-hidden{
+    @apply hidden;
+}
+
+.productItem-back .productItem-details{
+    @apply flex flex-col justify-between gap-3 lg:gap-5;
+}
+
+.productItem-back .productItem-details .productItem-desc{
+    @apply text-white text-opacity-90 font-body font-normal text-[0.65rem] lg:text-sm;
+}
+
+.productItem-back .productItem-details .productItem-points{
+    @apply flex flex-row flex-wrap gap-2 lg:gap-3;
+}
+
+.productItem-back .productItem-buttons{
+    @apply flex items-center justify-end;
+}
+
+.productItem-back .productItem-close{
+    @apply flex justify-center items-center py-0.5 px-1 lg:py-1 lg:px-2 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-linear text-[0.65rem] lg:text-sm text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-normal lg:font-medium;
+}

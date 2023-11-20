@@ -35,7 +35,7 @@
     </head>
     <body class="bg-gray-50 font-body">
         <!-- Start Navigation -->
-		<nav class="w-screen h-fit sticky z-30 top-0 left-0 bg-secondary-500 opacity-100">
+		<nav>
 			<div class="p-3 px-5 md:px-12 flex flex-col md:flex-row xl:w-3/4 max-w-7xl mx-auto capitalize justify-between gap-5 md-gap-0 item-end md:items-center">
                 <div class="flex flex-row w-full md:w-fit justify-between">
                     <a class="brand-logo" href="index.html">
@@ -104,7 +104,7 @@
                     </a>
     
                     <!-- Navbar links toggler -->
-                    <div class="w-fit ml-auto flex item-center">
+                    <div class="navlinks-toggler">
                         <button id="nav-toggler-open" class="w-9 rounded md:hidden hover:shadow" type="button" role="button">
                             <div id="hotdogNavIcon" class="w-full h-full">
                                 <svg class="w-full h-full text-white opacity-80" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16">
@@ -363,22 +363,22 @@
                 <!-- porduct overveiw content -->
                 <div class="[column-fill\:_balance] columns-2 sm:columns-3 sm:gap-0 lg:columns-4 lg:gap-8">
                     <!-- product item template -->
-                    <div class="break-inside-avoid bg-white max-w-[9rem] lg:max-w-[18rem] mx-auto mb-5 lg:mb-10 hover:scale-105 md:hover:scale-110 transition-all duration-100 ease-linear group">
+                    <div class="hidden productItem group">
                         <!-- front page -->
-                        <div class="w-full h-full flex flex-col items-center justify-center rounded-md ring-1 ring-secondary-500 ring-opacity-30 group-hover:ring-opacity-80 transition-all duration-100 ease-linear">
+                        <div class="productItem-front-hidden">
                             <!-- product image -->
-                            <div class="w-9/12 pt-3 md:pt-5">
+                            <div class="productItem-img">
                                 <a>
                                     <img id="productImg" class="w-full h-full" src="./assets/images/dog-pack.png" alt="montego dog food">
                                 </a>
                             </div>
     
                             <!-- product details -->
-                            <div class="px-1 pb-3 md:px-5 md:pb-5 flex flex-col item-center justify-between gap-5">
+                            <div class="productItem-details">
                                 <!-- product name -->
                                 <div>
                                     <a>
-                                        <h4 id="productName" class="text-secondary-500 text-opacity-90 text-center font-heading font-semibold text-sm text-wrap lg:text-xl sm:text-opacity-[0.85] tracking-tight">Montego Classic Dog Food Adult
+                                        <h4 id="productName" class="productItem-name">Montego Classic Dog Food Adult
                                         </h4>
                                     </a>
                                 </div>
@@ -419,16 +419,16 @@
                                 </div> -->
                                 
                                 <!-- product buttons -->
-                                <div class="flex items-center justify-center gap-2 lg:gap-5">
+                                <div class="productItem-buttons">
                                     <!-- product price -->
-                                    <div class="flex justify-center items-center text-white text-opacity-100 bg-primary-500 bg-opacity-95 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out px-2 lg:px-4 py-1 text-[0.5rem] lg:text-[0.85rem] font-body font-medium">
+                                    <a href="./contact.html" class="productItem-price">
                                         <p id="productPrice">
                                             R500
                                         </p>
-                                    </div>
+                                    </a>
     
                                     <!-- product readmore -->
-                                    <button class="flex justify-center items-center py-0.5 px-2 lg:py-1 lg:px-5 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-[0.5rem] lg:text-[0.80rem] text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-medium">
+                                    <button class="productItem-readmore">
                                         Read More
                                     </button>
                                 </div>
@@ -436,55 +436,56 @@
                         </div>
 
                         <!-- back page -->
-                        <div class="hidden w-full h-full flex flex-col items-center justify-center bg-secondary-900 bg-opacity-95 pt-5 rounded-md">    
+                        <div class="productItem-back">    
                             <!-- product details -->
-                            <div class="px-2 lg:px-5 py-2 lg:pb-5 flex flex-col item-center justify-between gap-10 lg:gap-16">
-                                <!-- product details -->
-                                <div class="flex flex-col gap-5">
-                                    <p id="productDetails" class="text-white text-opacity-90 font-body font-normal text-[0.65rem] lg:text-sm">
-                                        Lorem ipsum dolor sit amet e autem, temporibus rem accusantium perspiciatis repudiandae fugit voluptatem dolor eos illo beatae provident fuga.
-                                    </p>
+                            <div class="productItem-details">
+                                <p id="productDesc" class="productItem-desc">
+                                    Lorem ipsum dolor sit amet e autem, temporibus rem accusantium perspiciatis repudiandae fugit voluptatem dolor eos illo beatae provident fuga.
+                                </p>
 
-                                    <!-- product detail points -->
-                                    <div class="flex flex-row flex-wrap gap-2 lg:gap-3" role="group">
-                                        <div class="productDetailPoint">
-                                          145kg
-                                        </div>
+                                <!-- product detail points -->
+                                <div class="productItem-points" role="group">
+                                    <div class="productDescPoint">
+                                        145kg
+                                    </div>
 
-                                        <button type="button" class="productDetailPoint">
-                                          Adult Dogs
-                                        </button>
+                                    <div type="button" class="productDescPoint">
+                                        Adult Dogs
+                                    </div>
+
+                                    <div type="button" class="productDescPoint">
+                                        High Omega
                                     </div>
                                 </div>
-                                
-                                <!-- product buttons -->
-                                <div class="flex items-center justify-end">
-                                    <!-- product detail close -->
-                                    <button class="flex justify-center items-center py-1 px-2 lg:px-3 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-xs lg:text-md text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-normal lg:font-medium">
-                                        Close
-                                    </button>
-                                </div>
+                            </div>
+
+                            <!-- product buttons -->
+                            <div class="productItem-buttons">
+                                <!-- product detail close -->
+                                <button class="productItem-close">
+                                    Close
+                                </button>
                             </div>
                         </div>
                     </div>
 
                     <!-- product items -->
-                    <div class="break-inside-avoid bg-white max-w-[9rem] lg:max-w-[18rem] mx-auto mb-5 lg:mb-10 hover:scale-105 md:hover:scale-110 transition-all duration-100 ease-linear group">
+                    <div class="productItem group">
                         <!-- front page -->
-                        <div class="w-full h-full flex flex-col items-center justify-center rounded-md ring-1 ring-secondary-500 ring-opacity-30 group-hover:ring-opacity-80 transition-all duration-100 ease-linear">
+                        <div class="productItem-front-hidden">
                             <!-- product image -->
-                            <div class="w-9/12 pt-3 md:pt-5">
+                            <div class="productItem-img">
                                 <a>
                                     <img id="productImg" class="w-full h-full" src="./assets/images/dog-pack.png" alt="montego dog food">
                                 </a>
                             </div>
     
                             <!-- product details -->
-                            <div class="px-1 pb-3 md:px-5 md:pb-5 flex flex-col item-center justify-between gap-5">
+                            <div class="productItem-details">
                                 <!-- product name -->
                                 <div>
                                     <a>
-                                        <h4 id="productName" class="text-secondary-500 text-opacity-90 text-center font-heading font-semibold text-sm text-wrap lg:text-xl sm:text-opacity-[0.85] tracking-tight">Montego Classic Dog Food Adult
+                                        <h4 id="productName" class="productItem-name">Montego Classic Dog Food Adult
                                         </h4>
                                     </a>
                                 </div>
@@ -525,16 +526,16 @@
                                 </div> -->
                                 
                                 <!-- product buttons -->
-                                <div class="flex items-center justify-center gap-2 lg:gap-5">
+                                <div class="productItem-buttons">
                                     <!-- product price -->
-                                    <div class="flex justify-center items-center text-white text-opacity-100 bg-primary-500 bg-opacity-95 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out px-2 lg:px-4 py-1 text-[0.5rem] lg:text-[0.85rem] font-body font-medium">
+                                    <a href="./contact.html" class="productItem-price">
                                         <p id="productPrice">
                                             R500
                                         </p>
-                                    </div>
+                                    </a>
     
                                     <!-- product readmore -->
-                                    <button class="flex justify-center items-center py-0.5 px-2 lg:py-1 lg:px-5 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-[0.5rem] lg:text-[0.80rem] text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-medium">
+                                    <button class="productItem-readmore">
                                         Read More
                                     </button>
                                 </div>
@@ -542,54 +543,55 @@
                         </div>
 
                         <!-- back page -->
-                        <div class="hidden w-full h-full flex flex-col items-center justify-center bg-secondary-900 bg-opacity-95 pt-5 rounded-md">    
+                        <div class="productItem-back">    
                             <!-- product details -->
-                            <div class="px-2 lg:px-5 py-2 lg:pb-5 flex flex-col item-center justify-between gap-10 lg:gap-16">
-                                <!-- product details -->
-                                <div class="flex flex-col gap-5">
-                                    <p id="productDetails" class="text-white text-opacity-90 font-body font-normal text-[0.65rem] lg:text-sm">
-                                        Lorem ipsum dolor sit amet e autem, temporibus rem accusantium perspiciatis repudiandae fugit voluptatem dolor eos illo beatae provident fuga.
-                                    </p>
+                            <div class="productItem-details">
+                                <p id="productDesc" class="productItem-desc">
+                                    Lorem ipsum dolor sit amet e autem, temporibus rem accusantium perspiciatis repudiandae fugit voluptatem dolor eos illo beatae provident fuga.
+                                </p>
 
-                                    <!-- product detail points -->
-                                    <div class="flex flex-row flex-wrap gap-2 lg:gap-3" role="group">
-                                        <div class="productDetailPoint">
-                                          145kg
-                                        </div>
+                                <!-- product detail points -->
+                                <div class="productItem-points" role="group">
+                                    <div class="productDescPoint">
+                                        145kg
+                                    </div>
 
-                                        <button type="button" class="productDetailPoint">
-                                          Adult Dogs
-                                        </button>
+                                    <div type="button" class="productDescPoint">
+                                        Adult Dogs
+                                    </div>
+
+                                    <div type="button" class="productDescPoint">
+                                        High Omega
                                     </div>
                                 </div>
-                                
-                                <!-- product buttons -->
-                                <div class="flex items-center justify-end">
-                                    <!-- product detail close -->
-                                    <button class="flex justify-center items-center py-1 px-2 lg:px-3 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-xs lg:text-md text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-normal lg:font-medium">
-                                        Close
-                                    </button>
-                                </div>
+                            </div>
+
+                            <!-- product buttons -->
+                            <div class="productItem-buttons">
+                                <!-- product detail close -->
+                                <button class="productItem-close">
+                                    Close
+                                </button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="break-inside-avoid bg-white max-w-[9rem] lg:max-w-[18rem] mx-auto mb-5 lg:mb-10 hover:scale-105 md:hover:scale-110 transition-all duration-100 ease-linear group">
+                    <div class="productItem group">
                         <!-- front page -->
-                        <div class="w-full h-full flex flex-col items-center justify-center rounded-md ring-1 ring-secondary-500 ring-opacity-30 group-hover:ring-opacity-80 transition-all duration-100 ease-linear">
+                        <div class="productItem-front">
                             <!-- product image -->
-                            <div class="w-9/12 pt-3 md:pt-5">
+                            <div class="productItem-img">
                                 <a>
                                     <img id="productImg" class="w-full h-full" src="./assets/images/dog-pack.png" alt="montego dog food">
                                 </a>
                             </div>
     
                             <!-- product details -->
-                            <div class="px-1 pb-3 md:px-5 md:pb-5 flex flex-col item-center justify-between gap-5">
+                            <div class="productItem-details">
                                 <!-- product name -->
                                 <div>
                                     <a>
-                                        <h4 id="productName" class="text-secondary-500 text-opacity-90 text-center font-heading font-semibold text-sm text-wrap lg:text-xl sm:text-opacity-[0.85] tracking-tight">Montego Classic Dog Food Adult
+                                        <h4 id="productName" class="productItem-name">Montego Classic Dog Food Adult
                                         </h4>
                                     </a>
                                 </div>
@@ -630,16 +632,16 @@
                                 </div> -->
                                 
                                 <!-- product buttons -->
-                                <div class="flex items-center justify-center gap-2 lg:gap-5">
+                                <div class="productItem-buttons">
                                     <!-- product price -->
-                                    <div class="flex justify-center items-center text-white text-opacity-100 bg-primary-500 bg-opacity-95 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out px-2 lg:px-4 py-1 text-[0.5rem] lg:text-[0.85rem] font-body font-medium">
+                                    <a href="./contact.html" class="productItem-price">
                                         <p id="productPrice">
                                             R500
                                         </p>
-                                    </div>
+                                    </a>
     
                                     <!-- product readmore -->
-                                    <button class="flex justify-center items-center py-0.5 px-2 lg:py-1 lg:px-5 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-[0.5rem] lg:text-[0.80rem] text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-medium">
+                                    <button class="productItem-readmore">
                                         Read More
                                     </button>
                                 </div>
@@ -647,55 +649,479 @@
                         </div>
 
                         <!-- back page -->
-                        <div class="hidden w-full h-full flex flex-col items-center justify-center bg-secondary-900 bg-opacity-95 pt-5 rounded-md">    
+                        <div class="productItem-back-hidden">    
                             <!-- product details -->
-                            <div class="px-2 lg:px-5 py-2 lg:pb-5 flex flex-col item-center justify-between gap-10 lg:gap-16">
-                                <!-- product details -->
-                                <div class="flex flex-col gap-5">
-                                    <p id="productDetails" class="text-white text-opacity-90 font-body font-normal text-[0.65rem] lg:text-sm">
-                                        Lorem ipsum dolor sit amet e autem, temporibus rem accusantium perspiciatis repudiandae fugit voluptatem dolor eos illo beatae provident fuga.
-                                    </p>
+                            <div class="productItem-details">
+                                <p id="productDesc" class="productItem-desc">
+                                    Lorem ipsum dolor sit amet e autem, temporibus rem accusantium perspiciatis repudiandae fugit voluptatem dolor eos illo beatae provident fuga.
+                                </p>
 
-                                    <!-- product detail points -->
-                                    <div class="flex flex-row flex-wrap gap-2 lg:gap-3" role="group">
-                                        <div class="productDetailPoint">
-                                          145kg
-                                        </div>
+                                <!-- product detail points -->
+                                <div class="productItem-points" role="group">
+                                    <div class="productDescPoint">
+                                        145kg
+                                    </div>
 
-                                        <button type="button" class="productDetailPoint">
-                                          Adult Dogs
-                                        </button>
+                                    <div type="button" class="productDescPoint">
+                                        Adult Dogs
+                                    </div>
+
+                                    <div type="button" class="productDescPoint">
+                                        High Omega
                                     </div>
                                 </div>
+                            </div>
+
+                            <!-- product buttons -->
+                            <div class="productItem-buttons">
+                                <!-- product detail close -->
+                                <button class="productItem-close">
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    </div> 
+
+                    <div class="productItem group">
+                        <!-- front page -->
+                        <div class="productItem-front-hidden">
+                            <!-- product image -->
+                            <div class="productItem-img">
+                                <a>
+                                    <img id="productImg" class="w-full h-full" src="./assets/images/dog-pack.png" alt="montego dog food">
+                                </a>
+                            </div>
+    
+                            <!-- product details -->
+                            <div class="productItem-details">
+                                <!-- product name -->
+                                <div>
+                                    <a>
+                                        <h4 id="productName" class="productItem-name">Montego Classic Dog Food Adult
+                                        </h4>
+                                    </a>
+                                </div>
+    
+                                <!-- product average rating -->
+                                <!-- <div class="hidden flex items-center mt-2.5 mb-5">
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
+                                </div> -->
                                 
                                 <!-- product buttons -->
-                                <div class="flex items-center justify-end">
-                                    <!-- product detail close -->
-                                    <button class="flex justify-center items-center py-1 px-2 lg:px-3 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-xs lg:text-md text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-normal lg:font-medium">
-                                        Close
+                                <div class="productItem-buttons">
+                                    <!-- product price -->
+                                    <a href="./contact.html" class="productItem-price">
+                                        <p id="productPrice">
+                                            R500
+                                        </p>
+                                    </a>
+    
+                                    <!-- product readmore -->
+                                    <button class="productItem-readmore">
+                                        Read More
                                     </button>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- back page -->
+                        <div class="productItem-back">    
+                            <!-- product details -->
+                            <div class="productItem-details">
+                                <p id="productDesc" class="productItem-desc">
+                                    Lorem ipsum dolor sit amet e autem, temporibus rem accusantium perspiciatis repudiandae fugit voluptatem dolor eos illo beatae provident fuga.
+                                </p>
+
+                                <!-- product detail points -->
+                                <div class="productItem-points" role="group">
+                                    <div class="productDescPoint">
+                                        145kg
+                                    </div>
+
+                                    <div type="button" class="productDescPoint">
+                                        Adult Dogs
+                                    </div>
+
+                                    <div type="button" class="productDescPoint">
+                                        High Omega
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- product buttons -->
+                            <div class="productItem-buttons">
+                                <!-- product detail close -->
+                                <button class="productItem-close">
+                                    Close
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
+                    <div class="productItem group">
+                        <!-- front page -->
+                        <div class="productItem-front-hidden">
+                            <!-- product image -->
+                            <div class="productItem-img">
+                                <a>
+                                    <img id="productImg" class="w-full h-full" src="./assets/images/dog-pack.png" alt="montego dog food">
+                                </a>
+                            </div>
+    
+                            <!-- product details -->
+                            <div class="productItem-details">
+                                <!-- product name -->
+                                <div>
+                                    <a>
+                                        <h4 id="productName" class="productItem-name">Montego Classic Dog Food Adult
+                                        </h4>
+                                    </a>
+                                </div>
+    
+                                <!-- product average rating -->
+                                <!-- <div class="hidden flex items-center mt-2.5 mb-5">
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
+                                </div> -->
+                                
+                                <!-- product buttons -->
+                                <div class="productItem-buttons">
+                                    <!-- product price -->
+                                    <a href="./contact.html" class="productItem-price">
+                                        <p id="productPrice">
+                                            R500
+                                        </p>
+                                    </a>
+    
+                                    <!-- product readmore -->
+                                    <button class="productItem-readmore">
+                                        Read More
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- back page -->
+                        <div class="productItem-back">    
+                            <!-- product details -->
+                            <div class="productItem-details">
+                                <p id="productDesc" class="productItem-desc">
+                                    Lorem ipsum dolor sit amet e autem, temporibus rem accusantium perspiciatis repudiandae fugit voluptatem dolor eos illo beatae provident fuga.
+                                </p>
+
+                                <!-- product detail points -->
+                                <div class="productItem-points" role="group">
+                                    <div class="productDescPoint">
+                                        145kg
+                                    </div>
+
+                                    <div type="button" class="productDescPoint">
+                                        Adult Dogs
+                                    </div>
+
+                                    <div type="button" class="productDescPoint">
+                                        High Omega
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- product buttons -->
+                            <div class="productItem-buttons">
+                                <!-- product detail close -->
+                                <button class="productItem-close">
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="productItem group">
+                        <!-- front page -->
+                        <div class="productItem-front">
+                            <!-- product image -->
+                            <div class="productItem-img">
+                                <a>
+                                    <img id="productImg" class="w-full h-full" src="./assets/images/dog-pack.png" alt="montego dog food">
+                                </a>
+                            </div>
+    
+                            <!-- product details -->
+                            <div class="productItem-details">
+                                <!-- product name -->
+                                <div>
+                                    <a>
+                                        <h4 id="productName" class="productItem-name">Montego Classic Dog Food Adult
+                                        </h4>
+                                    </a>
+                                </div>
+    
+                                <!-- product average rating -->
+                                <!-- <div class="hidden flex items-center mt-2.5 mb-5">
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
+                                </div> -->
+                                
+                                <!-- product buttons -->
+                                <div class="productItem-buttons">
+                                    <!-- product price -->
+                                    <a href="./contact.html" class="productItem-price">
+                                        <p id="productPrice">
+                                            R500
+                                        </p>
+                                    </a>
+    
+                                    <!-- product readmore -->
+                                    <button class="productItem-readmore">
+                                        Read More
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- back page -->
+                        <div class="productItem-back-hidden">    
+                            <!-- product details -->
+                            <div class="productItem-details">
+                                <p id="productDesc" class="productItem-desc">
+                                    Lorem ipsum dolor sit amet e autem, temporibus rem accusantium perspiciatis repudiandae fugit voluptatem dolor eos illo beatae provident fuga.
+                                </p>
+
+                                <!-- product detail points -->
+                                <div class="productItem-points" role="group">
+                                    <div class="productDescPoint">
+                                        145kg
+                                    </div>
+
+                                    <div type="button" class="productDescPoint">
+                                        Adult Dogs
+                                    </div>
+
+                                    <div type="button" class="productDescPoint">
+                                        High Omega
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- product buttons -->
+                            <div class="productItem-buttons">
+                                <!-- product detail close -->
+                                <button class="productItem-close">
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    </div>   
+
+                    <div class="productItem group">
+                        <!-- front page -->
+                        <div class="productItem-front">
+                            <!-- product image -->
+                            <div class="productItem-img">
+                                <a>
+                                    <img id="productImg" class="w-full h-full" src="./assets/images/dog-pack.png" alt="montego dog food">
+                                </a>
+                            </div>
+    
+                            <!-- product details -->
+                            <div class="productItem-details">
+                                <!-- product name -->
+                                <div>
+                                    <a>
+                                        <h4 id="productName" class="productItem-name">Montego Classic Dog Food Adult
+                                        </h4>
+                                    </a>
+                                </div>
+    
+                                <!-- product average rating -->
+                                <!-- <div class="hidden flex items-center mt-2.5 mb-5">
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
+                                </div> -->
+                                
+                                <!-- product buttons -->
+                                <div class="productItem-buttons">
+                                    <!-- product price -->
+                                    <a href="./contact.html" class="productItem-price">
+                                        <p id="productPrice">
+                                            R500
+                                        </p>
+                                    </a>
+    
+                                    <!-- product readmore -->
+                                    <button class="productItem-readmore">
+                                        Read More
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- back page -->
+                        <div class="productItem-back-hidden">    
+                            <!-- product details -->
+                            <div class="productItem-details">
+                                <p id="productDesc" class="productItem-desc">
+                                    Lorem ipsum dolor sit amet e autem, temporibus rem accusantium perspiciatis repudiandae fugit voluptatem dolor eos illo beatae provident fuga.
+                                </p>
+
+                                <!-- product detail points -->
+                                <div class="productItem-points" role="group">
+                                    <div class="productDescPoint">
+                                        145kg
+                                    </div>
+
+                                    <div type="button" class="productDescPoint">
+                                        Adult Dogs
+                                    </div>
+
+                                    <div type="button" class="productDescPoint">
+                                        High Omega
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- product buttons -->
+                            <div class="productItem-buttons">
+                                <!-- product detail close -->
+                                <button class="productItem-close">
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    </div> 
                     
-                    <div class="break-inside-avoid bg-white max-w-[9rem] lg:max-w-[18rem] mx-auto mb-5 lg:mb-10 hover:scale-105 md:hover:scale-110 transition-all duration-100 ease-linear group">
+                    <div class="productItem group">
                         <!-- front page -->
-                        <div class="hidden w-full h-full flex flex-col items-center justify-center rounded-md ring-1 ring-secondary-500 ring-opacity-30 group-hover:ring-opacity-80 transition-all duration-100 ease-linear">
+                        <div class="productItem-front-hidden">
                             <!-- product image -->
-                            <div class="w-9/12 pt-3 md:pt-5">
+                            <div class="productItem-img">
                                 <a>
                                     <img id="productImg" class="w-full h-full" src="./assets/images/dog-pack.png" alt="montego dog food">
                                 </a>
                             </div>
     
                             <!-- product details -->
-                            <div class="px-1 pb-3 md:px-5 md:pb-5 flex flex-col item-center justify-between gap-5">
+                            <div class="productItem-details">
                                 <!-- product name -->
                                 <div>
                                     <a>
-                                        <h4 id="productName" class="text-secondary-500 text-opacity-90 text-center font-heading font-semibold text-sm text-wrap lg:text-xl sm:text-opacity-[0.85] tracking-tight">Montego Classic Dog Food Adult
+                                        <h4 id="productName" class="productItem-name">Montego Classic Dog Food Adult
                                         </h4>
                                     </a>
                                 </div>
@@ -736,121 +1162,16 @@
                                 </div> -->
                                 
                                 <!-- product buttons -->
-                                <div class="flex items-center justify-center gap-2 lg:gap-5">
+                                <div class="productItem-buttons">
                                     <!-- product price -->
-                                    <div class="flex justify-center items-center text-white text-opacity-100 bg-primary-500 bg-opacity-95 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out px-2 lg:px-4 py-1 text-[0.5rem] lg:text-[0.85rem] font-body font-medium">
+                                    <a href="./contact.html" class="productItem-price">
                                         <p id="productPrice">
                                             R500
                                         </p>
-                                    </div>
-    
-                                    <!-- product readmore -->
-                                    <button class="flex justify-center items-center py-0.5 px-2 lg:py-1 lg:px-5 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-[0.5rem] lg:text-[0.80rem] text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-medium">
-                                        Read More
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- back page -->
-                        <div class="w-full h-full flex flex-col items-center justify-center bg-secondary-900 bg-opacity-95 pt-5 rounded-md">    
-                            <!-- product details -->
-                            <div class="px-2 lg:px-5 py-2 lg:pb-5 flex flex-col item-center justify-between gap-10 lg:gap-16">
-                                <!-- product details -->
-                                <div class="flex flex-col gap-5">
-                                    <p id="productDetails" class="text-white text-opacity-90 font-body font-normal text-[0.65rem] lg:text-sm">
-                                        Lorem ipsum dolor sit amet e autem, temporibus rem accusantium perspiciatis repudiandae fugit voluptatem dolor eos illo beatae provident fuga.
-                                    </p>
-
-                                    <!-- product detail points -->
-                                    <div class="flex flex-row flex-wrap gap-2 lg:gap-3" role="group">
-                                        <div class="productDetailPoint">
-                                          145kg
-                                        </div>
-
-                                        <button type="button" class="productDetailPoint">
-                                          Adult Dogs
-                                        </button>
-                                    </div>
-                                </div>
-                                
-                                <!-- product buttons -->
-                                <div class="flex items-center justify-end">
-                                    <!-- product detail close -->
-                                    <button class="flex justify-center items-center py-1 px-2 lg:px-3 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-xs lg:text-md text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-normal lg:font-medium">
-                                        Close
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="break-inside-avoid bg-white max-w-[9rem] lg:max-w-[18rem] mx-auto mb-5 lg:mb-10 hover:scale-105 md:hover:scale-110 transition-all duration-100 ease-linear group">
-                        <!-- front page -->
-                        <div class="w-full h-full flex flex-col items-center justify-center rounded-md ring-1 ring-secondary-500 ring-opacity-30 group-hover:ring-opacity-80 transition-all duration-100 ease-linear">
-                            <!-- product image -->
-                            <div class="w-9/12 pt-3 md:pt-5">
-                                <a>
-                                    <img id="productImg" class="w-full h-full" src="./assets/images/dog-pack.png" alt="montego dog food">
-                                </a>
-                            </div>
-    
-                            <!-- product details -->
-                            <div class="px-1 pb-3 md:px-5 md:pb-5 flex flex-col item-center justify-between gap-5">
-                                <!-- product name -->
-                                <div>
-                                    <a>
-                                        <h4 id="productName" class="text-secondary-500 text-opacity-90 text-center font-heading font-semibold text-sm text-wrap lg:text-xl sm:text-opacity-[0.85] tracking-tight">Montego Classic Dog Food Adult
-                                        </h4>
                                     </a>
-                                </div>
-    
-                                <!-- product average rating -->
-                                <!-- <div class="hidden flex items-center mt-2.5 mb-5">
-                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                            </path>
-                                        </svg>
-                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                            </path>
-                                        </svg>
-                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                            </path>
-                                        </svg>
-                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                            </path>
-                                        </svg>
-                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                            </path>
-                                        </svg>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
-                                </div> -->
-                                
-                                <!-- product buttons -->
-                                <div class="flex items-center justify-center gap-2 lg:gap-5">
-                                    <!-- product price -->
-                                    <div class="flex justify-center items-center text-white text-opacity-100 bg-primary-500 bg-opacity-95 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out px-2 lg:px-4 py-1 text-[0.5rem] lg:text-[0.85rem] font-body font-medium">
-                                        <p id="productPrice">
-                                            R500
-                                        </p>
-                                    </div>
     
                                     <!-- product readmore -->
-                                    <button class="flex justify-center items-center py-0.5 px-2 lg:py-1 lg:px-5 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-[0.5rem] lg:text-[0.80rem] text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-medium">
+                                    <button class="productItem-readmore">
                                         Read More
                                     </button>
                                 </div>
@@ -858,247 +1179,40 @@
                         </div>
 
                         <!-- back page -->
-                        <div class="hidden w-full h-full flex flex-col items-center justify-center bg-secondary-900 bg-opacity-95 pt-5 rounded-md">    
+                        <div class="productItem-back">    
                             <!-- product details -->
-                            <div class="px-2 lg:px-5 py-2 lg:pb-5 flex flex-col item-center justify-between gap-10 lg:gap-16">
-                                <!-- product details -->
-                                <div class="flex flex-col gap-5">
-                                    <p id="productDetails" class="text-white text-opacity-90 font-body font-normal text-[0.65rem] lg:text-sm">
-                                        Lorem ipsum dolor sit amet e autem, temporibus rem accusantium perspiciatis repudiandae fugit voluptatem dolor eos illo beatae provident fuga.
-                                    </p>
+                            <div class="productItem-details">
+                                <p id="productDesc" class="productItem-desc">
+                                    Lorem ipsum dolor sit amet e autem, temporibus rem accusantium perspiciatis repudiandae fugit voluptatem dolor eos illo beatae provident fuga.
+                                </p>
 
-                                    <!-- product detail points -->
-                                    <div class="flex flex-row flex-wrap gap-2 lg:gap-3" role="group">
-                                        <div class="productDetailPoint">
-                                          145kg
-                                        </div>
+                                <!-- product detail points -->
+                                <div class="productItem-points" role="group">
+                                    <div class="productDescPoint">
+                                        145kg
+                                    </div>
 
-                                        <button type="button" class="productDetailPoint">
-                                          Adult Dogs
-                                        </button>
+                                    <div type="button" class="productDescPoint">
+                                        Adult Dogs
+                                    </div>
+
+                                    <div type="button" class="productDescPoint">
+                                        High Omega
                                     </div>
                                 </div>
-                                
-                                <!-- product buttons -->
-                                <div class="flex items-center justify-end">
-                                    <!-- product detail close -->
-                                    <button class="flex justify-center items-center py-1 px-2 lg:px-3 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-xs lg:text-md text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-normal lg:font-medium">
-                                        Close
-                                    </button>
-                                </div>
+                            </div>
+
+                            <!-- product buttons -->
+                            <div class="productItem-buttons">
+                                <!-- product detail close -->
+                                <button class="productItem-close">
+                                    Close
+                                </button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="break-inside-avoid bg-white max-w-[9rem] lg:max-w-[18rem] mx-auto mb-5 lg:mb-10 hover:scale-105 md:hover:scale-110 transition-all duration-100 ease-linear group">
-                        <!-- front page -->
-                        <div class="hidden w-full h-full flex flex-col items-center justify-center rounded-md ring-1 ring-secondary-500 ring-opacity-30 group-hover:ring-opacity-80 transition-all duration-100 ease-linear">
-                            <!-- product image -->
-                            <div class="w-9/12 pt-3 md:pt-5">
-                                <a>
-                                    <img id="productImg" class="w-full h-full" src="./assets/images/dog-pack.png" alt="montego dog food">
-                                </a>
-                            </div>
-    
-                            <!-- product details -->
-                            <div class="px-1 pb-3 md:px-5 md:pb-5 flex flex-col item-center justify-between gap-5">
-                                <!-- product name -->
-                                <div>
-                                    <a>
-                                        <h4 id="productName" class="text-secondary-500 text-opacity-90 text-center font-heading font-semibold text-sm text-wrap lg:text-xl sm:text-opacity-[0.85] tracking-tight">Montego Classic Dog Food Adult
-                                        </h4>
-                                    </a>
-                                </div>
-    
-                                <!-- product average rating -->
-                                <!-- <div class="hidden flex items-center mt-2.5 mb-5">
-                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                            </path>
-                                        </svg>
-                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                            </path>
-                                        </svg>
-                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                            </path>
-                                        </svg>
-                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                            </path>
-                                        </svg>
-                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                            </path>
-                                        </svg>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
-                                </div> -->
-                                
-                                <!-- product buttons -->
-                                <div class="flex items-center justify-center gap-2 lg:gap-5">
-                                    <!-- product price -->
-                                    <div class="flex justify-center items-center text-white text-opacity-100 bg-primary-500 bg-opacity-95 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out px-2 lg:px-4 py-1 text-[0.5rem] lg:text-[0.85rem] font-body font-medium">
-                                        <p id="productPrice">
-                                            R500
-                                        </p>
-                                    </div>
-    
-                                    <!-- product readmore -->
-                                    <button class="flex justify-center items-center py-0.5 px-2 lg:py-1 lg:px-5 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-[0.5rem] lg:text-[0.80rem] text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-medium">
-                                        Read More
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- back page -->
-                        <div class="w-full h-full flex flex-col items-center justify-center bg-secondary-900 bg-opacity-95 pt-5 rounded-md">    
-                            <!-- product details -->
-                            <div class="px-2 lg:px-5 py-2 lg:pb-5 flex flex-col item-center justify-between gap-10 lg:gap-16">
-                                <!-- product details -->
-                                <div class="flex flex-col gap-5">
-                                    <p id="productDetails" class="text-white text-opacity-90 font-body font-normal text-[0.65rem] lg:text-sm">
-                                        Lorem ipsum dolor sit amet e autem, temporibus rem accusantium perspiciatis repudiandae fugit voluptatem dolor eos illo beatae provident fuga.
-                                    </p>
-
-                                    <!-- product detail points -->
-                                    <div class="flex flex-row flex-wrap gap-2 lg:gap-3" role="group">
-                                        <div class="productDetailPoint">
-                                          145kg
-                                        </div>
-
-                                        <button type="button" class="productDetailPoint">
-                                          Adult Dogs
-                                        </button>
-                                    </div>
-                                </div>
-                                
-                                <!-- product buttons -->
-                                <div class="flex items-center justify-end">
-                                    <!-- product detail close -->
-                                    <button class="flex justify-center items-center py-1 px-2 lg:px-3 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-xs lg:text-md text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-normal lg:font-medium">
-                                        Close
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="break-inside-avoid bg-white max-w-[9rem] lg:max-w-[18rem] mx-auto mb-5 lg:mb-10 hover:scale-105 md:hover:scale-110 transition-all duration-100 ease-linear group">
-                        <!-- front page -->
-                        <div class="w-full h-full flex flex-col items-center justify-center rounded-md ring-1 ring-secondary-500 ring-opacity-30 group-hover:ring-opacity-80 transition-all duration-100 ease-linear">
-                            <!-- product image -->
-                            <div class="w-9/12 pt-3 md:pt-5">
-                                <a>
-                                    <img id="productImg" class="w-full h-full" src="./assets/images/dog-pack.png" alt="montego dog food">
-                                </a>
-                            </div>
-    
-                            <!-- product details -->
-                            <div class="px-1 pb-3 md:px-5 md:pb-5 flex flex-col item-center justify-between gap-5">
-                                <!-- product name -->
-                                <div>
-                                    <a>
-                                        <h4 id="productName" class="text-secondary-500 text-opacity-90 text-center font-heading font-semibold text-sm text-wrap lg:text-xl sm:text-opacity-[0.85] tracking-tight">Montego Classic Dog Food Adult
-                                        </h4>
-                                    </a>
-                                </div>
-    
-                                <!-- product average rating -->
-                                <!-- <div class="hidden flex items-center mt-2.5 mb-5">
-                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                            </path>
-                                        </svg>
-                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                            </path>
-                                        </svg>
-                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                            </path>
-                                        </svg>
-                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                            </path>
-                                        </svg>
-                                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                            </path>
-                                        </svg>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
-                                </div> -->
-                                
-                                <!-- product buttons -->
-                                <div class="flex items-center justify-center gap-2 lg:gap-5">
-                                    <!-- product price -->
-                                    <div class="flex justify-center items-center text-white text-opacity-100 bg-primary-500 bg-opacity-95 rounded-md hover:rounded-sm transition-all duration-100 ease-in-out px-2 lg:px-4 py-1 text-[0.5rem] lg:text-[0.85rem] font-body font-medium">
-                                        <p id="productPrice">
-                                            R500
-                                        </p>
-                                    </div>
-    
-                                    <!-- product readmore -->
-                                    <button class="flex justify-center items-center py-0.5 px-2 lg:py-1 lg:px-5 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-[0.5rem] lg:text-[0.80rem] text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-medium">
-                                        Read More
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- back page -->
-                        <div class="hidden w-full h-full flex flex-col items-center justify-center bg-secondary-900 bg-opacity-95 pt-5 rounded-md">    
-                            <!-- product details -->
-                            <div class="px-2 lg:px-5 py-2 lg:pb-5 flex flex-col item-center justify-between gap-10 lg:gap-16">
-                                <!-- product details -->
-                                <div class="flex flex-col gap-5">
-                                    <p id="productDetails" class="text-white text-opacity-90 font-body font-normal text-[0.65rem] lg:text-sm">
-                                        Lorem ipsum dolor sit amet e autem, temporibus rem accusantium perspiciatis repudiandae fugit voluptatem dolor eos illo beatae provident fuga.
-                                    </p>
-
-                                    <!-- product detail points -->
-                                    <div class="flex flex-row flex-wrap gap-2 lg:gap-3" role="group">
-                                        <div class="productDetailPoint">
-                                          145kg
-                                        </div>
-
-                                        <button type="button" class="productDetailPoint">
-                                          Adult Dogs
-                                        </button>
-                                    </div>
-                                </div>
-                                
-                                <!-- product buttons -->
-                                <div class="flex items-center justify-end">
-                                    <!-- product detail close -->
-                                    <button class="flex justify-center items-center py-1 px-2 lg:px-3 hover:bg-primary-500 hover:bg-opacity-50 outline-none ring-1 hover:ring-2 ring-primary-500 ring-opacity-80 hover:ring-opacity-90 rounded lg:rounded-md hover:rounded-sm transition-all duration-100 ease-in-out text-xs lg:text-md text-primary-500 hover:text-white text-opacity-90 hover:text-opacity-95 font-body font-normal lg:font-medium">
-                                        Close
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Load more button -->
