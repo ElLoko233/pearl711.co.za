@@ -1,9 +1,63 @@
 // importing the navigation component
+import { doc, documentId } from "firebase/firestore";
 import NavigationBarUI from "./custom/navbarui";
 
-// initializing the navigation component
-const navbar = new NavigationBarUI();
-navbar.initialize();
+
+window.addEventListener("load", () => {
+    // initializing the navigation component
+    const navbar = new NavigationBarUI();
+    navbar.initialize();
+
+
+    // getting the search button element
+    const searchButton : HTMLButtonElement = document.getElementById('searchButton') as HTMLButtonElement;
+    const searchButtonCloseIcon : HTMLElement = document.getElementById("closeSearch") as HTMLElement;
+    const searchButtonSearchIcon : HTMLElement = document.getElementById('searchIcon') as HTMLElement;
+    
+    // getting the search form element
+    const searchForm : HTMLFormElement = document.getElementById('searchForm') as HTMLFormElement;
+    // getting the search input
+    const searchInput : HTMLInputElement = searchForm["search-product"] as HTMLInputElement;
+    
+    // binding the click event on the search button
+    searchButton.addEventListener("click", ( event ) => {
+        // diabling default
+        event.preventDefault();
+    
+        // checking if the search form is hidden
+        if( searchForm.classList.contains("hidden")){
+            if( searchButtonCloseIcon && searchButtonSearchIcon ){
+                // changing the button icon to close
+                searchButtonCloseIcon.classList.remove('hidden');
+                searchButtonSearchIcon.classList.add('hidden');
+            }
+
+            // removing the hidden class
+            searchForm.classList.remove("hidden");
+        }else{
+            if( searchButtonCloseIcon && searchButtonSearchIcon ){
+                // changing the button icon to search
+                searchButtonCloseIcon.classList.add('hidden');
+                searchButtonSearchIcon.classList.remove('hidden');
+            }
+
+            // adding the hidden class
+            searchForm.classList.add("hidden");
+        }
+    });
+
+    // binding the input search 
+    searchForm.addEventListener('submit', (event) => {
+        // preving the defaul
+        event.preventDefault();
+
+        // getting the value input
+        const searchValue : string = searchInput.value;
+
+        console.log('searchValue :>> ', searchValue);
+    })
+});
+
 
 // import { initializeApp } from "firebase/app";
 // import { collection, getDocs, getFirestore, where } from "firebase/firestore";
