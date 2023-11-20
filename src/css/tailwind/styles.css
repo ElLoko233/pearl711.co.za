@@ -169,3 +169,23 @@ footer .social-icon{
 .product-navigation-dashboard .searchForm-button{
     @apply text-xs lg:text-sm text-white text-opacity-90 bg-primary-400 hover:bg-transparent hover:ring-1 hover:outline-none hover:ring-primary-500 font-medium rounded-md px-2 lg:px-4 py-1 lg:py-2 hover:text-primary-500 hover:text-opacity-90 transition-all duration-100 ease-linear shrink;
 }
+
+.offeringList{
+    @apply w-full flex gap-5 items-center justify-around;
+}
+
+.offeringItem{
+    @apply p-3 flex flex-col items-center justify-center gap-1 rounded-md outline outline-1 hover:outline-2 outline-primary-500 transition-all duration-100 ease-linear hover:scale-110 hover:bg-primary-100;
+}
+
+.offeringItem .offeringIcon{
+    @apply text-[2rem] lg:text-[3rem] text-primary-500 text-opacity-80 p-0 m-0 transition-all duration-100 ease-linear;
+}
+
+.offeringItem .offeringName{
+    @apply text-xs lg:text-base text-primary-500 text-opacity-90 font-heading font-medium transition-all duration-100 ease-linear;
+}
+
+.underline-heading{
+    @apply text-primary-500 text-opacity-90 tracking-tight border-b-2 border-primary-500 border-opacity-80;
+}
