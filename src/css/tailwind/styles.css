@@ -33,15 +33,15 @@ nav{
 }
 
 .perk-container{
-    @apply w-fit flex flex-row gap-5 justify-center items-center;
+    @apply w-fit flex flex-row gap-5 justify-evenly items-center;
 }
 
-.perk-svg{
-    @apply w-10 lg:w-16 h-10 lg:h-16 border-4 border-primary-500 border-dashed rounded-full flex justify-center items-center;
+.perk-icon{
+    @apply w-14 md:w-16 h-14 lg:h-16 border-4 border-primary-500 border-dashed rounded-full flex justify-center items-center;
 }
 
-.perk-svg svg{
-    @apply text-primary-500 w-5 lg:w-8 p-0;
+.perk-icon .icon{
+    @apply text-primary-500 p-0 text-2xl lg:text-4xl;
 }
 
 .perk-heading{
@@ -188,4 +188,68 @@ footer .social-icon{
 
 .underline-heading{
     @apply text-primary-500 text-opacity-90 tracking-tight border-b-2 border-primary-500 border-opacity-80;
+}
+
+.pricingPlan-heading{
+    @apply font-heading text-3xl lg:text-4xl text-secondary-500 text-opacity-90 tracking-tight font-semibold text-center;
+}
+
+.pricingPlan-subheading{
+    @apply font-body text-sm lg:text-base text-secondary-500 text-opacity-80 text-center;
+}
+
+.pricingPlan{
+    @apply flex flex-col mx-auto max-w-xl text-center text-secondary-500 rounded-lg border border-gray-100 shadow justify-between items-center gap-5 h-fit bg-gray-50 even:bg-primary-600 w-full hover:scale-[1.05] transition-all duration-100 ease-linear;
+}
+
+
+.pricingPlan .pricingPlan-header{
+    @apply flex flex-col items-center justify-center gap-2 p-5 xl:p-8 pb-1 xl:pb-1;
+
+}
+
+.pricingPlan .pricingPlan-heading{
+    @apply font-heading font-bold text-secondary-500 text-opacity-90 text-3xl xl:text-4xl tracking-tight;
+}
+:nth-child(even).pricingPlan .pricingPlan-heading{
+    @apply font-heading font-bold text-white text-opacity-90 text-3xl xl:text-4xl tracking-tight;
+}
+
+.pricingPlan .pricingPlan-subheading{
+    @apply font-body text-secondary-500 text-opacity-75 text-xs xl:text-sm;
+}
+:nth-child(even).pricingPlan .pricingPlan-subheading{
+    @apply font-body text-white text-opacity-90 text-xs xl:text-sm;
+}
+
+.pricingPlan .cta{
+    @apply text-white bg-primary-600 hover:bg-primary-700 focus:ring-1 focus:ring-primary-200 font-medium rounded-md text-xs xl:text-sm px-3 xl:px-5 py-2.5 text-center;
+}
+:nth-child(even).pricingPlan .cta{
+    @apply text-white bg-primary-800 hover:bg-primary-700 focus:ring-1 focus:ring-primary-200 font-medium rounded-md text-xs xl:text-sm px-3 xl:px-5 py-2.5 text-center;
+}
+
+.pricingPlan .pricingPlan-options{
+    @apply w-full font-body flex flex-col justify-center rounded-md;
+}
+
+.pricingPlan .pricingPlan-options .pricingPlan-option{
+    @apply flex items-center justify-between border-gray-300 border-opacity-50 border-y py-2 xl:py-5 px-2 xl:px-4 divide-x-2 divide-primary-500 odd:bg-white w-full;
+}
+:nth-child(even).pricingPlan .pricingPlan-options .pricingPlan-option{
+    @apply flex items-center justify-between border-primary-300 border-opacity-50 border-y py-2 xl:py-5 px-2 xl:px-4 divide-x-2 divide-gray-50 odd:bg-primary-500 w-full;
+}
+
+.pricingPlan .pricingPlan-options .pricingPlan-option .option-name{
+    @apply font-body font-medium text-secondary-500 text-opacity-50 text-sm xl:text-base tracking-tight px-3;
+}
+:nth-child(even).pricingPlan .pricingPlan-options .pricingPlan-option .option-name{
+    @apply font-body font-medium text-white text-opacity-95 text-sm xl:text-base tracking-tight even:tracking-wide px-3;
+}
+
+.pricingPlan .pricingPlan-options .pricingPlan-option .option-price{
+    @apply font-heading font-semibold text-gray-900 text-opacity-75 text-base xl:text-xl tracking-wider ml-auto px-5 py-1;
+}
+:nth-child(even).pricingPlan .pricingPlan-options .pricingPlan-option .option-price{
+    @apply font-heading font-semibold text-white text-opacity-95 text-base xl:text-xl tracking-wider ml-auto px-5 py-1;
 }
