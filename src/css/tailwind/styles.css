@@ -155,20 +155,49 @@ footer .social-icon{
 }
 
 .product-navigation-dashboard .dashboard-buttons{
-    @apply flex flex-row-reverse;
+    @apply flex flex-row-reverse gap-5;
 }
 
-.product-navigation-dashboard .dashboard-buttons .search-button{
+.product-navigation-dashboard .dashboard-buttons  button{
     @apply font-body text-secondary-500 text-[0.65rem] lg:text-sm tracking-wider hover:text-gray-50 text-opacity-80 hover:bg-secondary-500 hover:bg-opacity-80 ring-1 ring-secondary-500 ring-opacity-80 outline-none rounded px-3 lg:px-5 py-1 lg:py-2.5 text-center w-fit flex flex-row items-center justify-between gap-2 transition-all duration-100 ease-linear;
 }
 
 .product-navigation-dashboard .search-input{
-    @apply text-xs sm:text-base form-input w-full rounded ring-0 outline-none border border-primary-800 focus:border-primary-500 border-opacity-80 p-2 lg:p-3 focus:ring-0 focus:outline-none bg-gray-50 placeholder-inherit placeholder-secondary-500 placeholder-opacity-50 transition-all duration-100 ease-linear;
+    @apply text-xs lg:text-base form-input w-full rounded ring-0 outline-none border border-gray-300 focus:border-primary-500 border-opacity-80 p-2 lg:p-3 focus:ring-0 focus:outline-none bg-gray-50 placeholder-inherit placeholder-secondary-500 placeholder-opacity-50 transition-all duration-100 ease-linear;
 }
 
 .product-navigation-dashboard .searchForm-button{
     @apply text-xs lg:text-sm text-white text-opacity-90 bg-primary-400 hover:bg-transparent hover:ring-1 hover:outline-none hover:ring-primary-500 font-medium rounded-md px-2 lg:px-4 py-1 lg:py-2 hover:text-primary-500 hover:text-opacity-90 transition-all duration-100 ease-linear shrink;
 }
+
+.product-navigation-dashboard .filterType{
+    @apply flex flex-col md:flex-row items-start md:items-center gap-5 m-0 bg-gray-50 border border-gray-200 rounded p-3 w-full;
+}
+
+.product-navigation-dashboard .filterType .filter-type{
+    @apply flex flex-col md:flex-row  m-0 items-start md:items-center gap-5;
+}
+
+.product-navigation-dashboard .filterGroup{
+    @apply flex flex-col w-full gap-3;
+}
+
+.product-navigation-dashboard .filterType .filter-type .filterItem{
+    @apply flex items-center gap-1;
+}
+
+.product-navigation-dashboard .filterType .filterItem .filterCheckBox{
+    @apply w-4 h-4 outline-none ring-0 bg-gray-100 rounded focus:ring-primary-500 focus:ring-2 checked:bg-primary-500 form-checkbox checked:hover:bg-primary-600 checked:focus:bg-primary-600 transition-all duration-100 ease-linear;
+}
+
+.product-navigation-dashboard .filterType .filterItem .filterLabel{
+    @apply text-xs lg:text-sm text-secondary-500 text-opacity-70 font-body;
+}
+
+.product-navigation-dashboard .filterType .heading{
+    @apply text-gray-500 font-heading font-medium text-xs lg:text-base;
+}
+
 
 .offeringList{
     @apply w-full flex gap-5 items-center justify-around;
@@ -199,7 +228,7 @@ footer .social-icon{
 }
 
 .pricingPlan{
-    @apply flex flex-col mx-auto max-w-xl text-center text-secondary-500 rounded-lg border border-gray-100 shadow justify-between items-center gap-5 h-fit bg-gray-50 even:bg-primary-600 w-full hover:scale-[1.05] transition-all duration-100 ease-linear;
+    @apply flex flex-col mx-auto max-w-xl text-center text-secondary-500 rounded-lg border border-gray-100 last:border-tertiary-100 shadow justify-between items-center gap-5 h-full bg-gray-50 even:bg-primary-600 w-full hover:scale-[1.05] transition-all duration-100 ease-linear last:bg-tertiary-300;
 }
 
 
@@ -211,14 +240,14 @@ footer .social-icon{
 .pricingPlan .pricingPlan-heading{
     @apply font-heading font-bold text-secondary-500 text-opacity-90 text-3xl xl:text-4xl tracking-tight;
 }
-:nth-child(even).pricingPlan .pricingPlan-heading{
+:nth-child(even).pricingPlan .pricingPlan-heading, :last-child.pricingPlan .pricingPlan-heading{
     @apply font-heading font-bold text-white text-opacity-90 text-3xl xl:text-4xl tracking-tight;
 }
 
 .pricingPlan .pricingPlan-subheading{
     @apply font-body text-secondary-500 text-opacity-75 text-xs xl:text-sm;
 }
-:nth-child(even).pricingPlan .pricingPlan-subheading{
+:nth-child(even).pricingPlan .pricingPlan-subheading, :last-child.pricingPlan .pricingPlan-subheading{
     @apply font-body text-white text-opacity-90 text-xs xl:text-sm;
 }
 
@@ -227,6 +256,9 @@ footer .social-icon{
 }
 :nth-child(even).pricingPlan .cta{
     @apply text-white bg-primary-800 hover:bg-primary-700 focus:ring-1 focus:ring-primary-200 font-medium rounded-md text-xs xl:text-sm px-3 xl:px-5 py-2.5 text-center;
+}
+:last-child.pricingPlan .cta{
+    @apply text-white bg-tertiary-500 hover:bg-tertiary-700 focus:ring-1 focus:ring-tertiary-200 font-medium rounded-md text-xs xl:text-sm px-3 xl:px-5 py-2.5 text-center;
 }
 
 .pricingPlan .pricingPlan-options{
@@ -237,7 +269,10 @@ footer .social-icon{
     @apply flex items-center justify-between border-gray-300 border-opacity-50 border-y py-2 xl:py-5 px-2 xl:px-4 divide-x-2 divide-primary-500 odd:bg-white w-full;
 }
 :nth-child(even).pricingPlan .pricingPlan-options .pricingPlan-option{
-    @apply flex items-center justify-between border-primary-300 border-opacity-50 border-y py-2 xl:py-5 px-2 xl:px-4 divide-x-2 divide-gray-50 odd:bg-primary-500 w-full;
+    @apply flex items-center justify-between border-primary-300 border-opacity-50 border-y py-2 xl:py-5 px-2 xl:px-4 divide-x-2 divide-primary-700 odd:bg-primary-500 w-full;
+}
+:last-child.pricingPlan .pricingPlan-options .pricingPlan-option{
+    @apply flex items-center justify-between border-tertiary-300 border-opacity-50 border-y py-2 xl:py-5 px-2 xl:px-4 divide-x-2 divide-tertiary-500 odd:bg-tertiary-200 w-full;
 }
 
 .pricingPlan .pricingPlan-options .pricingPlan-option .option-name{
@@ -246,10 +281,16 @@ footer .social-icon{
 :nth-child(even).pricingPlan .pricingPlan-options .pricingPlan-option .option-name{
     @apply font-body font-medium text-white text-opacity-95 text-sm xl:text-base tracking-tight even:tracking-wide px-3;
 }
+:last-child.pricingPlan .pricingPlan-options .pricingPlan-option .option-name{
+    @apply font-body font-medium text-white text-sm xl:text-base tracking-tight even:tracking-wide px-3;
+}
 
 .pricingPlan .pricingPlan-options .pricingPlan-option .option-price{
     @apply font-heading font-semibold text-gray-900 text-opacity-75 text-base xl:text-xl tracking-wider ml-auto px-5 py-1;
 }
 :nth-child(even).pricingPlan .pricingPlan-options .pricingPlan-option .option-price{
     @apply font-heading font-semibold text-white text-opacity-95 text-base xl:text-xl tracking-wider ml-auto px-5 py-1;
+}
+:last-child.pricingPlan .pricingPlan-options .pricingPlan-option .option-price{
+    @apply font-heading font-semibold text-white text-base xl:text-xl tracking-wider ml-auto px-5 py-1;
 }

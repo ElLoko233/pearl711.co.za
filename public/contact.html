@@ -35,7 +35,7 @@
     </head>
     <body class="bg-gray-50">
         <!-- Start Header/Navigation -->
-		<nav class="w-screen h-fit sticky z-30 top-0 left-0 bg-secondary-500">
+		<nav>
 			<div class="p-3 px-5 md:px-12 flex flex-col md:flex-row xl:w-3/4 max-w-7xl mx-auto capitalize justify-between gap-5 md-gap-0 item-end md:items-center">
                 <div class="flex flex-row w-full md:w-fit justify-between">
                     <a class="brand-logo" href="index.html">
@@ -176,13 +176,13 @@
                             Send Us A Message
                         </h4>
 
-                        <form class="w-full h-full flex flex-col gap-5">
+                        <form id="contactForm" class="w-full h-full flex flex-col gap-5">
                             <div class="w-full h-fit">
-                                <input class="form-item" type="email" name="email" placeholder="Your Email Address">
+                                <input class="form-item" type="text" name="userName" placeholder="Your Name" required>
                             </div>
 
                             <div class="w-full h-fit">
-                                <textarea class="form-item h-32" name="msg" placeholder="How Can We Help?"></textarea>
+                                <textarea class="form-item h-32" name="msg" placeholder="How Can We Help?" required></textarea>
                             </div>
 
                             <button class="py-2 px-6 w-fit h-fit bg-tertiary-500 hover:bg-transparent rounded-md text-white text-opacity-80 bg-opacity-90 hover:outline-primary-500 hover:outline font-body text-md font-medium transition-all duration-100 ease-linear hover:text-primary-500">
