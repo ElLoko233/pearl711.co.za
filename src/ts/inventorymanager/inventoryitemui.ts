@@ -270,7 +270,7 @@ export default class InventoryItemUI {
         imageElement.src = this.pictureRef;
 
         //  assining the name element the name
-        nameElement.textContent = this.name;
+        nameElement.textContent = this.name.charAt(0).toUpperCase() + this.name.slice(1);
 
         // assining the price element the price
         priceElement.textContent = `R${this.price}`;

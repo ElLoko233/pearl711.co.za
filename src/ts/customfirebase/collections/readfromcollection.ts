@@ -67,7 +67,7 @@ export default class ReadFromCollection extends CustomCollection {
    * @param constraints - Firestore QueryConstraints.
    * @returns An array of Firestore DocumentData.
    */
-  async getCollectionQueryDocs(...constraints: QueryConstraint[]): Promise<QueryDocumentSnapshot<DocumentData, DocumentData>[]> {
+  async getCollectionQueryDocs(...constraints: any[]): Promise<QueryDocumentSnapshot<DocumentData, DocumentData>[]> {
     // Fetch documents from Firestore using the query reference.
     const snapshot = await getDocs(this._getCollectionQueryRef(...constraints));
 
@@ -80,7 +80,7 @@ export default class ReadFromCollection extends CustomCollection {
    * @param constraints - Firestore QueryConstraints.
    * @returns An array of objects containing data and doc id.
    */
-  async getCollectionQueryData(...constraints: QueryConstraint[]): Promise<({ id: string } & DocumentData)[]> {
+  async getCollectionQueryData(...constraints: any[]): Promise<({ id: string } & DocumentData)[]> {
     // Fetch documents from the query snapshot.
     const docs = await this.getCollectionQueryDocs(...constraints);
 
@@ -94,7 +94,7 @@ export default class ReadFromCollection extends CustomCollection {
    * @returns Query.
    * @throws if any of the provided query constraints cannot be combined with the existing or new constraints.
    */
-  private _getCollectionQueryRef(...constraints: QueryConstraint[]): Query {
+  private _getCollectionQueryRef(...constraints: any[]): Query {
     // Construct a query reference with the provided constraints.
     return query(this.getCollectionRef(), ...constraints);
   }
@@ -104,7 +104,7 @@ export default class ReadFromCollection extends CustomCollection {
    * @param impulse - Function to handle updated data.
    * @returns Unsubscribe function.
    */
-  listenToCollectionQueryDocs(impulse: (docs: QuerySnapshot<DocumentData, DocumentData>) => void, ...constraints: QueryConstraint[]): Unsubscribe {
+  listenToCollectionQueryDocs(impulse: (docs: QuerySnapshot<DocumentData, DocumentData>) => void, ...constraints: any[]): Unsubscribe {
     // Get the query reference for the collection with specified constraints.
     const queryRef = this._getCollectionQueryRef(...constraints);
     
@@ -156,7 +156,7 @@ export function WithReadFromCollection<TBase extends Constructor<CustomCollectio
     * @param constraints - Firestore QueryConstraints.
     * @returns An array of Firestore DocumentData.
     */
-    async getCollectionQueryDocs(...constraints: QueryConstraint[]): Promise<QueryDocumentSnapshot<DocumentData, DocumentData>[]> {
+    async getCollectionQueryDocs(...constraints: any[]): Promise<QueryDocumentSnapshot<DocumentData, DocumentData>[]> {
       return await new ReadFromCollection(this.db, this.collectionRef).getCollectionQueryDocs(...constraints);
     }
 
@@ -165,7 +165,7 @@ export function WithReadFromCollection<TBase extends Constructor<CustomCollectio
     * @param constraints - Firestore QueryConstraints.
     * @returns An array of objects containing data and doc id.
     */
-    async getCollectionQueryData(...constraints: QueryConstraint[]): Promise<({ id: string } & DocumentData)[]> {
+    async getCollectionQueryData(...constraints: any[]): Promise<({ id: string } & DocumentData)[]> {
       return await new ReadFromCollection(this.db, this.collectionRef).getCollectionQueryData(...constraints);
     }
 
@@ -174,7 +174,7 @@ export function WithReadFromCollection<TBase extends Constructor<CustomCollectio
     * @param impulse - Function to handle updated data.
     * @returns Unsubscribe function.
     */
-    listenToCollectionQueryDocs(impulse: (docs: QuerySnapshot<DocumentData, DocumentData>) => void, ...constraints: QueryConstraint[]): Unsubscribe {
+    listenToCollectionQueryDocs(impulse: (docs: QuerySnapshot<DocumentData, DocumentData>) => void, ...constraints: any[]): Unsubscribe {
       return new ReadFromCollection(this.db, this.collectionRef).listenToCollectionQueryDocs(impulse, ...constraints);
     }
   };

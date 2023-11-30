@@ -2798,6 +2798,11 @@ select{
   --tw-ring-offset-color: #374151;
 }
 
+.blur{
+  --tw-blur: blur(8px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
 .drop-shadow{
   --tw-drop-shadow: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
@@ -3283,13 +3288,16 @@ footer .social-icon:hover{
   --tw-ring-color: rgb(25 25 25 / var(--tw-ring-opacity));
   --tw-ring-opacity: 0.3;
   transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 100ms;
-  transition-timing-function: linear;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .group:hover .productItem-front{
   --tw-ring-opacity: 0.8;
+}
+
+.productItem-front{
+  transition: transform 0.25s ease-in-out;
 }
 
 .productItem-front-hidden{
@@ -3477,6 +3485,9 @@ footer .social-icon:hover{
   --tw-bg-opacity: 0.95;
   padding: 0.5rem;
   padding-top: 1.25rem;
+  transition-property: all;
+  transition-duration: 100ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @media (min-width: 1024px){
@@ -3484,6 +3495,10 @@ footer .social-icon:hover{
     gap: 2.5rem;
     padding: 0.75rem;
   }
+}
+
+.productItem-back{
+  transition: transform 0.25s ease-in-out;
 }
 
 .productItem-back-hidden{

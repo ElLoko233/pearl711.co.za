@@ -1,4 +1,4 @@
-import { DocumentData, Firestore, QueryConstraint, QuerySnapshot, Unsubscribe } from "firebase/firestore";
+import { DocumentData, Firestore, QueryCompositeFilterConstraint, QueryConstraint, QuerySnapshot, Unsubscribe } from "firebase/firestore";
 import CustomCollection from "../customfirebase/collections/customcollection";
 import { WithDeleteFromCollection } from "../customfirebase/collections/deletefromcollection";
 import { WithReadFromCollection } from "../customfirebase/collections/readfromcollection";
@@ -98,7 +98,7 @@ export default class InventoryManager<T extends object, M extends object> extend
     * @param impulse - Function to handle updated data.
     * @returns Unsubscribe function.
     */
-   listenToInventoryQueryData(impulse: (docs: T[]) => void, ...constraints: QueryConstraint[]): Unsubscribe {
+   listenToInventoryQueryData(impulse: (docs: T[]) => void, ...constraints: any[]): Unsubscribe {
     // Subscribe to collection docs changes and invoke the provided function.
     function inventoryImpulse(docs: QuerySnapshot<DocumentData, DocumentData>): void {
       // Get the data from the query snapshot.
@@ -122,8 +122,8 @@ export default class InventoryManager<T extends object, M extends object> extend
   * @param constraints - Firestore QueryConstraints.
   * @returns An array of objects containing data and doc id.
   */
-  async getInventoryQueryData(...constraints: QueryConstraint[]): Promise<T[]> {
-    // Get the data from the query snapshot.
+  async getInventoryQueryData(...constraints: any[]): Promise<T[]> {
+    // Get the data from the query snapshot
     return await this.getCollectionQueryData(...constraints) as T[];
   };
 
