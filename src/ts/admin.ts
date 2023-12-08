@@ -141,60 +141,44 @@ window.addEventListener( 'DOMContentLoaded', async event => {
         // creating a list of the inventory items ui objects
         const inventoryItemsList : InventoryItemUIAdmin[] = ( await inventoryManager.getCollectionData() ).map( (item) => new InventoryItemUIAdmin(item as InventoryItem) );
 
+        let filteredInventoryItems : InventoryItemUIAdmin[] = inventoryItemsList;
+
         // filtering the inventory items based on category
-        const filteredInventoryItems = inventoryItemsList
-        // .filter( (inventoryItem) => {
-        //     // checking if the inventory item has the category
-        //     for( const category of checkedCategories ){
-        //         if( inventoryItem.category.toLowerCase().replace(" ", "") === category.value.toLowerCase().replace(" ", "") ){
-        //             return true;
-        //         }
-        //     }
-
-        //     return false;
-        // })
-        // filtering based on instock
-        .filter( (inventoryItem) => {
-            // checking if the inventory item matches the selected stock availability option
-            console.log('inventoryItem :>> ', inventoryItem);
-            for( const availability of checkedAvailability ){
-                if( availability.value === "instock" ){
-                    if(inventoryItem.inStock){
+        if( checkedCategories.length > 0 ){
+            filteredInventoryItems = filteredInventoryItems.filter( (inventoryItem) => {
+                // checking if the inventory item has the category
+                for( const category of checkedCategories ){
+                    if( inventoryItem.category.toLowerCase().replace(" ", "") === category.value.toLowerCase().replace(" ", "") ){
                         return true;
-                    };
-
-                    return false;
-                }else if( availability.value === "outofstock" ){
-                    if(!inventoryItem.inStock){
-                        return true;
-                    };
-
-                    return false;
+                    }
                 }
-            }
-        });
 
-        // // filtering the filtered items based on stock avalibality
-        // const filteredInventoryItemsStock = filteredInventoryItems.filter( (inventoryItem) => {
-        //     // checking if the inventory item has the category
-        //     if( inventoryItem.stock > 0 ){
-        //         return true;
-        //     }
-
-        //     return false;
-        // });
-
-        console.log('filteredInventoryItems :>> ', filteredInventoryItems);
-
-        return;
-
-        if( filteredInventoryItems.length === 0 ){
-            // loading the inventory items
-            loadInventoryItems(inventoryItemsList);
-        }else{
-            // loading the inventory items
-            loadInventoryItems(filteredInventoryItems);
+                return false;
+            })
         }
+
+        // filtering the inventory items based on availability
+        if( checkedAvailability.length > 0 ){
+            filteredInventoryItems = filteredInventoryItems.filter( (inventoryItem) => {
+                // checking if the inventory item matches the selected stock availability option
+                for( const availability of checkedAvailability ){
+                    if( availability.value.toLowerCase().replace(" ","") === "instock" ){
+                        if(inventoryItem.inStock){
+                            return true;
+                        };
+                    }else if( availability.value.toLowerCase().replace(" ","") === "outofstock" ){
+                        if(!inventoryItem.inStock){
+                            return true;
+                        };
+                    }
+                }
+    
+                return false;
+            });
+        }
+        
+        // loading the inventory items
+        loadInventoryItems(filteredInventoryItems);
     });
 
     // subscribing to user changes

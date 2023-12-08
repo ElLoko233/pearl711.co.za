@@ -109,10 +109,10 @@ export default class InventoryItemUIAdmin extends InventoryItemUI {
         // getting the chekcbox element
         const checkbox : HTMLInputElement = element.querySelector('input') as HTMLInputElement;
 
-        
-
         // getting the readmore button
         const readmoreBtn: HTMLButtonElement = element.querySelector('#readMore') as HTMLButtonElement;
+
+        readmoreBtn.addEventListener('click', (event) => event.preventDefault() );
 
         // setting the readmore button to gray if the item is not in stock
         if (this.inStock == false) {
