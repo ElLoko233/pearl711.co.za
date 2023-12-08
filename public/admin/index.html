@@ -1,4 +1,7 @@
+<!doctype html>
 <html lang="en">
+    
+
     <head>
         <!-- Declare the document type and set the language to English. -->
         <meta charset="UTF-8">
@@ -10,7 +13,7 @@
         <meta name="description" content="Pearl711 delivers comprehensive services, from car washing to pet care products and beverages. Expanding its offerings, the business features a customer-friendly environment with free Wi-Fi. Convenient card payments are accepted, showcasing an ambitious management team committed to excellence.">
 
         <!-- Define the type of content of the webpage. -->
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
         <!-- Define keywords related to your business for SEO purposes. -->
         <meta name="keywords" content="refreshments, beverages, car, wash, food, dogs, wifi, medicine, Dog-friendly, Car wash service ,Dog-friendly, Free Wi-Fi, Medicinal products">
@@ -19,29 +22,30 @@
         <meta name="author" content="Lelethu">
 
         <!-- importing the page css -->
-        <link rel="stylesheet" href="./css/tailwind/styles.css">
+        <link rel="stylesheet" href="../css/tailwind/styles.css">
+
+        <!-- importing the js -->
+        <script defer type="module" src="../js/bundle-admin.js"></script>
 
         <!-- setting the theme bar color -->
         <meta name="theme-color" content="#191919">
 
-        <!-- importing the js -->
-        <script defer type="module" src="./js/bundle-products.js"></script>
-
         <!-- importing tab icon -->
-        <link rel="icon" href="./assets/pearl771_shape.svg">
+        <link rel="icon" href="../assets/pearl771_shape.svg">
 
-        <!-- importing the isconfy cdn -->
-        <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+        <!-- importing the iconfiy web compoinet -->
+        <script defer src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
         <!-- Set the title of the webpage. -->
-        <title>Pearl711|Products</title>
+        <title>Pearl711|Administator</title>
     </head>
-    <body class="bg-gray-50">
-        <!-- Start Header/Navigation -->
+
+    <body class="bg-gray-100">
+        <!-- Start Navigation -->
 		<nav>
 			<div class="p-3 px-5 md:px-12 flex flex-col md:flex-row xl:w-3/4 max-w-7xl mx-auto capitalize justify-between gap-5 md-gap-0 item-end md:items-center">
                 <div class="flex flex-row w-full md:w-fit justify-between">
-                    <a class="brand-logo" href="index.html">
+                    <a class="brand-logo" href="../index.html">
                         <!-- importing pearl7ss full svg -->
                         <svg class="w-full fill-primary-600" viewBox="0 0 104.0409 32.393822" version="1.1" id="svg1"
                             inkscape:version="1.3 (0e150ed6c4, 2023-07-21)" sodipodi:docname="pearl711_full.svg" xml:space="preserve"
@@ -107,7 +111,7 @@
                     </a>
     
                     <!-- Navbar links toggler -->
-                    <div class="w-fit ml-auto flex item-center">
+                    <div class="navlinks-toggler">
                         <button id="nav-toggler-open" class="w-9 rounded md:hidden hover:shadow" type="button" role="button">
                             <div id="hotdogNavIcon" class="w-full h-full">
                                 <svg class="w-full h-full text-white opacity-80" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16">
@@ -132,22 +136,23 @@
                 <!-- navigation links -->
                 <div id="nav-links-container" class="hidden flex md:flex justify-end items-end md:items-center h-screen md:h-fit w-full flex-col-reverse md:flex-row gap-12 md:gap-0">
                     <!-- user control links -->
-                    <div class="hidden flex items-end md:items-center justify-between gap-3 flex-col md:flex-row">
-                        <!-- sign up btn -->
-                        <button id="popup-signup" class=" bg-tertiary-500 text-secondary-100 transition-all duration-150 ease-linear opacity-90 hover:opacity-100 p-[0.35rem] text-sm w-20 md:w-24 rounded hover:rounded-none md:font-medium border border-primary-500 hover:border-secondary-500" role="" type="button">
-                            Sign Up
+                     <div class="flex items-end md:items-center justify-between gap-3 flex-col md:flex-row">
+                        <!-- Create Admin btn -->
+                        <button id="popup-createadmin" class=" bg-tertiary-500 hover:bg-tertiary-600 text-secondary-100 transition-all duration-150 ease-linear opacity-90 hover:opacity-100 p-[0.35rem] text-sm w-32 md:w-32 rounded hover:rounded-none md:font-medium" role="" type="button">
+                            Create Admin
                         </button>
-                        <!-- login btn -->
-                        <button id="popup-login" class=" text-secondary-100 transition-all duration-150 ease-linear opacity-90 hover:opacity-100 p-[0.2rem] text-sm w-20 md:w-24 rounded hover:rounded-none md:font-medium border-[3px] border-secondary-500 hover:bg-secondary-100 hover:text-primary-500" role="" type="button">
-                            Login
+
+                        <!-- logout btn -->
+                        <button id="logout" class=" text-primary-500 transition-all duration-150 ease-linear opacity-90 hover:opacity-100 p-[0.2rem] text-sm w-20 md:w-24 rounded hover:rounded-none md:font-medium border-[3px] border-primary-500 hover:bg-primary-500 hover:text-gray-50" role="" type="button">
+                            Logout
                         </button>
                     </div>
 
                     <!-- Website navigation links -->
-                    <div class="flex justify-between gap-5 items-end md:items-center flex-col md:flex-row">
-                        <a href="index.html" class="nav-link">Home</a>
+                    <div class="hidden flex justify-between gap-5 items-end md:items-center flex-col md:flex-row">
+                        <a href="index.html" class="active nav-link">Home</a>
 
-                        <a href="products.html" class="active nav-link">Products</a>
+                        <a href="products.html" class="nav-link">Products</a>
 
                         <a href="services.html" class="nav-link">Services</a>
 
@@ -156,211 +161,268 @@
                 </div>
 			</div>
 		</nav>
-		<!-- End Header/Navigation -->
+		<!-- End Navigation -->
 
-        <!-- Start Hero Section -->
-        <section id="hero" class="w-screen h-fit bg-secondary-500 bg-opacity-95 flex justify-center items-center">
-            <div class="container-xl py-10 lg:py-16 px-5">
-                <div class="flex flex-col md:flex-row justify-around gap-5 md-gap-0 item-end md:items-center">
-                    <!-- content -->
-                    <div class="flex flex-col gap-10 w-full md:w-7/12">
-                        <!-- headline and subheadline -->
-                        <div class="flex flex-col gap-3">
-                            <h1 class="hero-headline">Elevate Your Lifestyle with Quality Essentials</h1>
-                        </div>
-
-                        <!-- cta -->
-                        <div class="cta-button">
-                            <a href="contact.html"
-                                class=""
-                                role="button">
-                                Get In touch
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- hero image -->
-                    <div>
-                        <div class="hero-img">
-                            <svg class="fill-primary-500 w-56" viewBox="0 0 27.774005 32.393822" version="1.1" id="svg1"
-                                inkscape:version="1.3 (0e150ed6c4, 2023-07-21)" sodipodi:docname="pearl771_shape.svg" xml:space="preserve"
-                                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-                                xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-                                <sodipodi:namedview id="namedview1" pagecolor="#ffffff" bordercolor="#000000" borderopacity="0.25"
-                                    inkscape:showpageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0"
-                                    inkscape:deskcolor="#d1d1d1" inkscape:document-units="mm" inkscape:zoom="2" inkscape:cx="207" inkscape:cy="113"
-                                    inkscape:window-width="1920" inkscape:window-height="1051" inkscape:window-x="-9" inkscape:window-y="-9"
-                                    inkscape:window-maximized="1" inkscape:current-layer="g38" inkscape:clip-to-page="false" />
-                                <defs id="defs1">
-                                    <linearGradient id="linearGradient35" inkscape:collect="always">
-                                        <stop style="stop-color:#b49354;stop-opacity:0;" offset="0" id="stop37" />
-                                        <stop style="stop-color:#b49354;stop-opacity:1;" offset="0.57613164" id="stop36" />
-                                    </linearGradient>
-                                    <radialGradient inkscape:collect="always" xlink:href="#linearGradient35" id="radialGradient37" cx="105.82082"
-                                        cy="164.35005" fx="105.82082" fy="164.35005" r="34.171104"
-                                        gradientTransform="matrix(1,0,0,0.13359153,0,142.39427)" gradientUnits="userSpaceOnUse"
-                                        spreadMethod="pad" />
-                                </defs>
-                                <g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1" transform="translate(-35.951033,-148.08234)">
-                                    <g id="g38">
-                                        <path
-                                            d="m 35.951033,156.38159 0.09508,15.9768 13.836882,8.11777 13.832743,-8.11796 0.0093,-16.03365 -14.067867,-8.24221 z m 23.52157,2.32699 0.220152,5.63959 v 5.5671 l -9.846964,5.52622 -9.800436,-5.52622 v -5.5671 -5.66904 l 9.567901,-6.32481 z m -16.842387,1.44074 -0.07132,8.41866 c 7.2869,4.20049 0.07132,0.0893 7.2869,4.20049 l 7.214547,-4.20049 v -8.24395 l -7.447087,-4.45864 z m 6.98304,0 3.272669,2.3642 v 3.97909 l -3.040129,2.07537 -3.125902,-2.07537 v -3.97909 z"
-                                            style="fill-opacity:1" id="path1" sodipodi:nodetypes="cccccccccccccccccccccccccccccc" />
-                                        <g id="g29"
-                                            style="fill:url(#radialGradient37);fill-opacity:1;stroke:none;stroke-width:1;stroke-dasharray:none">
-                                            <g id="g37" style="fill:#1a1a1a;fill-opacity:1">
-                                                <path style="fill:#1a1a1a;fill-opacity:1;stroke:none;stroke-width:1;stroke-dasharray:none"
-                                                    d="m 115.1878,166.64223 v 1.20045 1.04922 h 2.25103 2.25154 v -1.16601 -1.08366 h -2.20193 z"
-                                                    id="path23" sodipodi:nodetypes="ccccccccc" />
-                                                <path id="path22"
-                                                    style="fill:#1a1a1a;fill-opacity:1;stroke:none;stroke-width:1;stroke-dasharray:none"
-                                                    d="m 81.901978,159.86311 c 0.01818,2.50415 -0.01459,5.00782 -0.04496,7.51169 l 0.7953,0.75757 0.795301,0.75758 c 0.27781,0.002 0.627021,0.002 0.922424,0.002 0,-2.9938 -0.0045,-6.07489 0,-9.02891 z m 2.704744,0 v 2.19263 h 2.384351 2.459798 v -0.94413 -1.2485 z m 0,3.4277 v 1.2237 0.96686 h 2.566252 2.277897 v -1.1715 -1.01906 h -2.3797 z m -0.07545,3.41581 v 0.9772 1.2082 h 2.600358 2.319239 v -1.04335 -1.14205 h -2.422075 z"
-                                                    sodipodi:nodetypes="cccccccccccccccccccccccccccccccc" />
-                                                <path style="fill:#1a1a1a;fill-opacity:1;stroke:none;stroke-width:1;stroke-dasharray:none"
-                                                    d="m 131.293,159.78508 c -0.66663,1.05758 0,0 -0.66663,1.05758 v 1.27175 h 0.66663 v 2.41794 2.41794 h -0.30408 -0.36255 v 1.94173 c 1.94108,0.023 0,0 2.05151,0.023 h 1.8004 v -1.0056 -0.95912 h -0.35963 l -0.36497,-5e-5 0.0409,-3.50154 v -3.66363 h -1.1167 z"
-                                                    id="path9" sodipodi:nodetypes="ccccccccccccccccccc" />
-                                                <path id="path8"
-                                                    style="fill:#1a1a1a;fill-opacity:1;stroke:none;stroke-width:1;stroke-dasharray:none"
-                                                    d="m 93.081657,159.78585 -0.63562,0.73122 -0.625285,0.77102 v 3.60804 3.91863 h 1.302246 0.977202 v -4.3341 -3.05873 -1.63608 z m 1.423169,0 v 1.63608 h 2.81895 v 3.05873 h -2.81895 v 1.74924 h 1.23455 1.501201 v 1.30432 1.28054 h 1.142566 1.237133 v -3.83543 -3.69124 l -0.659391,-0.73433 -0.663009,-0.76791 h -2.5585 z" />
-                                                <path id="path7"
-                                                    style="fill:#1a1a1a;fill-opacity:1;stroke:none;stroke-width:1;stroke-dasharray:none"
-                                                    d="m 112.51303,159.78508 v 3.82819 3.75894 c 0.84161,0.98616 0.46703,0.59808 1.29914,1.51929 h 0.67645 0.49713 v -9.10125 h -1.17358 z" />
-                                                <path id="path4"
-                                                    style="fill:#1a1a1a;fill-opacity:1;stroke:none;stroke-width:1;stroke-dasharray:none"
-                                                    d="m 121.10845,159.78508 v 1.17719 1.07642 h 2.74763 1.79834 l 1.57355,-2.25361 h -1.85519 z m 6.61303,0 -1.57407,2.25361 h 0.005 c -2.02248,2.8309 -2.01319,2.85499 -3.18689,4.60333 h -0.52297 v 0.97049 1.27939 l 1.41387,1.2e-4 h 0.60151 l 4.50671,-6.85333 v -1.00976 -1.24385 z"
-                                                    sodipodi:nodetypes="ccccccccccccccccccccc" />
-                                                <path id="path3"
-                                                    style="fill:#1a1a1a;fill-opacity:1;stroke:none;stroke-width:1;stroke-dasharray:none"
-                                                    d="m 101.91264,159.7856 v 4.58214 4.44676 h 1.04593 1.25264 v -9.00927 c -0.78758,3.1e-4 -1.60827,-0.002 -2.29857,-0.0196 z m 2.7032,0.0191 v 2.07636 h 2.79983 v 1.72134 h -2.79983 v 2.16834 h 0.93379 0.92604 l 0.56172,1.54306 0.62839,1.48621 1.12551,5.2e-4 1.12603,5.2e-4 v -0.66973 -0.66973 c -0.709,-1.04404 -0.709,-1.07909 -1.22318,-1.84175 l 0.61185,-0.6258 0.61133,-0.62632 v -1.61282 -1.61282 l -0.709,-0.66869 -0.70848,-0.66869 h -3.12229 c -0.22192,0 -0.50706,-3.2e-4 -0.76171,0 z" />
-                                                <g id="g27" transform="translate(14.573512,50.148024)"
-                                                    style="fill:#1a1a1a;fill-opacity:1;stroke:none;stroke-width:1;stroke-dasharray:none">
-                                                    <rect
-                                                        style="opacity:1;fill:#1a1a1a;fill-opacity:1;stroke:none;stroke-width:1;stroke-dasharray:none"
-                                                        id="rect23" width="2.2826276" height="8.5858479" x="57.076202" y="109.8383" ry="0" />
-                                                    <path id="path26"
-                                                        style="opacity:1;fill:#1a1a1a;fill-opacity:1;stroke:none;stroke-width:1;stroke-dasharray:none"
-                                                        d="m 59.853195,109.8383 v 1.96155 h 2.312791 v 2.214 h -2.312791 v 1.96154 h 2.709666 l 1.697191,-1.69719 v -2.74271 l -1.697191,-1.69719 z"
-                                                        sodipodi:nodetypes="ccccccccccc" />
-                                                </g>
-                                                <path style="fill:#1a1a1a;fill-opacity:1;stroke:none;stroke-width:1;stroke-dasharray:none"
-                                                    d="m 136.80664,159.78508 c -0.66663,1.05758 0,0 -0.66663,1.05758 v 1.27175 h 0.66663 v 2.41794 2.41794 h -0.30408 -0.36255 v 1.94173 c 1.94108,0.023 0,0 2.05151,0.023 h 1.8004 v -1.0056 -0.95912 h -0.35963 l -0.36497,-5e-5 0.0409,-3.50154 v -3.66363 h -1.1167 z"
-                                                    id="path29" sodipodi:nodetypes="ccccccccccccccccccc" />
-                                            </g>
-                                        </g>
-                                    </g>
-                                </g>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
+        <!-- content area -->
+        <section class="w-full h-full">
             </div>
-        </section>
-		<!-- End Hero Section -->
+            <!-- Skeleton inventory manager -->
+            <div id="skeleton-inventory-manager" class="hidden w-full h-full lg:h-full lg:w-8/12 max-w-5xl mx-auto py-12 lg:my-16 p-3 lg:p-0 space-y-10">
+                <!-- skeleton inventory Manager title -->
+                <div class="w-48 h-10 bg-gray-500 bg-opacity-10 animate-pulse rounded-md">
+                </div>
 
-        <!-- Start products section -->
-        <section class="mt-16 p-5">
-            <div class="product-section">
-                <!-- navigation dashboard -->
-                <div class="product-navigation-dashboard">
-                    <!-- search button -->
-                    <div class="dashboard-buttons">
-                        <!-- search button -->
-                        <button id="searchButton" type="button" class="search-button">
-                            <!-- search icon -->
-                            <svg id="searchIcon" class="w-3 lg:w-4 h-3 lg:h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m18 11l-6-6"/>
-                            </svg>
-                            <!-- close search icon -->
-                            <svg id="closeSearch" class="hidden w-4 h-4 peer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <g fill="none" fill-rule="evenodd">
-                                    <path d="M24 0v24H0V0h24ZM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018Zm.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022Zm-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01l-.184-.092Z"/>
-                                    <path fill="currentColor" d="m12 13.414l5.657 5.657a1 1 0 0 0 1.414-1.414L13.414 12l5.657-5.657a1 1 0 0 0-1.414-1.414L12 10.586L6.343 4.929A1 1 0 0 0 4.93 6.343L10.586 12l-5.657 5.657a1 1 0 1 0 1.414 1.414L12 13.414Z"/>
-                                </g>
-                            </svg>
-                            Search
-                        </button>
+                <!-- skeleton inventory manager dashboard -->
+                <div id="skeleton-inventory-dashboard" class="flex flex-col items-center justify-center w-full h-full gap-5"> 
+                    <!-- skeleton inventory dashboard menu -->
+                    <div id="skeleton-inventory-dashboard-menu" class="flex flex-col md:flex-row items-center justify-between w-full h-fit gap-3 md:gap-0">
+                        <!-- inventory manager dashboard navigation -->
+                        <div id="skeleton-session-dashboard-navigation" class="w-full h-fit">
+                            <div id="skeleton-inventory-dashboard-navigation-form" class="flex items-center justify-center md:justify-start gap-1">
+                                <div class="h-9 md:h-12 w-full md:w-36 p-3 animate-pulse bg-gray-500 bg-opacity-10 rounded-l-lg border-r-0">
+                                </div>
 
-                        <!-- filter button -->
-                        <button id="filterButton" type="button" class="filter-button">
-                            <!-- search icon -->
-                            <iconify-icon icon="octicon:filter-16"></iconify-icon>
-                            Filter
-                        </button>
-                    </div>
-                    
-                    <!-- Search form -->
-                    <form id="searchForm" class="hidden flex gap-3 lg:gap-5 items-center">
-                        <input type="search" name="search-product" class="search-input" placeholder="Search products" required>
-                        <div class="flex items-center justify-between gap-1 lg:gap-3">
-                            <button type="submit" class="searchForm-button">Search</button>
-                        </div>
-                    </form>
-
-                    <!-- filter form -->
-                    <form id="filters" class="hidden flex gap-3 lg:gap-5 items-start">
-                        <!-- filter group -->
-                        <div class="filterGroup">
-                            <div class="filterType">
-                                <div  class="filter-type">
-                                    <!-- filter type header -->
-                                    <h6 class="heading">
-                                        Category
-                                    </h6>
-        
-                                    <div class="filterItem">
-                                        <input id="petshop" type="checkbox" value="petshop"
-                                        class="filterCheckBox"/>
-        
-                                        <label for="petshop" class="filterLabel">
-                                        Pet Shop
-                                        </label>
-                                    </div>
-        
-                                    <div class="filterItem">
-                                        <input id="beverages" type="checkbox" value="beverages"
-                                        class="filterCheckBox" />
-        
-                                        <label for="beverages" class="filterLabel">
-                                        Beverages
-                                        </label>
-                                    </div>
-        
-                                    <div class="filterItem">
-                                        <input id="Restaurant" type="checkbox" value="Restaurant"
-                                        class="filterCheckBox" />
-        
-                                        <label for="Restaurant" class="filterLabel">
-                                        Restaurant
-                                        </label>
-                                    </div>
+                                <div class="h-9 md:h-12 w-full md:w-36 p-3 animate-pulse bg-gray-500 bg-opacity-10">
+                                </div>
+    
+                                <div class="h-9 md:h-12 w-full md:w-36 p-3 animate-pulse bg-gray-500 bg-opacity-10 rounded-r-lg border-l-0">
                                 </div>
                             </div>
                         </div>
+                        
+                        <!-- button that edit the session dashboard data -->
+                        <div id="skeleton-inventory-dashboard-data-handlers" class="w-fit h-fit ml-auto flex gap-2">
+                            <!-- add session btn -->
+                            <div id="skeleton-open-create-inventory-item-modal" class="w-20 h-10 bg-gray-500 bg-opacity-10 animate-pulse rounded-md">
+                            </div>
 
-                        <!-- submit -->
-                        <div class="flex items-center justify-between gap-1 lg:gap-3">
-                            <button type="submit" class="searchForm-button">Apply</button>
+                            <!-- remove session btn -->
+                            <div disabled id="skeleton-rmv-inventory-item" class="w-10 h-10 bg-gray-500 bg-opacity-10 animate-pulse rounded-md">
+                            </div>
                         </div>
+                    </div>
+
+                    <div id="skeleton-inventory-display-for-overlay" class="w-full h-full">
+                        <form id="skeleton-sessions-display" class="w-full h-72 overflow-y-auto overscroll-y-contain flex relative flex-col gap-5 md:gap-5 p-2">
+                            
+                            <!--skeleton inventory manager dashbaord data -->
+                            <div id="skeleton-inventory-item">
+                                <div class="w-full h-fit relative rounded-md bg-gray-500 bg-opacity-10 flex flex-row cursor-pointer animate-pulse">
+                                    <!-- Session indicator -->
+                                    <div id="session-indicator-skeleton" class="w-20 h-5 bg-gray-500 bg-opacity-5 rounded-l-lg rounded-r-lg align-top mt-5 ml-3 animate-pulse">
+                                    </div>
+
+                                    <div class="flex items-center justify-between flex-grow pl-5 p-3 lg:p-5">
+                                        <!-- skeleton session data -->
+                                        <div class="w-fit h-fit flex flex-col justify-center gap-3 animate-pulse">
+                                            <div class="h-6 w-20 md:w-28 rounded-md bg-gray-500 bg-opacity-5">
+                                            </div>
+                                            <div class="h-10 w-24 md:w-48 rounded-md bg-gray-500 bg-opacity-5">
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- skeleton session data -->
+                                        <div class="w-fit h-fit flex flex-col justify-center gap-3 animate-pulse">
+                                            <div class="h-6 w-20 md:w-28 rounded-md bg-gray-500 bg-opacity-5">
+                                            </div>
+                                            <div class="h-10 w-24 md:w-48 rounded-md bg-gray-500 bg-opacity-5">
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- skeleton session data -->
+                                        <div class="hidden w-fit h-fit md:flex flex-col justify-center gap-3 animate-pulse">
+                                            <div class="h-6 w-16 md:w-28 rounded-md bg-gray-500 bg-opacity-5">
+                                            </div>
+                                            <div class="h-10 w-16 md:w-48 rounded-md bg-gray-500 bg-opacity-5">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- inventory manager -->
+            <div id="inventory-manager" class="w-screen h-full lg:w-8/12 max-w-5xl mx-auto py-12 lg:my-16 p-3 lg:p-0 flex flex-col gap-8 lg:gap-20">
+                <!-- inventory Manager title -->
+                <h1 class="text-3xl lg:text-5xl font-heading font-medium opacity-80 tracking-tight">
+                    Inventory Manager
+                </h1>
+
+                <!-- inventory manager dashboard -->
+                <div id="inventory-dashboard" class="flex flex-col items-center w-full h-full gap-5"> 
+                    <div id="inventory-dashboard-menu" class="product-navigation-dashboard w-full flex flex-col lg:flex-row items-start justify-between gap-5 md:gap-5">
+                        <!-- inventory manager dashboard navigation -->
+                        <div class="flex flex-col w-full h-fit gap-3 justify-between group">
+                            <div class="flex flex-row gap-2 items-center justify-between w-full">
+                                <!-- Search form -->
+                                <form id="searchForm" class="flex gap-2 items-center w-full">
+                                    <input type="search" name="search-product" class="search-input" placeholder="Search products" required>
+                                    <div>
+                                        <button type="submit" class="searchForm-button">Search</button>
+                                    </div>
+                                </form>
+    
+                                <!-- query button -->
+                                <div class="dashboard-buttons w-fit">
+                                    <!-- filter button -->
+                                    <button id="filterButton" type="button" class="filter-button w-fit">
+                                        <!-- search icon -->
+                                        <iconify-icon icon="octicon:filter-16"></iconify-icon>
+                                        Filter
+                                    </button>
+                                </div>
+                            </div>
+        
+                            <!-- filter form -->
+                            <form id="filters" class="hidden flex gap-3 lg:gap-5 items-start w-full">
+                                <!-- filter group -->
+                                <div class="filterGroup">
+                                    <!-- category filter -->
+                                    <div class="filterType">
+                                        <div  class="filter-type">
+                                            <!-- filter type header -->
+                                            <h6 class="heading">
+                                                Category
+                                            </h6>
+                
+                                            <div class="filterItem">
+                                                <input id="petshop" data-filter="category" type="checkbox" value="petshop"
+                                                class="filterCheckBox"/>
+                
+                                                <label for="petshop" class="filterLabel">
+                                                Pet Shop
+                                                </label>
+                                            </div>
+                
+                                            <div class="filterItem">
+                                                <input id="beverages" data-filter="category" type="checkbox" value="beverages"
+                                                class="filterCheckBox" />
+                
+                                                <label for="beverages" class="filterLabel">
+                                                Beverages
+                                                </label>
+                                            </div>
+                
+                                            <div class="filterItem">
+                                                <input id="Restaurant" data-filter="category" type="checkbox" value="Restaurant"
+                                                class="filterCheckBox" />
+                
+                                                <label for="Restaurant" class="filterLabel">
+                                                Restaurant
+                                                </label>
+                                            </div>
+                                        </div>                                        
+                                    </div>
+
+                                    <!-- instock filter -->
+                                    <div class="filterType">
+                                        <div  class="filter-type">
+                                            <!-- filter type header -->
+                                            <h6 class="heading">
+                                                availability
+                                            </h6>
+                
+                                            <div class="filterItem">
+                                                <input id="outofstock" data-filter="stockAvailability" type="checkbox" value="outofstock"
+                                                class="filterCheckBox"/>
+                
+                                                <label for="outofstock" class="filterLabel">
+                                                out of stock
+                                                </label>
+                                            </div>
+                
+                                            <div class="filterItem">
+                                                <input id="inStock" data-filter="stockAvailability" type="checkbox" value="inStock"
+                                                class="filterCheckBox" />
+                
+                                                <label for="inStock" class="filterLabel">
+                                                inStock
+                                                </label>
+                                            </div>
+                                        </div>                                       
+                                    </div>
+                                </div>
+        
+                                <!-- submit -->
+                                <div class="flex items-center justify-between gap-1 lg:gap-3">
+                                    <button type="submit" class="searchForm-button">Apply</button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <!-- button that edit the inventory dashboard data -->
+                        <div id="inventory-dashboard-data-handlers" class="ml-auto md:w-5/12 xl:w-3/12 h-fit flex justify-end gap-2 items-center">
+                            <!-- create new intem btn -->
+                            <button id="create-new-item-button" class="flex gap-1 items-center justify-center text-tertiary-500 transition-all duration-150 ease-linear opacity-80 hover:opacity-100 p-[0.3rem] text-xs lg:text-base w-fit h-fit rounded hover:rounded-none font-semibold font-body border-[2.2px] lg:border-[2.5px] border-tertiary-500 hover:bg-tertiary-500 hover:text-gray-50 disabled:border-zinc-400 disabled:hover:bg-transparent disabled:hover:rounded disabled:hover:opacity-80 disabled:text-zinc-400 disabled:cursor-default" role="button">
+                                <iconify-icon class="text-sm lg:text-lg" icon="fluent:add-12-filled"></iconify-icon>
+                                New Item
+                            </button>
+
+                            <!-- remove item btn -->
+                            <button disabled id="rmv-item-sessions" class="flex gap-1 items-center justify-center text-negative transition-all duration-150 ease-linear opacity-80 hover:opacity-100 p-[0.2rem] lg:p-[0.3rem] text-xs lg:text-base w-fit h-fit rounded hover:rounded-none font-semibold font-heading border-[2.2px] lg:border-[2.5px] border-negative hover:bg-negative hover:text-gray-50 disabled:border-zinc-400 disabled:hover:bg-transparent disabled:hover:rounded disabled:hover:opacity-80 disabled:text-zinc-400 disabled:cursor-default" role="button">
+                                <iconify-icon class="text-lg lg:text-xl h-fit" icon="material-symbols:delete"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>                   
+                    
+                    <form id="productItems" class="[column-fill\:balance] columns-2 sm:columns-3 sm:gap-0 lg:columns-3 lg:gap-8 w-full">
                     </form>
-                </div>
-
-                <!-- porduct overveiw content -->
-                <div id="productItems" class="[column-fill\:_balance] columns-2 sm:columns-3 sm:gap-0 lg:columns-4 lg:gap-8">
-                </div>
-
-                <!-- Load more button -->
-                <div class="mx-auto">
-                    <button id="loadMore" type="button" class="font-body font-medium text-secondary-500 text-[0.65rem] lg:text-sm hover:text-gray-50 text-opacity-80 hover:bg-secondary-500 hover:bg-opacity-80 ring-1 ring-secondary-500 ring-opacity-80 outline-none rounded px-2 lg:px-5 py-1 lg:py-2.5 text-center w-fit flex flex-row items-center justify-between gap-2 transition-all duration-100 ease-linear">
-                        Load More
-                    </button>
                 </div>
             </div>
         </section>
-        <!-- End Products section -->
+
+        <!-- Create admin form --->
+        <div id="createadmin-popup" class="hidden flex lg:justify-center items-center bg-secondary-500 w-screen h-screen fixed z-10 left-0 top-8 bg-opacity-[.85] transition-all duration-75 ease-linear overscroll-contain">
+            <div class="flex overflow-y-scroll overscroll-contain lg:overflow-y-auto flex-col gap-6 lg:gap-0 lg:justify-evenly w-screen h-full lg:max-w-xl lg:h-fit py-16 lg:py-6 p-5 bg-gray-100 rounded-md lg:border-2 border-gray-500 border-opacity-70 drop-shadow-xl">
+                <p class="text-3xl md:text-4xl font-heading font-bold text-secondary-500 opacity-80 tracking-md lg:px-5 mb-3">
+                    Create admin
+                </p>
+    
+                <form id="createadmin-form" class="lg:p-5 w-full h-fit space-y-8 md:space-y-10" autocomplete="on">
+                    <div class="form flex flex-col gap-12 items-center justify-between">
+                        <!-- form email -->
+                        <div class="relative w-full h-full flex flex-col gap-2">
+                            <input type="email" id="createadmin-email" required autocomplete="email" name="email" placeholder="Email" class="peer form-input transition-all duration-75 ease-linear w-full h-12 flex items-center p-1 px-3 text-opacity-80 text-secondary-500 rounded bg-gray-50 outline-0 ring-0 focus:ring-0 focus:outline-none border-2 border-tertiary-500 border-opacity-50 focus:border-primary-500 focus:border-opacity-95 autofill:bg-transparent placeholder-transparent">
+                            <label for="createadmin-email" class="peer-placeholder-shown:text-base font-base peer-placeholder-shown:opacity-60 text-secondary-400 pl-1 absolute -top-8 peer-placeholder-shown:top-2.5 peer-placeholder-shown:left-2 peer-focus:-top-8 peer-focus:left-0 peer-focus:text-lg peer-focus:opacity-85 transition-all duration-75 ease-linear">Email</label>
+                        </div>
+    
+                        <!-- form password -->
+                        <div class="relative w-full h-full flex flex-col gap-2">
+                            <input type="password" id="createadmin-password" required autocomplete="current-password" name="password" placeholder="Password" class="peer form-input transition-all duration-75 ease-linear w-full h-12 flex items-center p-1 px-3 text-opacity-80 text-secondary-500 rounded bg-gray-50 outline-0 ring-0 focus:ring-0 focus:outline-none border-2 border-tertiary-500 border-opacity-50 focus:border-primary-500 focus:border-opacity-95 autofill:bg-transparent placeholder-transparent">
+                            
+                            <!-- password visble button -->
+                            <div class="absolute right-[3%] w-[16%] md:w-1/12 h-full z-10">
+                                <button type="button" class="unhide-password flex justify-center items-center w-full h-full outline-none" data-for="createadmin-password">
+                                    <iconify-icon class="text-2xl text-secondary-500 text-opacity-60 hover:text-opacity-70 transition-all duration-75 ease-linear" icon="gridicons:visible"></iconify-icon>
+                                </button>
+                                <button type="button" class="hide-password flex justify-center items-center w-full h-full outline-none hidden" data-for="createadmin-password">
+                                    <iconify-icon class="text-2xl text-secondary-500 text-opacity-60 hover:text-opacity-70 transition-all duration-75 ease-linear" icon="gridicons:not-visible"></iconify-icon>
+                                </button>
+                            </div>
+
+                            <label for="createadmin-password" class="peer-placeholder-shown:text-base font-base peer-placeholder-shown:opacity-60 texsecondaryry-400 pl-1 absolute -top-8 peer-placeholder-shown:top-2.5 peer-placeholder-shown:left-2 peer-focus:-top-8 peer-focus:left-0 peer-focus:text-lg peer-focus:opacity-85 transition-all duration-75 ease-linear">Password</label>
+                        </div>
+    
+                    </div>
+                    
+                    <div class="flex md:justify-between justify-evenly flex-col md:flex-row gap-10 md:gap-0">
+                        <div class="flex flex-row gap-3 justify-between items-center">
+                            <!-- cancel btn -->
+                            <input id="createadmin-cancel" class="h-fit transition-all duration-75 ease-linear text-base lg:text-lg text-gray-50 bg-opacity-80 hover:opacity-95 bg-primary-500 p-[0.4rem] lg:p-1 px-7 lg:px-7 block rounded font-heading font-medium cursor-pointer" type="button" value="Cancel">
+    
+                            <!-- submit btn -->
+                            <input id="createadmin-submit" class="h-fit transition-all duration-75 ease-linear text-base lg:text-lg text-gray-50 bg-opacity-80 hover:opacity-95 bg-primary-500 p-[0.4rem] lg:p-1 px-7 lg:px-7 block rounded font-heading font-medium cursor-pointer" type="submit" value="Submit">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
 
         <!-- Start Footer section -->
-        <footer class="bg-secondary-500 bg-opacity-95 w-screen py-10">
+        <footer class="bg-secondary-500 bg-opacity-95 w-screen py-10 h-fit">
             <div class="container-xl flex flex-col items-center justify-around gap-5">
                 <!-- brand name -->
                 <svg class="text-primary-500 w-52 text-opacity-90" viewBox="0 0 68.342209 9.12994" version="1.1" id="svg1"
@@ -460,4 +522,8 @@
         </footer>
         <!-- End footer section -->
     </body>
+
 </html>
+
+
+

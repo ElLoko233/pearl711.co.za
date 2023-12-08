@@ -1,3 +1,4 @@
+// importing the navigation component
 import NavigationBarUI from "./custom/navbarui";
 import InventoryItemUI from "./inventorymanager/inventoryitemui";
 import InventoryManager from "./inventorymanager/inventorymanger";
@@ -6,8 +7,7 @@ import { db } from "./firebaseComp";
 import { limit } from "firebase/firestore";
 
 
-
-window.addEventListener("load", async () => {
+window.addEventListener("load", () => {
     // initializing the navigation component
     const navbar = new NavigationBarUI();
     navbar.initialize();
@@ -20,6 +20,7 @@ window.addEventListener("load", async () => {
     const METADATAID = 'metadata';
     const METADATACOLLECTIONREF = '/Inventory Manager/';
     
+    // creating an instance of the inventory manager
     const inventoryManager = new InventoryManager<InventoryItem, InventoryMetadata>( db, INVENTORYCOLLECTIONREF, METADATACOLLECTIONREF );
 
     // creating a container for all the inventory items
@@ -34,6 +35,12 @@ window.addEventListener("load", async () => {
     const searchForm : HTMLFormElement = document.getElementById('searchForm') as HTMLFormElement;
     // getting the search input
     const searchInput : HTMLInputElement = searchForm["search-product"] as HTMLInputElement;
+
+    // getting the filter button element
+    const filterButton : HTMLButtonElement = document.getElementById('filterButton') as HTMLButtonElement;
+
+    // getting the filter form element
+    const filterForm : HTMLFormElement = document.getElementById('filters') as HTMLFormElement;
 
     // getting the load more button
     const loadMoreButton : HTMLButtonElement = document.getElementById('loadMore') as HTMLButtonElement;
@@ -85,16 +92,13 @@ window.addEventListener("load", async () => {
         // getting the search value
         const searchValue = searchInput.value;
 
-        // querying the entire db
-        const inventoryItemsAll  = await inventoryManager.getCollectionData();
-
         // creating a list of the inventory items ui objects
-        const inventoryItemsAllUI : InventoryItemUI[] = inventoryItemsAll.map( (item) => new InventoryItemUI(item as InventoryItem) );
+        const inventoryItemsList : InventoryItemUI[] = ( await inventoryManager.getCollectionData() ).map( (item) => new InventoryItemUI(item as InventoryItem) );
 
         // filtering the inventory items
-        filteredInventoryItems = searchInventoryItems(inventoryItemsAllUI, searchValue);
+        filteredInventoryItems = searchInventoryItems(inventoryItemsList, searchValue);
 
-        if( searchValue === '' ){
+        if( searchValue === '' || searchValue === " " ){
             // loading the inventory items
             loadInventoryItems(inventoryItemsList);
         }else{
@@ -137,9 +141,77 @@ window.addEventListener("load", async () => {
             loadInventoryItems(inventoryItemsList);
         }, limit(dataLIMIT));
     })
+
+    // binding the click event on the filter button
+    filterButton.addEventListener("click", ( event ) => {
+        // diabling default
+        event.preventDefault();
+    
+        // checking if the search form is hidden
+        if( filterForm.classList.contains("hidden") ){
+            // removing the hidden class
+            filterForm.classList.remove("hidden");
+        }else{
+            // adding the hidden class
+            filterForm.classList.add("hidden");
+
+            // resetting the form
+            filterForm.reset();
+        }
+
+        // loading the inventory items
+        loadInventoryItems(inventoryItemsList);
+    });
+
+    //  binding the filter form submit
+    filterForm.addEventListener('submit', async (event) => {
+        // preving the defaul
+        event.preventDefault();
+
+        // getting the form inputs
+        const formInput: HTMLFormControlsCollection  = filterForm.elements;
+
+        //  creating container for the checked checkboxes
+        const checkedCheckboxes: Array<string> = [];
+
+        // looping through the form inputs
+        for (let index = 0; index < formInput.length; index++) {
+            // getting the current input
+            const input: HTMLInputElement = formInput[index] as HTMLInputElement;
+
+            // checking if the input is a checkbox
+            if( input.type === "checkbox" && input.checked ){
+                // pushing the checkbox value to the checkedCheckboxes array
+                checkedCheckboxes.push(input.value.toLowerCase().replace(" ", ''));
+            }
+        }
+
+        // creating a list of the inventory items ui objects
+        const inventoryItemsList : InventoryItemUI[] = ( await inventoryManager.getCollectionData() ).map( (item) => new InventoryItemUI(item as InventoryItem) );
+
+        // filtering the inventory items
+        const filteredInventoryItems = inventoryItemsList.filter( (inventoryItem) => {
+            // checking if the inventory item has the category
+            for( const category of checkedCheckboxes ){
+                if( inventoryItem.category.toLowerCase().replace(" ", "") === category ){
+                    return true;
+                }
+            }
+
+            return false;
+        });
+
+        if( checkedCheckboxes.length === 0 ){
+            // loading the inventory items
+            loadInventoryItems(inventoryItemsList);
+        }else{
+            // loading the inventory items
+            loadInventoryItems(filteredInventoryItems);
+        }
+    });
     
     // getting the inventory items
-    unsubscription = inventoryManager.listenToInventoryQueryData( (inventoryitems:InventoryItem[]) => { 
+    unsubscription = inventoryManager.listenToInventoryQueryData( (inventoryitems:InventoryItem[]) => {
         //  clearing the inventory items list
         inventoryItemsList = [] as InventoryItemUI[];
 
@@ -166,10 +238,6 @@ function loadInventoryItems( inventoryItems: InventoryItemUI[] ): void{
 
     // creating an inventory item ui
     for( const item of inventoryItems ){
-        if( item.inStock === false ){
-            continue;
-        }
-        
         inventoryItemsUI.appendChild(item.createInventoryItemElement());
     }
 }

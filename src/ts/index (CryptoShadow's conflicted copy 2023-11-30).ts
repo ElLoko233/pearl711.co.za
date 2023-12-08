@@ -94,7 +94,7 @@ window.addEventListener("load", async () => {
         // filtering the inventory items
         filteredInventoryItems = searchInventoryItems(inventoryItemsAllUI, searchValue);
 
-        if( searchValue === '' ){
+        if( searchValue === '' || searchValue === " " ){
             // loading the inventory items
             loadInventoryItems(inventoryItemsList);
         }else{
@@ -166,10 +166,6 @@ function loadInventoryItems( inventoryItems: InventoryItemUI[] ): void{
 
     // creating an inventory item ui
     for( const item of inventoryItems ){
-        if( item.inStock === false ){
-            continue;
-        }
-        
         inventoryItemsUI.appendChild(item.createInventoryItemElement());
     }
 }

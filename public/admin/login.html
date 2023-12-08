@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Declare the document type and set the language to English. -->
+    <meta charset="UTF-8">
+
+    <!-- Set the viewport for responsive design. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Provide a brief description of your business for search engines. -->
+    <meta name="description" content="Pearl711 delivers comprehensive services, from car washing to pet care products and beverages. Expanding its offerings, the business features a customer-friendly environment with free Wi-Fi. Convenient card payments are accepted, showcasing an ambitious management team committed to excellence.">
+
+    <!-- Define the type of content of the webpage. -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Define keywords related to your business for SEO purposes. -->
+    <meta name="keywords" content="refreshments, beverages, car, wash, food, dogs, wifi, medicine, Dog-friendly, Car wash service ,Dog-friendly, Free Wi-Fi, Medicinal products">
+
+    <!-- Specify the author of the webpage. -->
+    <meta name="author" content="Lelethu">
+
+    <!-- importing the page css -->
+    <link rel="stylesheet" href="../css/tailwind/styles.css">
+
+    <!-- importing the js -->
+    <script defer type="module" src="../js/bundle-adminlogin.js"></script>
+
+    <!-- setting the theme bar color -->
+    <meta name="theme-color" content="#191919">
+
+    <!-- importing tab icon -->
+    <link rel="icon" href="../assets/pearl771_shape.svg">
+
+    <!-- importing the iconfiy web compoinet -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <!-- Set the title of the webpage. -->
+    <title>Pearl711|Admin Login</title>
+</head>
+
+    <body class="bg-gray-100">
+
+        <!-- content area -->
+        <main class="w-full h-[70vh] lg:h-screen flex items-center">
+            <!-- Skeleton Login form -->
+            <div id="login-popup-skeleton" class="mx-auto flex gap-10 overflow-y-scroll overscroll-contain lg:overflow-y-auto flex-col lg:justify-evenly w-screen h-full lg:max-w-xl lg:h-fit py-16 lg:py-6 p-5">
+                <!-- skeleton title -->
+                <div class="w-56 h-14 bg-gray-600 bg-opacity-10 animate-pulse rounded-md">
+                </div>
+    
+                <div class="flex flex-col gap-6">
+                    <div class="flex flex-col gap-6">
+                        <!-- skeleton form elements -->
+                        <div class="w-full h-12 bg-gray-600 bg-opacity-10 animate-pulse rounded-md">
+                        </div>
+                        
+                        <!-- skeleton form elements -->
+                        <div class="w-full h-12 bg-gray-600 bg-opacity-10 animate-pulse rounded-md">
+                        </div>    
+                    </div>
+                    
+                    <div class="flex flex-row gap-3 items-center">
+                        <!-- skeleton btn -->
+                        <div class="w-36 h-12 bg-gray-600 bg-opacity-10 animate-pulse rounded-md" ></div>
+
+                        <!-- skeleton btn -->
+                        <div class="w-36 h-12 bg-gray-600 bg-opacity-10 animate-pulse rounded-md" ></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Login form --->
+            <div id="login-popup" class="hidden mx-auto flex overflow-y-scroll overscroll-contain lg:overflow-y-auto flex-col gap-6 lg:gap-0 lg:justify-evenly w-screen h-full lg:max-w-xl lg:h-fit py-16 lg:py-6 p-5">
+                <p class="text-3xl md:text-4xl font-heading font-bold text-secondary-500 opacity-80 tracking-md lg:px-5 mb-5">
+                    Login as Admin
+                </p>
+    
+                <form id="login-form" action="" class="lg:p-5 w-full h-fit space-y-8 md:space-y-10" autocomplete="on">
+                    <div class="form flex flex-col gap-12 items-center justify-between">
+                        <!-- form email -->
+                        <div class="relative w-full h-full flex flex-col gap-2">
+                            <input type="email" id="login-email" required autocomplete="email" name="email" placeholder="Email" class="form-input peer transition-all duration-75 ease-linear form- w-full h-12 flex items-center p-1 px-3 text-opacity-80 text-secondary-500 rounded bg-gray-50 outline-0 ring-0 focus:ring-0 focus:outline-none border-2 border-gray-200 border-opacity-70 focus:border-gray-300 focus:border-opacity-95 autofill:bg-transparent placeholder-transparent">
+                            <label for="login-email" class="peer-placeholder-shown:text-base peer-active:peer-placeholder-shown:text-opacity-70 font-medium peer-placeholder-shown:opacity-60 text-opacity-80 text-secondary-500 pl-1 absolute -top-8 peer-placeholder-shown:top-2.5 peer-placeholder-shown:left-2 peer-focus:-top-8 peer-focus:left-0 peer-focus:text-lg peer-focus:opacity-85 transition-all duration-75 ease-linear">Email</label>
+                        </div>
+    
+                        <!-- form password -->
+                        <div class="relative w-full h-full flex flex-col gap-2">
+                            <input type="password" id="login-password" required autocomplete="current-password" name="password" placeholder="Password" class="form-input peer transition-all duration-75 ease-linear form- w-full h-12 flex items-center p-1 px-3 text-opacity-80 text-secondary-500 rounded bg-gray-50 outline-0 ring-0 focus:ring-0 focus:outline-none border-2 border-gray-200 border-opacity-70 focus:border-gray-300 focus:border-opacity-95 autofill:bg-transparent placeholder-transparent">
+                            
+                            <!-- password visble button -->
+                            <div class="absolute right-[3%] w-[16%] md:w-1/12 h-full z-10">
+                                <button type="button" id="unhide-password" class="flex justify-center items-center w-full h-full outline-none" data-for="login-password">
+                                    <iconify-icon class="text-2xl text-secondary-500 text-opacity-60 hover:text-opacity-70 transition-all duration-75 ease-linear" icon="gridicons:visible"></iconify-icon>
+                                </button>
+                                <button type="button" id="hide-password" class="flex justify-center items-center w-full h-full outline-none hidden" data-for="login-password">
+                                    <iconify-icon class="text-2xl text-secondary-500 text-opacity-60 hover:text-opacity-70 transition-all duration-75 ease-linear" icon="gridicons:not-visible"></iconify-icon>
+                                </button>
+                            </div>
+
+                            <label for="login-password" class="peer-placeholder-shown:text-base font-medium peer-placeholder-shown:opacity-60 text-opacity-90 text-secondary-500 pl-1 absolute -top-8 peer-placeholder-shown:top-2.5 peer-placeholder-shown:left-2 peer-focus:-top-8 peer-focus:left-0 peer-focus:text-lg peer-focus:opacity-85 transition-all duration-75 ease-linear">Password</label>
+                        </div>
+    
+                    </div>
+                    
+                    <div class="flex md:justify-between justify-evenly flex-col md:flex-row gap-10 md:gap-0">    
+                        <div class="flex flex-row gap-3 justify-between items-center">
+                            <!-- Home btn -->
+                            <input id="login-cancel" class="h-fit transition-all duration-75 ease-linear text-base lg:text-lg text-gray-50 opacity-80 hover:opacity-95 bg-primary-500 p-[0.4rem] lg:p-1 px-7 lg:px-7 block rounded font-body font-medium cursor-pointer" type="button" value="Cancel">
+    
+                            <!-- submit btn -->
+                            <input id="login-submit" class="h-fit transition-all duration-75 ease-linear text-base lg:text-lg text-gray-50 opacity-80 hover:opacity-95 bg-primary-500 p-[0.4rem] lg:p-1 px-7 lg:px-7 block rounded font-body font-medium cursor-pointer" type="submit" value="Submit">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </body>
+
+</html>
+
+
+
