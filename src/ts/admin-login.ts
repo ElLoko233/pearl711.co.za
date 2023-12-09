@@ -34,6 +34,7 @@ window.addEventListener( 'load', event => {
 
     // getting the unhide login button
     const unhideLoginPasswordButton : HTMLButtonElement = document.getElementById( 'unhide-password' ) as HTMLButtonElement;
+
     
     // binding the close login button to a click event
     cancelLoginButton.addEventListener( 'click', event => {
@@ -105,8 +106,6 @@ window.addEventListener( 'load', event => {
     // determining what to do after the user has submited valid credentials
     onAuthStateChanged( auth, async user => {
         if( user ){
-            signOut(auth);
-
             // displaying the login popup skeleton
             loginPageSkeleton.classList.add( 'hidden' );
                 

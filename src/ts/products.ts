@@ -4,7 +4,7 @@ import InventoryItemUI from "./inventorymanager/inventoryitemui";
 import InventoryManager from "./inventorymanager/inventorymanger";
 import { InventoryItem, InventoryMetadata } from "./inventorymanager/types/inventorytype";
 import { db } from "./firebaseComp";
-import { limit } from "firebase/firestore";
+import { limit, where } from "firebase/firestore";
 
 
 window.addEventListener("load", () => {
@@ -226,7 +226,7 @@ window.addEventListener("load", () => {
 
         // loading the inventory items
         loadInventoryItems(inventoryItemsList);
-    }, limit(dataLIMIT));
+    }, limit(dataLIMIT), where('inStock', '==', true));
 });
 
 // creating a function that will load the inventory items
@@ -238,10 +238,6 @@ function loadInventoryItems( inventoryItems: InventoryItemUI[] ): void{
 
     // creating an inventory item ui
     for( const item of inventoryItems ){
-        if( item.inStock === false ){
-            continue;
-        }
-        
         inventoryItemsUI.appendChild(item.createInventoryItemElement());
     }
 }

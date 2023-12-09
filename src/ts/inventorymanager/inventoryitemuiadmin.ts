@@ -78,7 +78,7 @@ export default class InventoryItemUIAdmin extends InventoryItemUI {
         const element = document.createElement('div');
 
         // assing the div an id of the object
-        element.id = this.id;
+        element.id = this.id + "item";
 
         // add the html string to the element
         element.innerHTML = inventoryItemHTML;
@@ -120,16 +120,11 @@ export default class InventoryItemUIAdmin extends InventoryItemUI {
             readmoreBtn.classList.add('productItem-readmore-admin-disabled');
         }
         
-        // diasbaling the the input and label if the stock is false
-        if (this.inStock == false) {
-            checkbox.disabled = true;
-        }
-        
         // setting the input to the items id
-        input.id = this.id + "item";
+        input.id = this.id;
 
         // setting the label to the items id
-        label.htmlFor = this.id + "item";
+        label.htmlFor = this.id;
 
 
 

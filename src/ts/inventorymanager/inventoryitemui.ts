@@ -500,14 +500,13 @@ export default class InventoryItemUI {
     private __flipInventoryItemElement(): void {
 
         // getting the div element
-        const inventoryItemUIContainer: HTMLDivElement = document.getElementById(this.id) as HTMLDivElement;
+        const inventoryItemUIContainer: HTMLDivElement = document.getElementById(this.id + "item") as HTMLDivElement;
 
         // getting the front page
         const frontPage: HTMLDivElement = inventoryItemUIContainer.querySelector('#front') as HTMLDivElement;
 
         // getting the back page
-        const backPage: HTMLDivElement = inventoryItemUIContainer.querySelector('#back') as HTMLDivElement;
-        
+        const backPage: HTMLDivElement = inventoryItemUIContainer.querySelector('#back') as HTMLDivElement;        
         
         // flipiing the page
         if (frontPage.classList.contains('productItem-front-hidden')) {

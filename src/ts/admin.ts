@@ -4,7 +4,7 @@ import {
     db
 }from "./firebaseComp";
 
-import{ onAuthStateChanged } from "firebase/auth";
+import{ onAuthStateChanged, createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 
 //  getting the nav bar class
 import NavigationBarUI from "./custom/navbarui";
@@ -16,10 +16,12 @@ import {
 import InventoryItemUIAdmin from "./inventorymanager/inventoryitemuiadmin";
 import InventoryManager from "./inventorymanager/inventorymanger";
 import { InventoryItem, InventoryMetadata } from "./inventorymanager/types/inventorytype";
+import { FirebaseError } from "firebase/app";
 
 
 
 window.addEventListener( 'DOMContentLoaded', async event => {
+    
     // creating an instance of the navigation bar
     const navbarui = new NavigationBarUI(  );
 
@@ -31,6 +33,14 @@ window.addEventListener( 'DOMContentLoaded', async event => {
     
     // initalizing the navigation bar
     navbarui.initialize( );
+
+    (navbarui.getLogOutButton() as HTMLButtonElement).addEventListener( 'click', async event => {
+        // preventing default
+        event.preventDefault();
+
+        // signing out the user
+        await auth.signOut();
+    });
 
     const INVENTORYCOLLECTIONREF = '/Inventory Manager/inventory/inventory';
     const INVENTORYMANAGERREF = '/Inventory Manager';
@@ -58,10 +68,31 @@ window.addEventListener( 'DOMContentLoaded', async event => {
     const inventoryItemsForm = document.getElementById( "productItems" ) as HTMLFormElement;
 
     // getting the remove item button
-    const rmvItemButton = document.getElementById( "rmv-item-sessions" ) as HTMLButtonElement;
+    const rmvItemButton = document.getElementById( "rmv-item" ) as HTMLButtonElement;
 
     // getting the create ew item button
     const createItemButton = document.getElementById( "create-new-item-button" ) as HTMLButtonElement;
+
+    // bindin the rmv item button to a click event
+    rmvItemButton.addEventListener( 'click', async event => {
+        // preventing default
+        event.preventDefault();
+
+        // creating a container for the inventory items to be removed
+        const inventoryItemsToBeRemoved: InventoryItemUIAdmin[] = [];
+
+        // getting the form inventory items
+        const checkedBoxes = inventoryItemsForm.querySelectorAll( 'input[type="checkbox"]:checked' ) as NodeListOf<HTMLInputElement>;
+
+        // getting the inventory items that are to be removed
+        for( const checkbox of checkedBoxes ){
+            // getting the inventory item id
+            const inventoryItemId = checkbox.id;
+
+            // removing the selected the inventory item from the list
+            await inventoryManager.deleteInventoryItem( inventoryItemId )
+        }
+    });
 
     // binding the change event to the form
     inventoryItemsForm.addEventListener( 'change', event => {
@@ -184,105 +215,180 @@ window.addEventListener( 'DOMContentLoaded', async event => {
     // subscribing to user changes
     onAuthStateChanged( auth, async user => {
 
-        console.log('user :>> ', user);
+        if( user ){
+            // getting the users custom claims
+            const idTokenResult = await user.getIdTokenResult();
 
-        // if( user ){
-        //     // checking if the user is an admin
-        //     if( !admin.claims.admin ){
-        //         // redirecting the user to the main page
-        //         if( isLocalhost ){
-        //             window.location.href = "/Public";
-        //         }else{
-        //             window.location.href = '/';
-        //         }
-        //     }
+            // checking if the user is an admin
+            if( !user.emailVerified ){
+                // redirecting the user to the main page
+                window.location.href = "/";
+            }
 
-        //     // binding the logout button to click event
-        //     navbarui.getLogOutButton().addEventListener( 'click', async event => {
-        //         await admin.logOut(  );
+            // getting the createAdminButton element
+            const createAdminButton = document.getElementById('popup-createadmin') as HTMLButtonElement;
 
-        //         navbarui.closeNavigation();
+            // getting the createadmin popup form
+            const createAdminPopup = document.getElementById('createadmin-popup') as HTMLElement;
 
-        //         // creating a success message instance
-        //         const message = new TrainerAppMessageUI( new TrainerAppMessage( "info", "Logged out Successfully", 0 ) );
+            // getting the create admin popoup cancel button
+            const createAdminPopupCancelButton = document.getElementById('createadmin-cancel') as HTMLButtonElement;
 
-        //         // saving the message instance
-        //         admin.activeMessage = message;
+            // getting the create admin form
+            const createAdminForm = document.getElementById('createadmin-form') as HTMLFormElement;
 
-        //         // display the message using toast
-        //         message.showMessagewithToast( 1750, "top" );
-        //     });
+            // geting the create admin submit
+            const createAdminSubmit = document.getElementById('createadmin-submit') as HTMLButtonElement;
 
-        //     // binding the login button click event'
-        //     navbarui.getCreateAdminButton().addEventListener( 'click', event => {
-        //         admin.openCreateAdminPopup( mainDisplay );
+            // getting the hide createadmin password button
+            const hideCreateAdminPasswordButton = document.querySelector('.hide-password') as HTMLButtonElement;
+            hideCreateAdminPasswordButton.addEventListener( 'click', event => {
+                // preventing default
+                event.preventDefault();
 
-        //         navbarui.closeNavigation();
-        //     });
+                // getting the create admin password field
+                const createAdminPasswordField = document.getElementById('createadmin-password') as HTMLInputElement;
 
-        //     // binding the createadmin form button to submit event
-        //     admin.getCreateAdminButton().addEventListener( 'click', async event => {
-        //         // adding a loading screen to the login popup
-        //         admin.placeLoadingOverlay( admin.getCreateAdminForm(), true );
+                // changing the input type
+                createAdminPasswordField.setAttribute( 'type', 'password' );
+
+                // hiding the hide password button
+                hideCreateAdminPasswordButton.classList.add( 'hidden' );
+
+                // unhiding the unhide password button
+                unhideCreateAdminPasswordButton.classList.remove( 'hidden' );
+            });
+
+            // getting the create admin password unhide button
+            const unhideCreateAdminPasswordButton = document.querySelector('.unhide-password') as HTMLButtonElement;
+            unhideCreateAdminPasswordButton.addEventListener( 'click', event => {
+                // preventing default
+                event.preventDefault();
+
+                // getting the create admin password field
+                const createAdminPasswordField = document.getElementById('createadmin-password') as HTMLInputElement;
+
+                // changing the input type
+                createAdminPasswordField.setAttribute( 'type', 'text' );
+
+                // hiding the unhide password button
+                unhideCreateAdminPasswordButton.classList.add( 'hidden' );
+
+                // unhiding the hide password button
+                hideCreateAdminPasswordButton.classList.remove( 'hidden' );
+            });
+
+            // binding the submit button
+            createAdminSubmit.addEventListener( 'click', async event => {
+                // preventing default
+                event.preventDefault();
+
+                // creating the new admin
+                createAdmin();
+            });
+
+            // binding the createadmin form to close when a click event is received outside of the form
+            createAdminPopup.addEventListener( 'click', event => {
+                // preventing the default
+                event.preventDefault();
+
+                // checking if whether the click is outside or inside the form
+                if( event.target === createAdminPopup ){
+                    // closing the createadmin popup
+                    createAdminPopup.classList.add('hidden');
+                }
+            });
+
+            // // binding the unhide createadmin password button to a click event
+            // this.getUnhideCreateAdminPasswordButton(  ).addEventListener( 'click', (event) => {
+            //     // preventing the default bahaviour
+            //     event.preventDefault();
+
+            //     // getting a refernce to the createadmin password field
+            //     const createadminpassword = document.getElementById( this.getUnhideCreateAdminPasswordButton().getAttribute('data-for') );
+
+            //     // changing the input type of the passwaord field
+            //     createadminpassword.setAttribute( "type", "text" );
+
+            //     // hidding the unhide createadminpassowrd button
+            //     this.getUnhideCreateAdminPasswordButton().classList.add( "hidden" );
+
+            //     // unhidding the hide createadmin password button
+            //     this.getHideCreateAdminPasswordButton().classList.remove( "hidden" );
+            // })
+
+            // // binding the hide createadmin password button to a click event
+            // this.getHideCreateAdminPasswordButton(  ).addEventListener( 'click', (event) => {
+            //     // preventing the default bahaviour
+            //     event.preventDefault();
+
+            //     // getting a refernce to the createadmin password field
+            //     const createadminpassword = document.getElementById( this.getUnhideCreateAdminPasswordButton().getAttribute('data-for') );
+
+            //     // changing the input type of the passwaord field
+            //     createadminpassword.setAttribute( "type", "password" );
+
+            //     // unhidding the unhide createadminpassowrd button
+            //     this.getUnhideCreateAdminPasswordButton().classList.remove( "hidden" );
+
+            //     // hidding the hide createadmin password button
+            //     this.getHideCreateAdminPasswordButton().classList.add( "hidden" );
+            // })
+
+            // binding the createadmin form button to submit event
+            createAdminForm.addEventListener( 'submit', async event => {        
+                // preventing the default behaviour
+                event.preventDefault();
+
+                // create admin document
+                createAdmin();
+            });
+
+            // binding the click event to the create admin popup cancel button
+            createAdminPopupCancelButton.addEventListener( 'click', event => {
+                // preventing default
+                event.preventDefault();
+
+                // closing the create admin popup
+                createAdminPopup.classList.add('hidden');
+            });
+
+            // binding the button click event'
+            createAdminButton.addEventListener( 'click', event => {
+                // preventing default
+                event.preventDefault();
+
+                // clsoing the naviagtion bar
+                navbarui.closeNavigation();
+
+                // opening the create admin popup
+                createAdminPopup.classList.remove('hidden');
+            });
+
+            // // binding the createadmin form button to submit event
+            // admin.getCreateAdminButton().addEventListener( 'click', async event => {                
+            //     // preventing the default behaviour
+            //     event.preventDefault();
                 
-        //         // preventing the default behaviour
-        //         event.preventDefault();
+            //     // getting the login data
+            //     const AdminData = admin.getCreateAdminFormData();
                 
-        //         try{
-        //             // getting the login data
-        //             const AdminData = admin.getCreateAdminFormData();
-                    
-        //             // requesting the user to be createadmin
-        //             await admin.createAdmin( AdminData );
-                    
-        //             // resseting the form
-        //             admin.getCreateAdminForm().reset();
+            //     // requesting the user to be createadmin
+            //     await admin.createAdmin( AdminData );
+                
+            //     // resseting the form
+            //     admin.getCreateAdminForm().reset();
 
-        //             // closing the createadmin popup
-        //             admin.closeCreateAdminPopup();
-
-        //             // removing the loading screen to the createasmin popup
-        //             admin.placeLoadingOverlay( admin.getCreateAdminForm(), false );
-
-        //             // creating a success message instance
-        //             const message = new TrainerAppMessageUI( new TrainerAppMessage( "info", `Verifcation Email sent to: ${AdminData.email}`, 1 ) );
-
-        //             // saving the message instance
-        //             admin.activeMessage = message;
-
-        //             // display the message using toast
-        //             message.showMessagewithToast( 1750, "top" );
-
-        //         }catch( error ){
-        //             // creating new message instance
-        //             const message = new TrainerAppMessageUI( error );
-
-        //             // storiung the message instance
-        //             admin.activeMessage = message;
-
-        //             // storiung the message instance
-        //             admin.activeMessage = message;
-
-        //             // display the message using toast
-        //             message.showMessagewithToast( 3000 );
-
-        //             // removing the loading screen to the createadmin popup
-        //             admin.placeLoadingOverlay( admin.getCreateAdminForm(), false );
-        //         }
-        //     });
-
-        //     // save object into json file
-        //     let metadata = await admin.setSessionManagerMetadata();
-        //     let data = metadata
-        //     console.log('data :>> ', data);
-
-            
-        // }else{
+            //     // closing the createadmin popup
+            //     admin.closeCreateAdminPopup();
+            // });   
+        }
+        else{
       
-        //     // redirecting user to the admin login page
-        //     window.location.href = "login.html";
-        // }
-    } );
+            // redirecting user to the admin login page
+            window.location.href = "login.html";
+        }
+    });
 
     // getting the inventory items
     unsubscription = inventoryManager.listenToInventoryQueryData( (inventoryitems:InventoryItem[]) => {
@@ -304,10 +410,10 @@ window.addEventListener( 'DOMContentLoaded', async event => {
 
     // helper functions
     function  __muteRmvItemButton(): void{
-    
+
         // getting the form inventory items
         const checkedBoxes = inventoryItemsForm.querySelectorAll( 'input[type="checkbox"]:checked' ) as NodeListOf<HTMLInputElement>;
-    
+
         // enabling the remove item button if options are selected
         if( checkedBoxes.length > 0 ){
             rmvItemButton.disabled = false;
@@ -385,4 +491,76 @@ window.addEventListener( 'DOMContentLoaded', async event => {
         
         return filteredInventoryItems;
     }
-});
+
+    // creating a function that will create an admin
+    async function createAdmin(){
+        // getting the create admin form
+        const createAdminForm = document.getElementById('createadmin-form') as HTMLFormElement;
+        
+        // getting the createadmin popup form
+        const createAdminPopup = document.getElementById('createadmin-popup') as HTMLElement;
+
+        // getting the email
+        const email = createAdminForm['email'].value;
+
+        // checking if the email is valid
+        if( !email.includes('@') ){
+            // showing the email error
+            createAdminForm['email'].classList.add('border-red-500');
+            createAdminForm['email'].classList.remove('border-primary-500');
+
+            // returning out of the function
+            return;
+        }
+
+        // getting the password
+        const password = createAdminForm['password'].value;
+
+        // checking if the password is valid
+        if( password.toLowerCase().replace(" ", "") === '' ){
+            // showing the password error
+            createAdminForm['password'].classList.add('border-red-500');
+            createAdminForm['password'].classList.remove('border-primary-500');
+
+            // returning out of the function
+            return;
+        }
+
+        // creating the user
+        try{
+            const userCred = await createUserWithEmailAndPassword( auth, email, password );
+
+        }catch( error  ){
+            // getting the error code
+            const errorCode = ( error as FirebaseError ).code;
+
+            // checking if the error code is auth/email-already-in-use
+            if (errorCode === 'auth/email-already-in-use') {
+                // showing the email error
+                createAdminForm['email'].classList.add('border-red-500');
+                createAdminForm['email'].classList.remove('border-primary-500');
+            }
+
+            // checking if the error code is auth/invalid-email
+            if (errorCode === 'auth/invalid-email') {
+                // showing the email error
+                createAdminForm['email'].classList.add('border-red-500');
+                createAdminForm['email'].classList.remove('border-primary-500');
+            }
+
+            // checking if the error code is auth/weak-password
+            if( errorCode === 'auth/weak-password' ){
+                // showing the password error
+                createAdminForm['password'].classList.add('border-red-500');
+                createAdminForm['password'].classList.remove('border-primary-500');
+            }
+
+            // returning out of the function
+            return;
+        }
+
+        // closing the createadmin popup
+        createAdminPopup.classList.add('hidden');
+    };
+
+});    
