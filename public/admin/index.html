@@ -36,6 +36,10 @@
         <!-- importing the iconfiy web compoinet -->
         <script defer src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
+        <!-- Include image-compressor.js from CDN -->
+        <script defer src="https://unpkg.com/image-compressor.js/dist/image-compressor.min.js"></script>
+  
+
         <!-- Set the title of the webpage. -->
         <title>Pearl711|Administator</title>
     </head>
@@ -282,12 +286,12 @@
                                 <div class="filterGroup">
                                     <!-- category filter -->
                                     <div class="filterType">
-                                        <div  class="filter-type">
+                                        <h6 class="heading">
+                                            Category
+                                        </h6>
+
+                                        <div id="category-filter-list" class="filter-type">
                                             <!-- filter type header -->
-                                            <h6 class="heading">
-                                                Category
-                                            </h6>
-                
                                             <div class="filterItem">
                                                 <input id="petshop" data-filter="category" type="checkbox" value="petshop"
                                                 class="filterCheckBox"/>
@@ -373,6 +377,208 @@
                 </div>
             </div>
         </section>
+
+        <!-- Create new item form --->
+        <div id="createitem-popup" class="hidden flex lg:justify-center items-center bg-secondary-500 w-screen h-screen fixed z-10 left-0 top-8 bg-opacity-[.85] transition-all duration-75 ease-linear">
+            <div id="createitem-container" class="flex flex-col gap-6 lg:gap-0 lg:justify-evenly w-screen h-full lg:max-w-4xl lg:max-h-[64vh] py-16 lg:py-8 p-5 bg-gray-100 rounded-md border-opacity-70 drop-shadow-xl">
+                <p class="text-3xl font-heading font-bold text-secondary-500 opacity-80 tracking-md lg:px-5 mb-3">
+                    New Inventory Item
+                </p>
+    
+                <form id="createitem-form" class="lg:p-5 w-full h-[70vh] lg:h-full gap-5 flex flex-col md:flex-row items-start" autocomplete="on">
+                    <!-- image upload section -->
+                    <div class="flex flex-col gap-5 items-center justify-center w-full h-fit md:h-full">
+
+                        <!-- error message -->
+                        <p id="createitem-image-error" class="hidden text-xs lg:text-sm font-body font-semibold text-negative text-opacity-80 tracking-md">
+                            Please upload an image
+                        </p>
+
+                        <!-- image preview -->
+                        <img src="" id="createitem-image-preview" class=" sm:w-80 h-32 md:h-full bg-gray-500 bg-opacity-10 rounded-md flex items-center justify-center">
+                            <p class="absolute text-lg lg:text-2xl font-body font-semibold text-secondary-500 opacity-50 tracking-md">
+                                Image preview
+                            </p>
+                        </img>
+
+                        <!-- image upload -->
+                        <div class="w-full h-fit flex flex-col gap-2 items-center justify-center">
+                            <input type="file" id="createitem-image" required name="image" class="hidden">
+                            <label for="createitem-image" class="w-full font-body bg-tertiary-500 hover:bg-opacity-70 rounded-md p-2 px-10 text-center text-gray-50 text-xs lg:text-lg font-semibold text-opacity-80 transition-all duration-100 ease-linear">Upload Image</label>
+                        </div>
+                    </div>
+
+                    <!-- parameter setting section -->
+                    <div class="flex flex-col gap-5 items-center justify-between w-full h-full">
+                        <div class="w-full h-[28vh] md:h-full flex flex-col items-center justify-normal overflow-y-auto overscroll-contain gap-5 py-5 px-1">
+                            <!-- form name -->
+                            <div class="w-full h-fit flex flex-col gap-2">
+                                <label for="createitem-name" class="text-sm lg:text-base font-base text-gray-500 font-body">Name</label>
+                                <input type="text" id="createitem-name" required autocomplete="name" name="names" placeholder="eg. Montego classic large puppy food" class="form-input transition-all duration-75 ease-linear w-full h-12 flex items-center p-1 px-3 text-opacity-80 text-secondary-500 rounded bg-gray-50 outline-0 ring-0 focus:ring-0 focus:outline-none border-opacity-50 focus:border-primary-500 focus:border-opacity-95 autofill:bg-transparent text-sm lg:text-base">
+                            </div>
+
+                            <!-- form description -->
+                            <div class="w-full h-fit flex flex-col gap-2">
+                                <label for="createitem-description" class="text-sm lg:text-base font-base text-gray-500 font-body">Description</label>
+                                <textarea id="createitem-description" required autocomplete="description" name="description" placeholder="eg. Monetego classic Large puppy food is a premium formula designed to provide..." class="peer form-input transition-all duration-75 ease-linear w-full h-24 flex items-center p-1 px-3 text-opacity-80 text-secondary-500 rounded bg-gray-50 outline-0 ring-0 focus:ring-0 focus:outline-none border-opacity-50 focus:border-primary-500 focus:border-opacity-95 autofill:bg-transparent text-sm lg:text-base"></textarea>
+                            </div>
+
+                            <!-- form price -->
+                            <div class="w-full h-fit flex flex-col gap-2">
+                                <label for="createitem-price" class="text-sm lg:text-base font-base text-gray-500 font-body">Price (R)</label>
+                                <input type="number" id="createitem-price" required autocomplete="price" name="price" placeholder="eg. 200" inputmode="numeric" class="form-input transition-all duration-75 ease-linear w-full h-12 flex items-center p-1 px-3 text-opacity-80 text-secondary-500 rounded bg-gray-50 outline-0 ring-0 focus:ring-0 focus:outline-none border-opacity-50 focus:border-primary-500 focus:border-opacity-95 autofill:bg-transparent text-sm lg:text-base">
+                            </div>
+
+                            <!-- form inStock -->
+                            <div class="w-full h-fit flex flex-col gap-2">
+                                <label class="text-sm lg:text-base font-base text-gray-500 font-body">In Stock</label>
+                                <!-- creating 2 radio inputs for true or false -->
+                                <div class="flex flex-row gap-2 items-center justify-start">
+                                    <input type="radio" id="createitem-inStock-true" required name="inStock" value="true" class="form-radio transition-all duration-75 ease-linear w-4 h-4 flex items-center p-1 px-3 text-opacity-80 text-secondary-500 rounded bg-gray-50 outline-0 ring-0 focus:ring-0 focus:outline-none border-2 border-tertiary-500 border-opacity-50 focus:border-primary-500 focus:border-opacity-95 autofill:bg-transparent text-sm lg:text-base">
+                                    <label for="createitem-inStock-true" class="text-sm lg:text-base font-base text-gray-500 font-body">Yes</label>
+                                    
+                                    <input type="radio" id="createitem-inStock-false" required name="inStock" value="false" class="form-radio transition-all duration-75 ease-linear w-4 h-4 flex items-center p-1 px-3 text-opacity-80 text-secondary-500 rounded bg-gray-50 outline-0 ring-0 focus:ring-0 focus:outline-none border-2 border-tertiary-500 border-opacity-50 focus:border-primary-500 focus:border-opacity-95 autofill:bg-transparent text-sm lg:text-base">
+                                    <label for="createitem-inStock-false" class="text-sm lg:text-base font-base text-gray-500 font-body">No</label>
+                                </div>
+                            </div>
+
+                            <!-- form size -->
+                            <div class="w-full h-fit flex flex-col gap-2">
+                                <label for="createitem-size" class="text-sm lg:text-base font-base text-gray-500 font-body">Size</label>
+                                <input type="text" id="createitem-size" required autocomplete="size" name="size" placeholder="eg. 5kg" class="form-input transition-all duration-75 ease-linear w-full h-12 flex items-center p-1 px-3 text-opacity-80 text-secondary-500 rounded bg-gray-50 outline-0 ring-0 focus:ring-0 focus:outline-none border-opacity-50 focus:border-primary-500 focus:border-opacity-95 autofill:bg-transparent text-sm lg:text-base">
+                            </div>
+
+                            <!-- form tags -->
+                            <div class="w-full h-fit flex flex-col gap-2">
+                                <label for="createitem-tags" class="text-sm lg:text-base font-base text-gray-500 font-body">Tags</label>
+                                <input type="text" id="createitem-tags" required autocomplete="tags"  name="tags" placeholder="eg. adult, puppy, food, dry food" class="form-input transition-all duration-75 ease-linear w-full h-12 flex items-center p-1 px-3 text-opacity-80 text-secondary-500 rounded bg-gray-50 outline-0 ring-0 focus:ring-0 focus:outline-none border-opacity-50 focus:border-primary-500 focus:border-opacity-95 autofill:bg-transparent text-sm lg:text-base">
+                            </div>
+
+                            <!-- form category -->
+                            <div class="w-full h-fit flex flex-col gap-2">
+                                <label for="createitem-category" class="text-sm lg:text-base font-base text-gray-500 font-body">Category</label>
+                                <input list="categories-list" id="createitem-category" required autocomplete="category" name="category" placeholder="eg. petshop, beverages, restaurant" class="form-input transition-all duration-75 ease-linear w-full h-12 flex items-center p-1 px-3 text-opacity-80 text-secondary-500 rounded bg-gray-50 outline-0 ring-0 focus:ring-0 focus:outline-none border-opacity-50 focus:border-primary-500 focus:border-opacity-95 autofill:bg-transparent text-sm lg:text-base">
+                                <datalist id="categories-list">
+                                </datalist>
+                            </div>
+                        </div>
+
+                        <!-- button group for submit and cancle -->
+                        <div class="flex flex-row gap-5 w-full items-center justify-end">
+                            <!-- cancel btn -->
+                            <input id="createitem-cancel" class="h-fit transition-all duration-75 ease-linear text-base lg:text-lg text-primary-500 hover:text-gray-50 p-[0.4rem] lg:p-1 px-7 lg:px-7 block rounded font-body font-medium cursor-pointer ring-2 ring-primary-500 hover:bg-primary-500" type="button" value="Cancel">
+
+                            <!-- submit btn -->
+                            <input id="createitem-submit" class="h-fit transition-all duration-75 ease-linear text-base lg:text-lg text-gray-50  bg-opacity-80 hover:bg-opacity-95 disabled:hover:bg-opacity-100 bg-primary-500 disabled:bg-gray-600 p-[0.4rem] lg:p-1 px-7 lg:px-7 block rounded font-body font-medium cursor-pointer" type="submit" value="Submit">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        
+
+        <!-- Create edit item form --->
+        <div id="edititem-popup" class="flex lg:justify-center items-center bg-secondary-500 w-screen h-screen fixed z-10 left-0 top-8 bg-opacity-[.85] transition-all duration-75 ease-linear">
+            <div id="edititem-container" class="flex flex-col gap-6 lg:gap-0 lg:justify-evenly w-screen h-full lg:max-w-4xl lg:max-h-[64vh] py-16 lg:py-8 p-5 bg-gray-100 rounded-md border-opacity-70 drop-shadow-xl">
+                <p class="text-3xl font-heading font-bold text-secondary-500 opacity-80 tracking-md lg:px-5 mb-3">
+                    Edit Inventory Item
+                </p>
+    
+                <form id="edititem-form" class="lg:p-5 w-full h-[70vh] lg:h-full gap-5 flex flex-col md:flex-row items-start" autocomplete="on">
+                    <!-- image upload section -->
+                    <div class="flex flex-col gap-5 items-center justify-center w-full h-fit md:h-full">
+
+                        <!-- error message -->
+                        <p id="edititem-image-error" class="hidden text-xs lg:text-sm font-body font-semibold text-negative text-opacity-80 tracking-md">
+                            Please upload an image
+                        </p>
+
+                        <!-- image preview -->
+                        <img src="" id="edititem-image-preview" class=" sm:w-80 h-32 md:h-full bg-gray-500 bg-opacity-10 rounded-md flex items-center justify-center">
+                            <p class="absolute text-lg lg:text-2xl font-body font-semibold text-secondary-500 opacity-50 tracking-md">
+                                Image preview
+                            </p>
+                        </img>
+
+                        <!-- image upload -->
+                        <div class="w-full h-fit flex flex-col gap-2 items-center justify-center">
+                            <input type="file" id="edititem-image" required name="image" class="hidden">
+                            <label for="edititem-image" class="w-full font-body bg-tertiary-500 hover:bg-opacity-70 rounded-md p-2 px-10 text-center text-gray-50 text-xs lg:text-lg font-semibold text-opacity-80 transition-all  duration-100 ease-linear">Edit Image</label>
+                        </div>
+                    </div>
+
+                    <!-- parameter setting section -->
+                    <div class="flex flex-col gap-5 items-center justify-between w-full h-full">
+                        <!-- form id -->
+                        <input disabled type="text" id="edititem-id" required autocomplete="name" name="names" placeholder="jkabfdfiondfb1951gb" class="form-input w-full h-12 flex items-center p-1 px-3 text-opacity-80 text-secondary-500 rounded bg-opacity-90 bg-gray-300 outline-0 ring-0 border-opacity-50 autofill:bg-transparent text-sm lg:text-base">
+
+                        <div class="w-full h-[28vh] md:h-full flex flex-col items-center justify-normal overflow-y-auto overscroll-contain gap-5 py-5 px-1">
+                            <!-- form name -->
+                            <div class="w-full h-fit flex flex-col gap-2">
+                                <label for="edititem-name" class="text-sm lg:text-base font-base text-gray-500 font-body">Name</label>
+                                <input type="text" id="edititem-name" required autocomplete="name" name="names" placeholder="eg. Montego classic large puppy food" class="form-input transition-all duration-75 ease-linear w-full h-12 flex items-center p-1 px-3 text-opacity-80 text-secondary-500 rounded bg-gray-50 outline-0 ring-0 focus:ring-0 focus:outline-none border-opacity-50 focus:border-primary-500 focus:border-opacity-95 autofill:bg-transparent text-sm lg:text-base">
+                            </div>
+
+                            <!-- form description -->
+                            <div class="w-full h-fit flex flex-col gap-2">
+                                <label for="edititem-description" class="text-sm lg:text-base font-base text-gray-500 font-body">Description</label>
+                                <textarea id="edititem-description" required autocomplete="description" name="description" placeholder="eg. Monetego classic Large puppy food is a premium formula designed to provide..." class="peer form-input transition-all duration-75 ease-linear w-full h-24 flex items-center p-1 px-3 text-opacity-80 text-secondary-500 rounded bg-gray-50 outline-0 ring-0 focus:ring-0 focus:outline-none border-opacity-50 focus:border-primary-500 focus:border-opacity-95 autofill:bg-transparent text-sm lg:text-base"></textarea>
+                            </div>
+
+                            <!-- form price -->
+                            <div class="w-full h-fit flex flex-col gap-2">
+                                <label for="edititem-price" class="text-sm lg:text-base font-base text-gray-500 font-body">Price (R)</label>
+                                <input type="number" id="edititem-price" required autocomplete="price" name="price" placeholder="eg. 200" inputmode="numeric" class="form-input transition-all duration-75 ease-linear w-full h-12 flex items-center p-1 px-3 text-opacity-80 text-secondary-500 rounded bg-gray-50 outline-0 ring-0 focus:ring-0 focus:outline-none border-opacity-50 focus:border-primary-500 focus:border-opacity-95 autofill:bg-transparent text-sm lg:text-base">
+                            </div>
+
+                            <!-- form inStock -->
+                            <div class="w-full h-fit flex flex-col gap-2">
+                                <label class="text-sm lg:text-base font-base text-gray-500 font-body">In Stock</label>
+                                <!-- creating 2 radio inputs for true or false -->
+                                <div class="flex flex-row gap-2 items-center justify-start">
+                                    <input type="radio" id="edititem-inStock-true" required name="inStock" value="true" class="form-radio transition-all duration-75 ease-linear w-4 h-4 flex items-center p-1 px-3 text-opacity-80 text-secondary-500 rounded bg-gray-50 outline-0 ring-0 focus:ring-0 focus:outline-none border-2 border-tertiary-500 border-opacity-50 focus:border-primary-500 focus:border-opacity-95 autofill:bg-transparent text-sm lg:text-base">
+                                    <label for="edititem-inStock-true" class="text-sm lg:text-base font-base text-gray-500 font-body">Yes</label>
+                                    
+                                    <input type="radio" id="edititem-inStock-false" required name="inStock" value="false" class="form-radio transition-all duration-75 ease-linear w-4 h-4 flex items-center p-1 px-3 text-opacity-80 text-secondary-500 rounded bg-gray-50 outline-0 ring-0 focus:ring-0 focus:outline-none border-2 border-tertiary-500 border-opacity-50 focus:border-primary-500 focus:border-opacity-95 autofill:bg-transparent text-sm lg:text-base">
+                                    <label for="edititem-inStock-false" class="text-sm lg:text-base font-base text-gray-500 font-body">No</label>
+                                </div>
+                            </div>
+
+                            <!-- form size -->
+                            <div class="w-full h-fit flex flex-col gap-2">
+                                <label for="edititem-size" class="text-sm lg:text-base font-base text-gray-500 font-body">Size</label>
+                                <input type="text" id="edititem-size" required autocomplete="size" name="size" placeholder="eg. 5kg" class="form-input transition-all duration-75 ease-linear w-full h-12 flex items-center p-1 px-3 text-opacity-80 text-secondary-500 rounded bg-gray-50 outline-0 ring-0 focus:ring-0 focus:outline-none border-opacity-50 focus:border-primary-500 focus:border-opacity-95 autofill:bg-transparent text-sm lg:text-base">
+                            </div>
+
+                            <!-- form tags -->
+                            <div class="w-full h-fit flex flex-col gap-2">
+                                <label for="edititem-tags" class="text-sm lg:text-base font-base text-gray-500 font-body">Tags</label>
+                                <input type="text" id="edititem-tags" required autocomplete="tags"  name="tags" placeholder="eg. adult, puppy, food, dry food" class="form-input transition-all duration-75 ease-linear w-full h-12 flex items-center p-1 px-3 text-opacity-80 text-secondary-500 rounded bg-gray-50 outline-0 ring-0 focus:ring-0 focus:outline-none border-opacity-50 focus:border-primary-500 focus:border-opacity-95 autofill:bg-transparent text-sm lg:text-base">
+                            </div>
+
+                            <!-- form category -->
+                            <div class="w-full h-fit flex flex-col gap-2">
+                                <label for="edititem-category" class="text-sm lg:text-base font-base text-gray-500 font-body">Category</label>
+                                <input list="categories-list" id="edititem-category" required autocomplete="category" name="category" placeholder="eg. petshop, beverages, restaurant" class="form-input transition-all duration-75 ease-linear w-full h-12 flex items-center p-1 px-3 text-opacity-80 text-secondary-500 rounded bg-gray-50 outline-0 ring-0 focus:ring-0 focus:outline-none border-opacity-50 focus:border-primary-500 focus:border-opacity-95 autofill:bg-transparent text-sm lg:text-base">
+                                <datalist id="categories-list">
+                                </datalist>
+                            </div>
+                        </div>
+
+                        <!-- button group for submit and cancle -->
+                        <div class="flex flex-row gap-5 w-full items-center justify-end">
+                            <!-- cancel btn -->
+                            <input id="edititem-cancel" class="h-fit transition-all duration-75 ease-linear text-base lg:text-lg text-primary-500 hover:text-gray-50 p-[0.4rem] lg:p-1 px-7 lg:px-7 block rounded font-body font-medium cursor-pointer ring-2 ring-primary-500 hover:bg-primary-500" type="button" value="Cancel">
+
+                            <!-- submit btn -->
+                            <input id="edititem-submit" class="h-fit transition-all duration-75 ease-linear text-base lg:text-lg text-gray-50  bg-opacity-80 hover:bg-opacity-95 disabled:hover:bg-opacity-100 bg-primary-500 disabled:bg-gray-600 p-[0.4rem] lg:p-1 px-7 lg:px-7 block rounded font-body font-medium cursor-pointer" type="submit" value="Submit">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
 
         <!-- Create admin form --->
         <div id="createadmin-popup" class="hidden flex lg:justify-center items-center bg-secondary-500 w-screen h-screen fixed z-10 left-0 top-8 bg-opacity-[.85] transition-all duration-75 ease-linear overscroll-contain">

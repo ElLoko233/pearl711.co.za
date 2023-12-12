@@ -34,7 +34,7 @@ export  type InventoryItem = {
     /**
      * Size of the product.
      */
-    size: number;
+    size: string;
   
     /**
      * List of tags associated with the product.
@@ -50,16 +50,16 @@ export  type InventoryItem = {
      * Reference to the product picture.
      */
     pictureRef: string;
+
+    /**
+     * download url for the picture
+     */
+    pictureUrl: string;
   
     /**
      * Discount percentage applied to the product.
      */
     discount_percent: number;
-  
-    /**
-     * Size unit for the product.
-     */
-    size_unit: string;
   
     /**
      * Unique identifier for the product.

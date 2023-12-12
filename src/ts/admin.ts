@@ -1,7 +1,8 @@
 // getting the firebase compoents
 import {
     auth,
-    db
+    db,
+    storage
 }from "./firebaseComp";
 
 import{ onAuthStateChanged, createUserWithEmailAndPassword, getAuth } from "firebase/auth";
@@ -17,6 +18,8 @@ import InventoryItemUIAdmin from "./inventorymanager/inventoryitemuiadmin";
 import InventoryManager from "./inventorymanager/inventorymanger";
 import { InventoryItem, InventoryMetadata } from "./inventorymanager/types/inventorytype";
 import { FirebaseError } from "firebase/app";
+
+
 
 
 
@@ -55,6 +58,7 @@ window.addEventListener( 'DOMContentLoaded', async event => {
     
     // getting the search form element
     const searchForm : HTMLFormElement = document.getElementById('searchForm') as HTMLFormElement;
+
     // getting the search input
     const searchInput : HTMLInputElement = searchForm["search-product"] as HTMLInputElement;
 
@@ -73,6 +77,564 @@ window.addEventListener( 'DOMContentLoaded', async event => {
     // getting the create ew item button
     const createItemButton = document.getElementById( "create-new-item-button" ) as HTMLButtonElement;
 
+    // getting the create new item popup
+    const createNewItemPopup = document.getElementById( "createitem-popup" ) as HTMLElement;
+
+    // getting the cancle create item button
+    const createNewItemPopupCancelButton = document.getElementById( "createitem-cancel" ) as HTMLButtonElement;
+
+    // getting the submit create new item button
+    const createNewItemPopupSubmitButton = document.getElementById( "createitem-submit" ) as HTMLButtonElement;
+
+    // getting the uplaod image input
+    const uploadImageInput = document.getElementById( "createitem-image" ) as HTMLInputElement;
+
+    // getting the create item form
+    const createItemForm = document.getElementById( "createitem-form" ) as HTMLFormElement;
+
+    // getting the image preview eleemtn
+    const imagePreview : HTMLImageElement = document.getElementById( "createitem-image-preview" ) as HTMLImageElement;
+
+    // getting the create item conatiner
+    const createItemContainer = document.getElementById('createitem-container') as HTMLElement;
+
+    // gettung the create item image error paragraph
+    const createItemImageError = document.getElementById( "createitem-image-error" ) as HTMLParagraphElement;
+
+    // bindng the submit button to a click event
+    createNewItemPopupSubmitButton.addEventListener( 'click', async event => {
+        // preventing default
+        event.preventDefault();
+
+        if( createNewItemPopupSubmitButton.disabled ){
+            return;
+        }
+
+        // disabling the submit button
+        createNewItemPopupSubmitButton.disabled = true;
+
+        // adding a orange border to the create item container
+        createItemContainer.classList.add('border-orange-500');
+        createItemContainer.classList.add('border-4');
+
+        // setting the createitemcontiert to pulse animation
+        createItemContainer.classList.add('animate-pulse');
+
+        // getting the create item image input
+        const createItemImageInput = document.getElementById( "createitem-image" ) as HTMLInputElement;
+
+        
+
+        // verifying that the image is not empty
+        if( ((createItemImageInput.files as FileList).length === 0) ){
+            // showing the error
+            imagePreview.classList.add('border-red-500');
+            imagePreview.classList.add('border-4');
+
+            // enabling the submit button
+            createNewItemPopupSubmitButton.disabled = false;
+
+            // remoinve a orange border to the create item container
+            createItemContainer.classList.remove('border-orange-500');
+            createItemContainer.classList.remove('border-4');
+
+            // remove the createitemcontiert to pulse animation
+            createItemContainer.classList.remove('animate-pulse');
+
+            // unhidding the create item image error
+            createItemImageError.classList.remove('hidden');
+
+            // adding the error message
+            createItemImageError.innerText = "Please select an image";
+
+            // returning out of the function
+            return;
+        }
+
+        let img = new Image();
+
+        img.onload = function () {
+            const w = img.width;
+            const h = img.height;
+
+            if( !((w > 400 && w < 500) && (h > 400 && h < 500)) ){
+                // showing the error
+                imagePreview.classList.add('border-red-500');
+                imagePreview.classList.add('border-4');
+
+                // enabling the submit button
+                createNewItemPopupSubmitButton.disabled = false;
+
+                // remoinve a orange border to the create item container
+                createItemContainer.classList.remove('border-orange-500');
+                createItemContainer.classList.remove('border-4');
+
+                // remove the createitemcontiert to pulse animation
+                createItemContainer.classList.remove('animate-pulse');
+
+                // unhidding the create item image error
+                createItemImageError.classList.remove('hidden');
+
+                // adding the error message
+                createItemImageError.innerText = "Please select an image with a width and height between 400px and 500px";
+
+                // returning out of the function
+                return;
+            }else{
+                // showing the error
+                imagePreview.classList.remove('border-red-500');
+                imagePreview.classList.remove('border-4');
+
+                // removing the error
+                createItemImageError.classList.add('hidden');
+
+                // error message
+                createItemImageError.innerText = "";
+
+                // valid styles
+                imagePreview.classList.add('border-green-500');
+                imagePreview.classList.add('border-4');
+            }
+        };
+        
+        // Set the image source to the selected file
+        img.src = URL.createObjectURL( (createItemImageInput.files as FileList)[0]);
+
+        // getting the create item name input
+        const itemName : string = createItemForm['names'].value;
+        
+        // verifying that the name is not empty
+        if( itemName === '' || itemName === ' ' ){
+            // showing the error
+            createItemForm['names'].classList.add('border-red-500');
+            createItemForm['names'].classList.add('border-4');
+
+            // enabling the submit button
+            createNewItemPopupSubmitButton.disabled = false;
+
+            // remoinve a orange border to the create item container
+            createItemContainer.classList.remove('border-orange-500');
+            createItemContainer.classList.remove('border-4');
+
+            // remove the createitemcontiert to pulse animation
+            createItemContainer.classList.remove('animate-pulse');
+            
+            return;
+        }else{
+            // removing the error
+            createItemForm['names'].classList.remove('border-red-500');
+            createItemForm['names'].classList.remove('border-4');
+
+            // valid styles
+            createItemForm['names'].classList.add('border-green-500');
+            createItemForm['names'].classList.add('border-4');
+        }
+
+        // getting the create item description input
+        const itemDescription = createItemForm['description'].value;
+
+        // verifying that the description is not empty
+        if( itemDescription === '' || itemDescription === ' ' ){
+            // showing the error
+            createItemForm['description'].classList.add('border-red-500');
+            createItemForm['description'].classList.add('border-4');
+
+            // enabling the submit button
+            createNewItemPopupSubmitButton.disabled = false;
+
+            // remoinve a orange border to the create item container
+            createItemContainer.classList.remove('border-orange-500');
+            createItemContainer.classList.remove('border-4');
+
+            // remove the createitemcontiert to pulse animation
+            createItemContainer.classList.remove('animate-pulse');
+
+            // returning out of the function
+            return;
+        }else{
+            // removing the error
+            createItemForm['description'].classList.remove('border-red-500');
+            createItemForm['description'].classList.remove('border-4');
+
+            // valid styles
+            createItemForm['description'].classList.add('border-green-500');
+            createItemForm['description'].classList.add('border-4');
+        }
+
+        // getting the create item price input
+        const itemPrice : number = Number(createItemForm['price'].value);
+
+        // verifying that the price is not empty
+        if( itemPrice <= 0 || itemPrice === null || itemPrice === undefined ){
+            // showing the error
+            createItemForm['price'].classList.add('border-red-500');
+            createItemForm['price'].classList.add('border-4');
+
+            // enabling the submit button
+            createNewItemPopupSubmitButton.disabled = false;
+
+            // remoinve a orange border to the create item container
+            createItemContainer.classList.remove('border-orange-500');
+            createItemContainer.classList.remove('border-4');
+
+            // remove the createitemcontiert to pulse animation
+            createItemContainer.classList.remove('animate-pulse');
+
+            // returning out of the function
+            return;
+        }else{
+            // removing the error
+            createItemForm['price'].classList.remove('border-red-500');
+            createItemForm['price'].classList.remove('border-4');
+
+            // valid styles
+            createItemForm['price'].classList.add('border-green-500');
+            createItemForm['price'].classList.add('border-4');
+        }
+
+        // getting the create item stock availability input
+        const itemStock = Array.from(createItemForm['inStock'] as HTMLInputElement[]).find( (element) => element.checked === true )?.value;
+
+        // converting the stock availability to a boolean
+        const itemStockAvailability = ( itemStock === 'true' )? true : false;
+
+        // getting the size of the item
+        const itemSize = createItemForm['size'].value;
+
+        // verifying that the size is not empty
+        if( itemSize === '' || itemSize === ' ' ){
+            // showing the error
+            createItemForm['size'].classList.add('border-red-500');
+            createItemForm['size'].classList.add('border-4');
+
+            // enabling the submit button
+            createNewItemPopupSubmitButton.disabled = false;
+
+            // remoinve a orange border to the create item container
+            createItemContainer.classList.remove('border-orange-500');
+            createItemContainer.classList.remove('border-4');
+
+            // remove the createitemcontiert to pulse animation
+            createItemContainer.classList.remove('animate-pulse');
+
+            // returning out of the function
+            return;
+        }else{
+            // removing the error
+            createItemForm['size'].classList.remove('border-red-500');
+            createItemForm['size'].classList.remove('border-4');
+
+            // valid styles
+            createItemForm['size'].classList.add('border-green-500');
+            createItemForm['size'].classList.add('border-4');
+        }
+
+        // getting the create item tags input
+        const itemTags: string[] = ( (createItemForm['tags'].value === "" || createItemForm['tags'].value === " " )? []: createItemForm['tags'].value.split(',') ).map( (tag: string) => {
+            // stripping the leading spaces
+            return tag.trim();
+        } );
+
+
+        // verifying that the tags is not empty
+        if( itemTags.length === 0 ){
+            // showing the error
+            createItemForm['tags'].classList.add('border-red-500');
+            createItemForm['tags'].classList.add('border-4');
+
+            // enabling the submit button
+            createNewItemPopupSubmitButton.disabled = false;
+
+            // remoinve a orange border to the create item container
+            createItemContainer.classList.remove('border-orange-500');
+            createItemContainer.classList.remove('border-4');
+
+            // remove the createitemcontiert to pulse animation
+            createItemContainer.classList.remove('animate-pulse');
+
+            // returning out of the function
+            return;
+        }else{
+            // removing the error
+            createItemForm['tags'].classList.remove('border-red-500');
+            createItemForm['tags'].classList.remove('border-4');
+
+            // valid styles
+            createItemForm['tags'].classList.add('border-green-500');
+            createItemForm['tags'].classList.add('border-4');
+        }
+
+        // getting the create item category input
+        const itemCategory : string = createItemForm['category'].value;
+
+        // verifying that the category is not empty
+        if( itemCategory === '' || itemCategory === ' ' ){
+            // showing the error
+            createItemForm['category'].classList.add('border-red-500');
+            createItemForm['category'].classList.add('border-4');
+
+            // enabling the submit button
+            createNewItemPopupSubmitButton.disabled = false;
+
+            // remoinve a orange border to the create item container
+            createItemContainer.classList.remove('border-orange-500');
+            createItemContainer.classList.remove('border-4');
+
+            // remove the createitemcontiert to pulse animation
+            createItemContainer.classList.remove('animate-pulse');
+
+            // returning out of the function
+            return;
+        }else{
+            // removing the error
+            createItemForm['category'].classList.remove('border-red-500');
+            createItemForm['category'].classList.remove('border-4');
+
+            // valid styles
+            createItemForm['category'].classList.add('border-green-500');
+            createItemForm['category'].classList.add('border-4');
+        } 
+
+        const data: InventoryItem = {
+            name: itemName as string,
+            description: itemDescription as string,
+            price: Number(itemPrice),
+            inStock: Boolean(itemStockAvailability),
+            size: itemSize,
+            tags: itemTags as string[],
+            pictureUrl: '' as string,
+            pictureRef:"",
+            discount_percent: 0,
+            category: itemCategory as string
+        };
+
+        // creating the inventory item
+        const inventoryItem = await inventoryManager.createInventoryItem( data, (createItemImageInput.files as FileList)[0] );
+
+        // closing the create item popup
+        createNewItemPopup.classList.add('hidden');
+
+        // removing a orange border to the create item container
+        createItemContainer.classList.remove('border-orange-500');
+        createItemContainer.classList.remove('border-4');
+
+        // remoinve a orange border to the create item container
+        createItemContainer.classList.remove('border-orange-500');
+        createItemContainer.classList.remove('border-4');
+
+        // remove the createitemcontiert to pulse animation
+        createItemContainer.classList.remove('animate-pulse');
+
+        // disabled
+        createNewItemPopupSubmitButton.disabled = false;
+
+        // clearing the previwm image
+        imagePreview.src = '';
+
+        
+        // showing the error 
+        imagePreview.classList.remove('border-red-500');
+        imagePreview.classList.remove('border-4');
+
+        // valid styles
+        createItemForm['names'].classList.remove('border-green-500');
+        createItemForm['names'].classList.remove('border-4');
+
+        // valid styles
+        createItemForm['description'].classList.remove('border-green-500');
+        createItemForm['description'].classList.remove('border-4');
+
+        // valid styles
+        createItemForm['price'].classList.remove('border-green-500');
+        createItemForm['price'].classList.remove('border-4');
+
+        // valid styles
+        createItemForm['size'].classList.remove('border-green-500');
+        createItemForm['size'].classList.remove('border-4');
+
+        // valid styles
+        createItemForm['category'].classList.remove('border-green-500');
+        createItemForm['category'].classList.remove('border-4');
+
+        // valid styles
+        createItemForm['tags'].classList.remove('border-green-500');
+        createItemForm['tags'].classList.remove('border-4');
+
+        // clearing the form
+        createItemForm.reset();
+    });
+    
+    // binding the upload image input to a change event
+    uploadImageInput.addEventListener( 'input', event => {
+        // preventing default
+        event.preventDefault();
+
+        // getting the create item image preview
+        const createItemImagePreview = document.getElementById( "createitem-image-preview" ) as HTMLImageElement;
+
+        // image path
+        const imagePath : string = (uploadImageInput.files as FileList)[0].name;
+
+        if (uploadImageInput.files && uploadImageInput.files[0]) {
+            const fileReader = new FileReader();
+
+            let img = new Image();
+
+            img.onload = function () {
+                const w = img.width;
+                const h = img.height;
+
+                if( !((w > 400 && w < 500) && (h > 400 && h < 500)) ){
+                    // showing the error
+                    imagePreview.classList.add('border-red-500');
+                    imagePreview.classList.add('border-4');
+
+                    // enabling the submit button
+                    createNewItemPopupSubmitButton.disabled = false;
+
+                    // remoinve a orange border to the create item container
+                    createItemContainer.classList.remove('border-orange-500');
+                    createItemContainer.classList.remove('border-4');
+
+                    // remove the createitemcontiert to pulse animation
+                    createItemContainer.classList.remove('animate-pulse');
+
+                    // unhidding the create item image error
+                    createItemImageError.classList.remove('hidden');
+
+                    // adding the error message
+                    createItemImageError.innerText = "Please select an image with a width and height between 400px and 500px";
+
+                    // returning out of the function
+                    return;
+                }else{
+                    // showing the error
+                    imagePreview.classList.remove('border-red-500');
+                    imagePreview.classList.remove('border-4');
+
+                    // removing the error
+                    createItemImageError.classList.add('hidden');
+
+                    // error message
+                    createItemImageError.innerText = "";
+
+                    // valid styles
+                    imagePreview.classList.add('border-green-500');
+                    imagePreview.classList.add('border-4');
+                }
+            };
+        
+            fileReader.onload = (e) => {
+                const results = e.target?.result;
+                if (typeof results === 'string') {
+                    createItemImagePreview.src = results;
+
+                    // removing the error
+                    createItemImagePreview.classList.remove('border-red-500');
+                    createItemImagePreview.classList.remove('border-4');
+
+                    // valid styles
+                    createItemImagePreview.classList.add('border-green-500');
+                    createItemImagePreview.classList.add('border-4');
+
+                    // hidding the create item image error
+                    createItemImageError.classList.add('hidden');
+                }
+
+              img.src = URL.createObjectURL( (uploadImageInput.files as FileList)[0]);
+            };
+
+            
+            fileReader.readAsDataURL(uploadImageInput.files[0]);
+        }
+
+    });
+
+    // binding the create new item popup cancel button to a click event
+    createNewItemPopupCancelButton.addEventListener( 'click', event => {
+        // preventing default
+        event.preventDefault();
+
+        // closing the create admin popup
+        createNewItemPopup.classList.add('hidden');
+
+        // removing a orange border to the create item container
+        createItemContainer.classList.remove('border-orange-500');
+        createItemContainer.classList.remove('border-4');
+
+        // remoinve a orange border to the create item container
+        createItemContainer.classList.remove('border-orange-500');
+        createItemContainer.classList.remove('border-4');
+
+        // remove the createitemcontiert to pulse animation
+        createItemContainer.classList.remove('animate-pulse');
+
+        // disabled
+        createNewItemPopupSubmitButton.disabled = false;
+
+        // clearing the previwm image
+        imagePreview.src = '';
+
+        
+        // showing the error 
+        imagePreview.classList.remove('border-red-500');
+        imagePreview.classList.remove('border-4');
+
+        // valid styles
+        createItemForm['names'].classList.remove('border-green-500');
+        createItemForm['names'].classList.remove('border-4');
+
+        // valid styles
+        createItemForm['description'].classList.remove('border-green-500');
+        createItemForm['description'].classList.remove('border-4');
+
+        // valid styles
+        createItemForm['price'].classList.remove('border-green-500');
+        createItemForm['price'].classList.remove('border-4');
+
+        // valid styles
+        createItemForm['size'].classList.remove('border-green-500');
+        createItemForm['size'].classList.remove('border-4');
+
+        // valid styles
+        createItemForm['category'].classList.remove('border-green-500');
+        createItemForm['category'].classList.remove('border-4');
+
+        // valid styles
+        createItemForm['tags'].classList.remove('border-green-500');
+        createItemForm['tags'].classList.remove('border-4');
+
+        // clearing the form
+        createItemForm.reset();
+    });
+
+    // binding the createItemButton click event'
+    createItemButton.addEventListener( 'click', event => {
+        // preventing default
+        event.preventDefault();
+
+        // clsoing the naviagtion bar
+        navbarui.closeNavigation();
+
+        // opening the create admin popup
+        createNewItemPopup.classList.remove('hidden');
+    });
+
+    // // binding the create item button to a click event
+    // createNewItemPopup.addEventListener( 'click', event => {
+    //     // preventing the default
+    //     event.preventDefault();
+
+    //     // getting the popup conateiner
+    //     const createNewItemContainer = document.getElementById('createitem-container') as HTMLElement;
+
+    //     // checking if whether the click is outside or inside the form
+    //     if( !createNewItemContainer.contains(event.target as HTMLElement) ){
+    //         // closing the createadmin popup
+    //         createNewItemPopup.classList.add('hidden');
+    //     }
+    // });
+
     // bindin the rmv item button to a click event
     rmvItemButton.addEventListener( 'click', async event => {
         // preventing default
@@ -86,11 +648,20 @@ window.addEventListener( 'DOMContentLoaded', async event => {
 
         // getting the inventory items that are to be removed
         for( const checkbox of checkedBoxes ){
-            // getting the inventory item id
-            const inventoryItemId = checkbox.id;
+            // finding the inventory item
+            const inventoryItem = inventoryItemsList.find( (item) => item.id === checkbox.id );
 
-            // removing the selected the inventory item from the list
-            await inventoryManager.deleteInventoryItem( inventoryItemId )
+            // checking if the inventory item exists
+            if( inventoryItem ){
+                // adding the inventory item to the list
+                inventoryItemsToBeRemoved.push( inventoryItem );
+            }
+        }
+
+        // removing the inventory items
+        for( const inventoryItem of inventoryItemsToBeRemoved ){
+            // removing the inventory item
+            await inventoryManager.deleteInventoryItem( inventoryItem );
         }
     });
 
@@ -390,6 +961,76 @@ window.addEventListener( 'DOMContentLoaded', async event => {
         }
     });
 
+    // getting the list of catgory optoins
+    const metadataUnsub = inventoryManager.metadataDocument.listenToDocument( async ( snapshot ) => {
+
+        // getting the metadata
+        const metadata = snapshot.data() as InventoryMetadata;
+
+        // getting the category options
+        const categoryOptions = Object.keys(metadata.product_categories);
+
+        // getting the category options datalist
+        const categoryOptionsDataList = document.getElementById( "categories-list" ) as HTMLDataListElement;
+
+        // clearing the inner html
+        categoryOptionsDataList.innerHTML = '';
+
+        // adding the category options to the datalist
+        for( const categoryOption of categoryOptions ){
+            // creating the option element
+            const optionElement = document.createElement( 'option' );
+            optionElement.value = categoryOption;
+
+            // adding the option element to the datalist
+            categoryOptionsDataList.appendChild( optionElement );
+        }
+
+        // category options for filter
+        const categoryOptionFilter = document.createElement('div');
+        categoryOptionFilter.innerHTML =
+            '<input id="petshop" data-filter="category" type="checkbox" value="petshop" class="filterCheckBox"/> <label for="petshop" class="filterLabel"> Pet Shop</label>';
+
+        // adding the filterType class to the div
+        categoryOptionFilter.classList.add('filterItem');
+
+        const categoryFilterList = document.getElementById( "category-filter-list" );
+
+        // clearing the inner html
+        if (categoryFilterList) {
+            categoryFilterList.innerHTML = '';
+        }
+
+        // updating the category filter
+        for( const categoryOption of categoryOptions ){
+            // creating the category filter
+            const newCategoryFilter = categoryOptionFilter.cloneNode(true) as HTMLElement;
+
+            // getting the input element
+            const inputElement = newCategoryFilter.querySelector( 'input' ) as HTMLInputElement;
+
+            // getting the label element
+            const labelElement = newCategoryFilter.querySelector( 'label' ) as HTMLLabelElement;
+
+            // setting the input id
+            inputElement.id = categoryOption;
+
+            // setting the input value
+            inputElement.value = categoryOption;
+
+            // setting the label for
+            labelElement.htmlFor = categoryOption;
+
+            // setting the label text
+            labelElement.textContent = categoryOption;
+
+            // adding the category filter to the category filter list
+            if (categoryFilterList) {
+                categoryFilterList.appendChild( newCategoryFilter );
+            }
+        }
+    });
+
     // getting the inventory items
     unsubscription = inventoryManager.listenToInventoryQueryData( (inventoryitems:InventoryItem[]) => {
         //  clearing the inventory items list
@@ -562,5 +1203,4 @@ window.addEventListener( 'DOMContentLoaded', async event => {
         // closing the createadmin popup
         createAdminPopup.classList.add('hidden');
     };
-
 });    

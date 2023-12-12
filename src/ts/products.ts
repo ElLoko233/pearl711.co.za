@@ -227,6 +227,59 @@ window.addEventListener("load", () => {
         // loading the inventory items
         loadInventoryItems(inventoryItemsList);
     }, limit(dataLIMIT), where('inStock', '==', true));
+
+    // getting the list of catgory optoins
+    const metadataUnsub = inventoryManager.metadataDocument.listenToDocument( async ( snapshot ) => {
+        // getting the metadata
+        const metadata = snapshot.data() as InventoryMetadata;
+
+        // getting the category options
+        const categoryOptions = Object.keys(metadata.product_categories);
+
+        // category options for filter
+        const categoryOptionFilter = document.createElement('div');
+        categoryOptionFilter.innerHTML =
+            '<input id="petshop" data-filter="category" type="checkbox" value="petshop" class="filterCheckBox"/> <label for="petshop" class="filterLabel"> Pet Shop</label>';
+
+        // adding the filterType class to the div
+        categoryOptionFilter.classList.add('filterItem');
+
+        const categoryFilterList = document.getElementById( "category-filter-list" );
+
+        // clearing the inner html
+        if (categoryFilterList) {
+            categoryFilterList.innerHTML = '';
+        }
+
+        // updating the category filter
+        for( const categoryOption of categoryOptions ){
+            // creating the category filter
+            const newCategoryFilter = categoryOptionFilter.cloneNode(true) as HTMLElement;
+
+            // getting the input element
+            const inputElement = newCategoryFilter.querySelector( 'input' ) as HTMLInputElement;
+
+            // getting the label element
+            const labelElement = newCategoryFilter.querySelector( 'label' ) as HTMLLabelElement;
+
+            // setting the input id
+            inputElement.id = categoryOption;
+
+            // setting the input value
+            inputElement.value = categoryOption;
+
+            // setting the label for
+            labelElement.htmlFor = categoryOption;
+
+            // setting the label text
+            labelElement.textContent = categoryOption;
+
+            // adding the category filter to the category filter list
+            if (categoryFilterList) {
+                categoryFilterList.appendChild( newCategoryFilter );
+            }
+        }
+    });
 });
 
 // creating a function that will load the inventory items

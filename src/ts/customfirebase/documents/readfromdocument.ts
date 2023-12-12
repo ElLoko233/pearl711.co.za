@@ -34,7 +34,7 @@ export default class ReadFromDocument extends CustomDocument {
      * @param impulse - Function to handle updated data.
      * @returns Unsubscribe function.
      */
-    listenToDocument(impulse: (snapshot: DocumentSnapshot<DocumentData>) => void): Unsubscribe {
+    listenToDocument( impulse: (snapshot: DocumentSnapshot<DocumentData> ) => void): Unsubscribe {
         // Create a listener for the document snapshot changes.
         const unsubscribe = onSnapshot(this.getDocumentRef(), snapshot => {
             // Call the provided function with the updated snapshot data.
@@ -64,7 +64,7 @@ export function WithReadFromDocument<TBase extends Constructor<CustomDocument>>(
      * @param impulse - Function to handle updated data.
      * @returns Unsubscribe function.
      */
-    listenToDocument(impulse: (snapshot: DocumentSnapshot<DocumentData>) => void): Unsubscribe {
+    listenToDocument( impulse: ( snapshot: DocumentSnapshot<DocumentData> ) => void): Unsubscribe {
       return new ReadFromDocument(this.db, this.collectionRef, this.docId).listenToDocument(impulse);
     }
   };

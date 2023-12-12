@@ -1,6 +1,7 @@
-import { InventoryItem } from "./types/inventorytype";
+import { StorageReference } from "firebase/storage";
+import { InventoryItem } from "./types/inventorytype";;
 
-export default class InventoryItemUI {
+export default class InventoryItemUI  {
     protected data: InventoryItem;
   
     constructor(itemData: InventoryItem) {
@@ -111,9 +112,9 @@ export default class InventoryItemUI {
      * Gets the size of the inventory item
      * @returns size of the inventory item
     */
-    get size(): number{
+    get size(): string{
         if( !this.data.size ){
-            return 0;
+            return "";
         }
         return this.data.size;
     }
@@ -122,7 +123,7 @@ export default class InventoryItemUI {
      * sets the size of the inventory item
      * @param value - size of the inventory item
      */
-    set size(value: number) {
+    set size(value: string) {
         this.data.size = value;
     }
 
@@ -214,11 +215,22 @@ export default class InventoryItemUI {
     }
 
     /**
+     * Gets the picture url of the inventory item
+     * @returns picture url of the inventory item
+     */
+    get pictureUrl(): string{
+        if( !this.data.pictureUrl ){
+            return '';
+        }
+        return this.data.pictureUrl;
+    }
+
+    /**
      * Gets the html element of the picture reference of the inventory item
      * @returns the html element of the picture reference of the inventory item
      * 
     */
-    get pictureRefElement(): HTMLImageElement {
+    get pictureUrlElement(): HTMLImageElement {
         //  getting the div that has the same id
         const inventoryItemUIContainer: HTMLDivElement = document.getElementById(this.id) as HTMLDivElement;
 
@@ -241,6 +253,14 @@ export default class InventoryItemUI {
     }
 
     /**
+     * Sets the picture url of the inventory item
+     * @param value - picture url of the inventory item
+     */
+    set pictureUrl(value: string) {
+        this.data.pictureUrl = value;
+    }
+
+    /**
      * Gets the discount percent of the inventory item
      * @returns discount percent of the inventory item
     */
@@ -259,24 +279,24 @@ export default class InventoryItemUI {
         this.data.discount_percent = value;
     }
 
-    /**
-     * Gets the unit of measurement of the inventory item's size
-     * @returns the unit of measurement of the inventory item's size
-    */
-    get size_unit(): string{
-        if( !this.data.size_unit ){
-            return '';
-        }
-        return this.data.size_unit;
-    }
+    // /**
+    //  * Gets the unit of measurement of the inventory item's size
+    //  * @returns the unit of measurement of the inventory item's size
+    // */
+    // get size_unit(): string{
+    //     if( !this.data.size_unit ){
+    //         return '';
+    //     }
+    //     return this.data.size_unit;
+    // }
 
-    /**
-     * Sets the unit of measurement of the inventory item's size
-     * @param value - the unit of measurement of the inventory item's size
-     */
-    set size_unit(value: string) {
-        this.data.size_unit = value;
-    }
+    // /**
+    //  * Sets the unit of measurement of the inventory item's size
+    //  * @param value - the unit of measurement of the inventory item's size
+    //  */
+    // set size_unit(value: string) {
+    //     this.data.size_unit = value;
+    // }
 
     /**
      * Gets the id of the inventory item
@@ -394,7 +414,7 @@ export default class InventoryItemUI {
         const element = document.createElement('div');
 
         // assing the div an id of the object
-        element.id = this.id;
+        element.id = this.id + 'item';
 
         // add the html string to the element
         element.innerHTML = inventoryItemHTML;
@@ -457,7 +477,7 @@ export default class InventoryItemUI {
         const tagsElement: HTMLDivElement = invItemUI.querySelector('#productDescPoints') as HTMLDivElement;
 
         //  assining the image element the image url
-        imageElement.src = this.pictureRef;
+        imageElement.src = this.pictureUrl;
 
         // assigning image alt to the description
         imageElement.alt = this.description;
