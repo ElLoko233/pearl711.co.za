@@ -203,9 +203,9 @@ export default class InventoryManager<T extends object, M extends object> extend
    * @param docId - ID of the document to be updated.
    * @returns Promise<void>
    */
-  async updateInventoryItem(data: InventoryItem, imageObj: File): Promise<void> {
+  async updateInventoryItem(olddata: InventoryItem, newdata: InventoryItem, imageObj: File): Promise<void> {
     // checking if the data has an id
-    if (data.id == undefined) {
+    if (newdata.id == undefined) {
       throw new Error('The inventory item does not have an id');
     }
 
@@ -225,21 +225,51 @@ export default class InventoryManager<T extends object, M extends object> extend
       };
 
       // getting the storage ref
-      const oldstorageRef = ref(storage, data.pictureRef);
+      const oldstorageRef = ref(storage, newdata.pictureRef);
 
       // deleting the image
       await deleteObject(oldstorageRef);
 
-      const newstorageRef = ref(storage, `${this.stockDisplayImageFolder}/${data.id}/${imageObj.name}`);
+      const newstorageRef = ref(storage, `${this.stockDisplayImageFolder}/${newdata.id}/${imageObj.name}`);
 
       // setting the picture ref
-      data.pictureRef = newstorageRef.fullPath;
+      newdata.pictureRef = newstorageRef.fullPath;
 
       // updating the picture ref to the download url
-      data.pictureUrl = await this.handleImageUpload(imageObj, newstorageRef);
+      newdata.pictureUrl = await this.handleImageUpload(imageObj, newstorageRef);
     }
 
-    return await this.updateDoc(data, data.id);
+    // chekcing if the category has changed
+    if (olddata.category != newdata.category) {
+      // getting the metadata categories
+      const metadata = await this.metadataDocument.getDocumentData() as InventoryMetadata;
+
+      // checking if the category exists
+      if (Object.keys(metadata.product_categories).includes(olddata.category)) {
+        // decrementing the category count
+        --metadata.product_categories[olddata.category];
+      }
+
+      // checking if the category count is 0
+      if (metadata.product_categories[olddata.category] <= 0) {
+        // deleting the category
+        delete metadata.product_categories[olddata.category];
+      }
+
+      // checking if the category exists
+      if (Object.keys(metadata.product_categories).includes(newdata.category)) {
+        // incrementing the category count
+        ++metadata.product_categories[newdata.category];
+      }else{
+        // creating the category
+        metadata.product_categories[newdata.category] = 1;
+      }
+
+      // incrementing the total stock count
+      this.metadataDocument.updateField( {'product_categories': metadata.product_categories} );
+    }
+
+    return await this.updateDoc(newdata, newdata.id);
   }
 
   /**

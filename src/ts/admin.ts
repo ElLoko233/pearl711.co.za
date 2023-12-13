@@ -408,7 +408,7 @@ window.addEventListener( 'DOMContentLoaded', async event => {
         const id = editItemForm['ids'].value;
 
         // getting the actual item object
-        const item = inventoryItemsList.find( (item) => item.id === id );
+        const item = inventoryItemsList.find( (item) => item.id === id ) as InventoryItem;
 
         const newdata: InventoryItem = {
             id: id,
@@ -516,7 +516,7 @@ window.addEventListener( 'DOMContentLoaded', async event => {
             return;
         }else{
             // creating the inventory item
-            const inventoryItem = await inventoryManager.updateInventoryItem( newdata, (editItemImageInput.files as FileList)[0] );
+            const inventoryItem = await inventoryManager.updateInventoryItem( item, newdata, (editItemImageInput.files as FileList)[0] );
         }
 
 
