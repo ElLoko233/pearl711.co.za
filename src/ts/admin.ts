@@ -113,9 +113,9 @@ window.addEventListener( 'DOMContentLoaded', async event => {
         // disabling the submit button
         createNewItemPopupSubmitButton.disabled = true;
 
-        // adding a orange border to the create item container
-        createItemContainer.classList.add('border-orange-500');
-        createItemContainer.classList.add('border-4');
+        // adding a orange outline to the create item container
+        createItemContainer.classList.add('outline-orange-500');
+        createItemContainer.classList.add('outline-4');
 
         // setting the createitemcontiert to pulse animation
         createItemContainer.classList.add('animate-pulse');
@@ -128,15 +128,15 @@ window.addEventListener( 'DOMContentLoaded', async event => {
         // verifying that the image is not empty
         if( ((createItemImageInput.files as FileList).length === 0) ){
             // showing the error
-            imagePreview.classList.add('border-red-500');
-            imagePreview.classList.add('border-4');
+            imagePreview.classList.add('outline-red-500');
+            imagePreview.classList.add('outline-4');imagePreview.classList.add('outline');
 
             // enabling the submit button
             createNewItemPopupSubmitButton.disabled = false;
 
-            // remoinve a orange border to the create item container
-            createItemContainer.classList.remove('border-orange-500');
-            createItemContainer.classList.remove('border-4');
+            // remoinve a orange outline to the create item container
+            createItemContainer.classList.remove('outline-orange-500');
+            createItemContainer.classList.remove('outline-4');
 
             // remove the createitemcontiert to pulse animation
             createItemContainer.classList.remove('animate-pulse');
@@ -159,15 +159,15 @@ window.addEventListener( 'DOMContentLoaded', async event => {
 
             if( !((w > 400 && w < 500) && (h > 400 && h < 500)) ){
                 // showing the error
-                imagePreview.classList.add('border-red-500');
-                imagePreview.classList.add('border-4');
+                imagePreview.classList.add('outline-red-500');
+                imagePreview.classList.add('outline-4');imagePreview.classList.add('outline');
 
                 // enabling the submit button
                 createNewItemPopupSubmitButton.disabled = false;
 
-                // remoinve a orange border to the create item container
-                createItemContainer.classList.remove('border-orange-500');
-                createItemContainer.classList.remove('border-4');
+                // remoinve a orange outline to the create item container
+                createItemContainer.classList.remove('outline-orange-500');
+                createItemContainer.classList.remove('outline-4');
 
                 // remove the createitemcontiert to pulse animation
                 createItemContainer.classList.remove('animate-pulse');
@@ -182,8 +182,8 @@ window.addEventListener( 'DOMContentLoaded', async event => {
                 return;
             }else{
                 // showing the error
-                imagePreview.classList.remove('border-red-500');
-                imagePreview.classList.remove('border-4');
+                imagePreview.classList.remove('outline-red-500');
+                imagePreview.classList.remove('outline-4');imagePreview.classList.remove('outline');
 
                 // removing the error
                 createItemImageError.classList.add('hidden');
@@ -192,8 +192,8 @@ window.addEventListener( 'DOMContentLoaded', async event => {
                 createItemImageError.innerText = "";
 
                 // valid styles
-                imagePreview.classList.add('border-green-500');
-                imagePreview.classList.add('border-4');
+                imagePreview.classList.add('outline-green-500');
+                imagePreview.classList.add('outline-4');imagePreview.classList.add('outline');
             }
         };
         
@@ -206,15 +206,15 @@ window.addEventListener( 'DOMContentLoaded', async event => {
         // verifying that the name is not empty
         if( itemName === '' || itemName === ' ' ){
             // showing the error
-            createItemForm['names'].classList.add('border-red-500');
-            createItemForm['names'].classList.add('border-4');
+            createItemForm['names'].classList.add('outline-red-500');
+            createItemForm['names'].classList.add('outline-4');
 
             // enabling the submit button
             createNewItemPopupSubmitButton.disabled = false;
 
-            // remoinve a orange border to the create item container
-            createItemContainer.classList.remove('border-orange-500');
-            createItemContainer.classList.remove('border-4');
+            // remoinve a orange outline to the create item container
+            createItemContainer.classList.remove('outline-orange-500');
+            createItemContainer.classList.remove('outline-4');
 
             // remove the createitemcontiert to pulse animation
             createItemContainer.classList.remove('animate-pulse');
@@ -222,12 +222,12 @@ window.addEventListener( 'DOMContentLoaded', async event => {
             return;
         }else{
             // removing the error
-            createItemForm['names'].classList.remove('border-red-500');
-            createItemForm['names'].classList.remove('border-4');
+            createItemForm['names'].classList.remove('outline-red-500');
+            createItemForm['names'].classList.remove('outline-4');
 
             // valid styles
-            createItemForm['names'].classList.add('border-green-500');
-            createItemForm['names'].classList.add('border-4');
+            createItemForm['names'].classList.add('outline-green-500');
+            createItemForm['names'].classList.add('outline-4');
         }
 
         // getting the create item description input
@@ -236,15 +236,15 @@ window.addEventListener( 'DOMContentLoaded', async event => {
         // verifying that the description is not empty
         if( itemDescription === '' || itemDescription === ' ' ){
             // showing the error
-            createItemForm['description'].classList.add('border-red-500');
-            createItemForm['description'].classList.add('border-4');
+            createItemForm['description'].classList.add('outline-red-500');
+            createItemForm['description'].classList.add('outline-4');
 
             // enabling the submit button
             createNewItemPopupSubmitButton.disabled = false;
 
-            // remoinve a orange border to the create item container
-            createItemContainer.classList.remove('border-orange-500');
-            createItemContainer.classList.remove('border-4');
+            // remoinve a orange outline to the create item container
+            createItemContainer.classList.remove('outline-orange-500');
+            createItemContainer.classList.remove('outline-4');
 
             // remove the createitemcontiert to pulse animation
             createItemContainer.classList.remove('animate-pulse');
@@ -253,12 +253,12 @@ window.addEventListener( 'DOMContentLoaded', async event => {
             return;
         }else{
             // removing the error
-            createItemForm['description'].classList.remove('border-red-500');
-            createItemForm['description'].classList.remove('border-4');
+            createItemForm['description'].classList.remove('outline-red-500');
+            createItemForm['description'].classList.remove('outline-4');
 
             // valid styles
-            createItemForm['description'].classList.add('border-green-500');
-            createItemForm['description'].classList.add('border-4');
+            createItemForm['description'].classList.add('outline-green-500');
+            createItemForm['description'].classList.add('outline-4');
         }
 
         // getting the create item price input
@@ -267,15 +267,15 @@ window.addEventListener( 'DOMContentLoaded', async event => {
         // verifying that the price is not empty
         if( itemPrice <= 0 || itemPrice === null || itemPrice === undefined ){
             // showing the error
-            createItemForm['price'].classList.add('border-red-500');
-            createItemForm['price'].classList.add('border-4');
+            createItemForm['price'].classList.add('outline-red-500');
+            createItemForm['price'].classList.add('outline-4');
 
             // enabling the submit button
             createNewItemPopupSubmitButton.disabled = false;
 
-            // remoinve a orange border to the create item container
-            createItemContainer.classList.remove('border-orange-500');
-            createItemContainer.classList.remove('border-4');
+            // remoinve a orange outline to the create item container
+            createItemContainer.classList.remove('outline-orange-500');
+            createItemContainer.classList.remove('outline-4');
 
             // remove the createitemcontiert to pulse animation
             createItemContainer.classList.remove('animate-pulse');
@@ -284,12 +284,12 @@ window.addEventListener( 'DOMContentLoaded', async event => {
             return;
         }else{
             // removing the error
-            createItemForm['price'].classList.remove('border-red-500');
-            createItemForm['price'].classList.remove('border-4');
+            createItemForm['price'].classList.remove('outline-red-500');
+            createItemForm['price'].classList.remove('outline-4');
 
             // valid styles
-            createItemForm['price'].classList.add('border-green-500');
-            createItemForm['price'].classList.add('border-4');
+            createItemForm['price'].classList.add('outline-green-500');
+            createItemForm['price'].classList.add('outline-4');
         }
 
         // getting the create item stock availability input
@@ -304,15 +304,15 @@ window.addEventListener( 'DOMContentLoaded', async event => {
         // verifying that the size is not empty
         if( itemSize === '' || itemSize === ' ' ){
             // showing the error
-            createItemForm['size'].classList.add('border-red-500');
-            createItemForm['size'].classList.add('border-4');
+            createItemForm['size'].classList.add('outline-red-500');
+            createItemForm['size'].classList.add('outline-4');
 
             // enabling the submit button
             createNewItemPopupSubmitButton.disabled = false;
 
-            // remoinve a orange border to the create item container
-            createItemContainer.classList.remove('border-orange-500');
-            createItemContainer.classList.remove('border-4');
+            // remoinve a orange outline to the create item container
+            createItemContainer.classList.remove('outline-orange-500');
+            createItemContainer.classList.remove('outline-4');
 
             // remove the createitemcontiert to pulse animation
             createItemContainer.classList.remove('animate-pulse');
@@ -321,12 +321,12 @@ window.addEventListener( 'DOMContentLoaded', async event => {
             return;
         }else{
             // removing the error
-            createItemForm['size'].classList.remove('border-red-500');
-            createItemForm['size'].classList.remove('border-4');
+            createItemForm['size'].classList.remove('outline-red-500');
+            createItemForm['size'].classList.remove('outline-4');
 
             // valid styles
-            createItemForm['size'].classList.add('border-green-500');
-            createItemForm['size'].classList.add('border-4');
+            createItemForm['size'].classList.add('outline-green-500');
+            createItemForm['size'].classList.add('outline-4');
         }
 
         // getting the create item tags input
@@ -339,15 +339,15 @@ window.addEventListener( 'DOMContentLoaded', async event => {
         // verifying that the tags is not empty
         if( itemTags.length === 0 ){
             // showing the error
-            createItemForm['tags'].classList.add('border-red-500');
-            createItemForm['tags'].classList.add('border-4');
+            createItemForm['tags'].classList.add('outline-red-500');
+            createItemForm['tags'].classList.add('outline-4');
 
             // enabling the submit button
             createNewItemPopupSubmitButton.disabled = false;
 
-            // remoinve a orange border to the create item container
-            createItemContainer.classList.remove('border-orange-500');
-            createItemContainer.classList.remove('border-4');
+            // remoinve a orange outline to the create item container
+            createItemContainer.classList.remove('outline-orange-500');
+            createItemContainer.classList.remove('outline-4');
 
             // remove the createitemcontiert to pulse animation
             createItemContainer.classList.remove('animate-pulse');
@@ -356,12 +356,12 @@ window.addEventListener( 'DOMContentLoaded', async event => {
             return;
         }else{
             // removing the error
-            createItemForm['tags'].classList.remove('border-red-500');
-            createItemForm['tags'].classList.remove('border-4');
+            createItemForm['tags'].classList.remove('outline-red-500');
+            createItemForm['tags'].classList.remove('outline-4');
 
             // valid styles
-            createItemForm['tags'].classList.add('border-green-500');
-            createItemForm['tags'].classList.add('border-4');
+            createItemForm['tags'].classList.add('outline-green-500');
+            createItemForm['tags'].classList.add('outline-4');
         }
 
         // getting the create item category input
@@ -370,15 +370,15 @@ window.addEventListener( 'DOMContentLoaded', async event => {
         // verifying that the category is not empty
         if( itemCategory === '' || itemCategory === ' ' ){
             // showing the error
-            createItemForm['category'].classList.add('border-red-500');
-            createItemForm['category'].classList.add('border-4');
+            createItemForm['category'].classList.add('outline-red-500');
+            createItemForm['category'].classList.add('outline-4');
 
             // enabling the submit button
             createNewItemPopupSubmitButton.disabled = false;
 
-            // remoinve a orange border to the create item container
-            createItemContainer.classList.remove('border-orange-500');
-            createItemContainer.classList.remove('border-4');
+            // remoinve a orange outline to the create item container
+            createItemContainer.classList.remove('outline-orange-500');
+            createItemContainer.classList.remove('outline-4');
 
             // remove the createitemcontiert to pulse animation
             createItemContainer.classList.remove('animate-pulse');
@@ -387,12 +387,12 @@ window.addEventListener( 'DOMContentLoaded', async event => {
             return;
         }else{
             // removing the error
-            createItemForm['category'].classList.remove('border-red-500');
-            createItemForm['category'].classList.remove('border-4');
+            createItemForm['category'].classList.remove('outline-red-500');
+            createItemForm['category'].classList.remove('outline-4');
 
             // valid styles
-            createItemForm['category'].classList.add('border-green-500');
-            createItemForm['category'].classList.add('border-4');
+            createItemForm['category'].classList.add('outline-green-500');
+            createItemForm['category'].classList.add('outline-4');
         } 
 
         const data: InventoryItem = {
@@ -414,13 +414,13 @@ window.addEventListener( 'DOMContentLoaded', async event => {
         // closing the create item popup
         createNewItemPopup.classList.add('hidden');
 
-        // removing a orange border to the create item container
-        createItemContainer.classList.remove('border-orange-500');
-        createItemContainer.classList.remove('border-4');
+        // removing a orange outline to the create item container
+        createItemContainer.classList.remove('outline-orange-500');
+        createItemContainer.classList.remove('outline-4');
 
-        // remoinve a orange border to the create item container
-        createItemContainer.classList.remove('border-orange-500');
-        createItemContainer.classList.remove('border-4');
+        // remoinve a orange outline to the create item container
+        createItemContainer.classList.remove('outline-orange-500');
+        createItemContainer.classList.remove('outline-4');
 
         // remove the createitemcontiert to pulse animation
         createItemContainer.classList.remove('animate-pulse');
@@ -433,32 +433,33 @@ window.addEventListener( 'DOMContentLoaded', async event => {
 
         
         // showing the error 
-        imagePreview.classList.remove('border-red-500');
-        imagePreview.classList.remove('border-4');
+        imagePreview.classList.remove('outline-red-500');
+        imagePreview.classList.remove('outline-green-500');
+        imagePreview.classList.remove('outline-4');imagePreview.classList.remove('outline');
 
         // valid styles
-        createItemForm['names'].classList.remove('border-green-500');
-        createItemForm['names'].classList.remove('border-4');
+        createItemForm['names'].classList.remove('outline-green-500');
+        createItemForm['names'].classList.remove('outline-4');
 
         // valid styles
-        createItemForm['description'].classList.remove('border-green-500');
-        createItemForm['description'].classList.remove('border-4');
+        createItemForm['description'].classList.remove('outline-green-500');
+        createItemForm['description'].classList.remove('outline-4');
 
         // valid styles
-        createItemForm['price'].classList.remove('border-green-500');
-        createItemForm['price'].classList.remove('border-4');
+        createItemForm['price'].classList.remove('outline-green-500');
+        createItemForm['price'].classList.remove('outline-4');
 
         // valid styles
-        createItemForm['size'].classList.remove('border-green-500');
-        createItemForm['size'].classList.remove('border-4');
+        createItemForm['size'].classList.remove('outline-green-500');
+        createItemForm['size'].classList.remove('outline-4');
 
         // valid styles
-        createItemForm['category'].classList.remove('border-green-500');
-        createItemForm['category'].classList.remove('border-4');
+        createItemForm['category'].classList.remove('outline-green-500');
+        createItemForm['category'].classList.remove('outline-4');
 
         // valid styles
-        createItemForm['tags'].classList.remove('border-green-500');
-        createItemForm['tags'].classList.remove('border-4');
+        createItemForm['tags'].classList.remove('outline-green-500');
+        createItemForm['tags'].classList.remove('outline-4');
 
         // clearing the form
         createItemForm.reset();
@@ -482,19 +483,19 @@ window.addEventListener( 'DOMContentLoaded', async event => {
 
             img.onload = function () {
                 const w = img.width;
-                const h = img.height;
+                const h = img.height; 
 
                 if( !((w > 400 && w < 500) && (h > 400 && h < 500)) ){
                     // showing the error
-                    imagePreview.classList.add('border-red-500');
-                    imagePreview.classList.add('border-4');
+                    imagePreview.classList.add('outline-red-500');
+                    imagePreview.classList.add('outline-4');imagePreview.classList.add('outline');
 
                     // enabling the submit button
                     createNewItemPopupSubmitButton.disabled = false;
 
-                    // remoinve a orange border to the create item container
-                    createItemContainer.classList.remove('border-orange-500');
-                    createItemContainer.classList.remove('border-4');
+                    // remoinve a orange outline to the create item container
+                    createItemContainer.classList.remove('outline-orange-500');
+                    createItemContainer.classList.remove('outline-4');
 
                     // remove the createitemcontiert to pulse animation
                     createItemContainer.classList.remove('animate-pulse');
@@ -509,8 +510,8 @@ window.addEventListener( 'DOMContentLoaded', async event => {
                     return;
                 }else{
                     // showing the error
-                    imagePreview.classList.remove('border-red-500');
-                    imagePreview.classList.remove('border-4');
+                    imagePreview.classList.remove('outline-red-500');
+                    imagePreview.classList.remove('outline-4');imagePreview.classList.remove('outline');
 
                     // removing the error
                     createItemImageError.classList.add('hidden');
@@ -519,8 +520,8 @@ window.addEventListener( 'DOMContentLoaded', async event => {
                     createItemImageError.innerText = "";
 
                     // valid styles
-                    imagePreview.classList.add('border-green-500');
-                    imagePreview.classList.add('border-4');
+                    imagePreview.classList.add('outline-green-500');
+                    imagePreview.classList.add('outline-4');imagePreview.classList.add('outline');
                 }
             };
         
@@ -530,12 +531,12 @@ window.addEventListener( 'DOMContentLoaded', async event => {
                     createItemImagePreview.src = results;
 
                     // removing the error
-                    createItemImagePreview.classList.remove('border-red-500');
-                    createItemImagePreview.classList.remove('border-4');
+                    createItemImagePreview.classList.remove('outline-red-500');
+                    createItemImagePreview.classList.remove('outline-4');
 
                     // valid styles
-                    createItemImagePreview.classList.add('border-green-500');
-                    createItemImagePreview.classList.add('border-4');
+                    createItemImagePreview.classList.add('outline-green-500');
+                    createItemImagePreview.classList.add('outline-4');
 
                     // hidding the create item image error
                     createItemImageError.classList.add('hidden');
@@ -558,13 +559,9 @@ window.addEventListener( 'DOMContentLoaded', async event => {
         // closing the create admin popup
         createNewItemPopup.classList.add('hidden');
 
-        // removing a orange border to the create item container
-        createItemContainer.classList.remove('border-orange-500');
-        createItemContainer.classList.remove('border-4');
-
-        // remoinve a orange border to the create item container
-        createItemContainer.classList.remove('border-orange-500');
-        createItemContainer.classList.remove('border-4');
+        // removing a orange outline to the create item container
+        createItemContainer.classList.remove('outline-orange-500');
+        createItemContainer.classList.remove('outline-4');
 
         // remove the createitemcontiert to pulse animation
         createItemContainer.classList.remove('animate-pulse');
@@ -575,34 +572,44 @@ window.addEventListener( 'DOMContentLoaded', async event => {
         // clearing the previwm image
         imagePreview.src = '';
 
+        // hidding the create item image error
+        createItemImageError.classList.add('hidden');
+
         
         // showing the error 
-        imagePreview.classList.remove('border-red-500');
-        imagePreview.classList.remove('border-4');
+        imagePreview.classList.remove('outline-red-500');
+        imagePreview.classList.remove('outline-green-500');
+        imagePreview.classList.remove('outline-4');imagePreview.classList.remove('outline');
 
         // valid styles
-        createItemForm['names'].classList.remove('border-green-500');
-        createItemForm['names'].classList.remove('border-4');
+        createItemForm['names'].classList.remove('outline-green-500');
+        createItemForm['names'].classList.remove('outline-red-500');
+        createItemForm['names'].classList.remove('outline-4');
 
         // valid styles
-        createItemForm['description'].classList.remove('border-green-500');
-        createItemForm['description'].classList.remove('border-4');
+        createItemForm['description'].classList.remove('outline-green-500');
+        createItemForm['description'].classList.remove('outline-red-500');
+        createItemForm['description'].classList.remove('outline-4');
 
         // valid styles
-        createItemForm['price'].classList.remove('border-green-500');
-        createItemForm['price'].classList.remove('border-4');
+        createItemForm['price'].classList.remove('outline-green-500');
+        createItemForm['price'].classList.remove('outline-red-500');
+        createItemForm['price'].classList.remove('outline-4');
 
         // valid styles
-        createItemForm['size'].classList.remove('border-green-500');
-        createItemForm['size'].classList.remove('border-4');
+        createItemForm['size'].classList.remove('outline-green-500');
+        createItemForm['size'].classList.remove('outline-red-500');
+        createItemForm['size'].classList.remove('outline-4');
 
         // valid styles
-        createItemForm['category'].classList.remove('border-green-500');
-        createItemForm['category'].classList.remove('border-4');
+        createItemForm['category'].classList.remove('outline-green-500');
+        createItemForm['category'].classList.remove('outline-red-500');
+        createItemForm['category'].classList.remove('outline-4');
 
         // valid styles
-        createItemForm['tags'].classList.remove('border-green-500');
-        createItemForm['tags'].classList.remove('border-4');
+        createItemForm['tags'].classList.remove('outline-green-500');
+        createItemForm['tags'].classList.remove('outline-red-500');
+        createItemForm['tags'].classList.remove('outline-4');
 
         // clearing the form
         createItemForm.reset();
@@ -1147,8 +1154,8 @@ window.addEventListener( 'DOMContentLoaded', async event => {
         // checking if the email is valid
         if( !email.includes('@') ){
             // showing the email error
-            createAdminForm['email'].classList.add('border-red-500');
-            createAdminForm['email'].classList.remove('border-primary-500');
+            createAdminForm['email'].classList.add('outline-red-500');
+            createAdminForm['email'].classList.remove('outline-primary-500');
 
             // returning out of the function
             return;
@@ -1160,8 +1167,8 @@ window.addEventListener( 'DOMContentLoaded', async event => {
         // checking if the password is valid
         if( password.toLowerCase().replace(" ", "") === '' ){
             // showing the password error
-            createAdminForm['password'].classList.add('border-red-500');
-            createAdminForm['password'].classList.remove('border-primary-500');
+            createAdminForm['password'].classList.add('outline-red-500');
+            createAdminForm['password'].classList.remove('outline-primary-500');
 
             // returning out of the function
             return;
@@ -1178,22 +1185,22 @@ window.addEventListener( 'DOMContentLoaded', async event => {
             // checking if the error code is auth/email-already-in-use
             if (errorCode === 'auth/email-already-in-use') {
                 // showing the email error
-                createAdminForm['email'].classList.add('border-red-500');
-                createAdminForm['email'].classList.remove('border-primary-500');
+                createAdminForm['email'].classList.add('outline-red-500');
+                createAdminForm['email'].classList.remove('outline-primary-500');
             }
 
             // checking if the error code is auth/invalid-email
             if (errorCode === 'auth/invalid-email') {
                 // showing the email error
-                createAdminForm['email'].classList.add('border-red-500');
-                createAdminForm['email'].classList.remove('border-primary-500');
+                createAdminForm['email'].classList.add('outline-red-500');
+                createAdminForm['email'].classList.remove('outline-primary-500');
             }
 
             // checking if the error code is auth/weak-password
             if( errorCode === 'auth/weak-password' ){
                 // showing the password error
-                createAdminForm['password'].classList.add('border-red-500');
-                createAdminForm['password'].classList.remove('border-primary-500');
+                createAdminForm['password'].classList.add('outline-red-500');
+                createAdminForm['password'].classList.remove('outline-primary-500');
             }
 
             // returning out of the function

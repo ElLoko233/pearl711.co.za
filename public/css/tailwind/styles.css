@@ -2137,16 +2137,36 @@ select{
   outline-width: 2px;
 }
 
+.outline-4{
+  outline-width: 4px;
+}
+
 .outline-gray-300{
   outline-color: #d1d5db;
+}
+
+.outline-green-500{
+  outline-color: #22c55e;
 }
 
 .outline-negative{
   outline-color: #B00020;
 }
 
+.outline-orange-500{
+  outline-color: #f97316;
+}
+
+.outline-pink-600{
+  outline-color: #db2777;
+}
+
 .outline-primary-500{
   outline-color: #d4af37;
+}
+
+.outline-red-500{
+  outline-color: #ef4444;
 }
 
 .outline-transparent{
@@ -4747,6 +4767,10 @@ footer .social-icon:hover{
 
   .md\:h-12{
     height: 3rem;
+  }
+
+  .md\:h-80{
+    height: 20rem;
   }
 
   .md\:h-fit{
