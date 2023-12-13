@@ -101,6 +101,637 @@ window.addEventListener( 'DOMContentLoaded', async event => {
     // gettung the create item image error paragraph
     const createItemImageError = document.getElementById( "createitem-image-error" ) as HTMLParagraphElement;
 
+    // getting the edit item popup
+    const editItemPopup = document.getElementById( "edititem-popup" ) as HTMLElement;
+
+    // getting the cancle create item button
+    const editPopupCancelButton = document.getElementById( "edititem-cancel" ) as HTMLButtonElement;
+
+    // getting the submit create new item button
+    const editItemPopupSubmitButton = document.getElementById( "edititem-submit" ) as HTMLButtonElement;
+
+    // getting the uplaod edit image input
+    const uploadeditImageInput = document.getElementById( "edititem-image" ) as HTMLInputElement;
+
+    // getting the create item form
+    const editItemForm = document.getElementById( "edititem-form" ) as HTMLFormElement;
+
+    // getting the image preview eleemtn
+    const editimagePreview : HTMLImageElement = document.getElementById( "edititem-image-preview" ) as HTMLImageElement;
+
+    // getting the edit item conatiner
+    const editItemContainer = document.getElementById('edititem-container') as HTMLElement;
+
+    // gettung the create item image error paragraph
+    const editItemImageError = document.getElementById( "edititem-image-error" ) as HTMLParagraphElement;
+
+
+    // bindng the submit button to a click event
+    let badImage = false;
+    editItemPopupSubmitButton.addEventListener( 'click', async event => {
+        // preventing default
+        event.preventDefault();
+
+        if( editItemPopupSubmitButton.disabled ){
+            return;
+        }
+
+        // disabling the submit button
+        editItemPopupSubmitButton.disabled = true;
+
+        // adding a orange outline to the create item container
+        editItemContainer.classList.add('outline-orange-500');
+        editItemContainer.classList.add('outline-4');
+
+        // setting the createitemcontiert to pulse animation
+        editItemContainer.classList.add('animate-pulse');
+
+        // getting the create item image input
+        const editItemImageInput = document.getElementById( "edititem-image" ) as HTMLInputElement;
+        
+        let img = new Image();
+
+        img.onload = function () {
+            const w = img.width;
+            const h = img.height;
+
+            if( !((w > 400 && w < 500) && (h > 400 && h < 500)) ){
+                // showing the error
+                editimagePreview.classList.add('outline-red-500');
+                editimagePreview.classList.add('outline-4');editimagePreview.classList.add('outline');
+
+                // enabling the submit button
+                editItemPopupSubmitButton.disabled = false;
+
+                // remoinve a orange outline to the create item container
+                editItemContainer.classList.remove('outline-orange-500');
+                editItemContainer.classList.remove('outline-4');
+
+                // remove the createitemcontiert to pulse animation
+                editItemContainer.classList.remove('animate-pulse');
+
+                // unhidding the create item image error
+                editItemImageError.classList.remove('hidden');
+
+                // adding the error message
+                editItemImageError.innerText = "Please select an image with a width and height between 400px and 500px";
+
+                badImage = true;
+
+                // returning out of the function
+                throw new Error('Please select an image with a width and height between 400px and 500px');
+            }else{
+                // showing the error
+                editimagePreview.classList.remove('outline-red-500');
+                editimagePreview.classList.remove('outline-4');
+                editimagePreview.classList.remove('outline');
+
+                // removing the error
+                editItemImageError.classList.add('hidden');
+
+                // error message
+                editItemImageError.innerText = "";
+
+                // valid styles
+                editimagePreview.classList.add('outline-green-500');
+                editimagePreview.classList.add('outline-4');
+                editimagePreview.classList.add('outline');
+
+                badImage = false;
+            }
+        };
+
+        // verifying that the image is not empty
+        if( !((editItemImageInput.files as FileList).length <= 0) ){
+            
+            // Set the image source to the selected file
+            img.src = URL.createObjectURL( (editItemImageInput.files as FileList)[0]);
+
+        }
+        
+        // getting the create item name input
+        const itemName : string = editItemForm['names'].value;
+        
+        // verifying that the name is not empty
+        if( itemName === '' || itemName === ' ' ){
+            // showing the error
+            editItemForm['names'].classList.add('outline-red-500');
+            editItemForm['names'].classList.add('outline-4');
+
+            // enabling the submit button
+            editItemPopupSubmitButton.disabled = false;
+
+            // remoinve a orange outline to the create item container
+            editItemContainer.classList.remove('outline-orange-500');
+            editItemContainer.classList.remove('outline-4');
+
+            // remove the createitemcontiert to pulse animation
+            editItemContainer.classList.remove('animate-pulse');
+            
+            return;
+        }else{
+            // removing the error
+            editItemForm['names'].classList.remove('outline-red-500');
+            editItemForm['names'].classList.remove('outline-4');
+
+            // valid styles
+            editItemForm['names'].classList.add('outline-green-500');
+            editItemForm['names'].classList.add('outline-4');
+        }
+        
+        // getting the create item description input
+        const itemDescription = editItemForm['description'].value;
+
+        // verifying that the description is not empty
+        if( itemDescription === '' || itemDescription === ' ' ){
+            // showing the error
+            editItemForm['description'].classList.add('outline-red-500');
+            editItemForm['description'].classList.add('outline-4');
+
+            // enabling the submit button
+            editItemPopupSubmitButton.disabled = false;
+
+            // remoinve a orange outline to the create item container
+            editItemContainer.classList.remove('outline-orange-500');
+            editItemContainer.classList.remove('outline-4');
+
+            // remove the createitemcontiert to pulse animation
+            editItemContainer.classList.remove('animate-pulse');
+
+            // returning out of the function
+            return;
+        }else{
+            // removing the error
+            editItemForm['description'].classList.remove('outline-red-500');
+            editItemForm['description'].classList.remove('outline-4');
+
+            // valid styles
+            editItemForm['description'].classList.add('outline-green-500');
+            editItemForm['description'].classList.add('outline-4');
+        }
+
+        // getting the create item price input
+        const itemPrice : number = Number(editItemForm['price'].value);
+
+        // verifying that the price is not empty
+        if( itemPrice <= 0 || itemPrice === null || itemPrice === undefined ){
+            // showing the error
+            editItemForm['price'].classList.add('outline-red-500');
+            editItemForm['price'].classList.add('outline-4');
+
+            // enabling the submit button
+            editItemPopupSubmitButton.disabled = false;
+
+            // remoinve a orange outline to the create item container
+            editItemContainer.classList.remove('outline-orange-500');
+            editItemContainer.classList.remove('outline-4');
+
+            // remove the createitemcontiert to pulse animation
+            editItemContainer.classList.remove('animate-pulse');
+
+            // returning out of the function
+            return;
+        }else{
+            // removing the error
+            editItemForm['price'].classList.remove('outline-red-500');
+            editItemForm['price'].classList.remove('outline-4');
+
+            // valid styles
+            editItemForm['price'].classList.add('outline-green-500');
+            editItemForm['price'].classList.add('outline-4');
+        }
+
+        // getting the create item stock availability input
+        const itemStock = Array.from(editItemForm['inStock'] as HTMLInputElement[]).find( (element) => element.checked === true )?.value;
+
+        // converting the stock availability to a boolean
+        const itemStockAvailability = ( itemStock === 'true' )? true : false;
+
+        // getting the size of the item
+        const itemSize = editItemForm['size'].value;
+
+        // verifying that the size is not empty
+        if( itemSize === '' || itemSize === ' ' ){
+            // showing the error
+            editItemForm['size'].classList.add('outline-red-500');
+            editItemForm['size'].classList.add('outline-4');
+
+            // enabling the submit button
+            editItemPopupSubmitButton.disabled = false;
+
+            // remoinve a orange outline to the create item container
+            editItemContainer.classList.remove('outline-orange-500');
+            editItemContainer.classList.remove('outline-4');
+
+            // remove the createitemcontiert to pulse animation
+            editItemContainer.classList.remove('animate-pulse');
+
+            // returning out of the function
+            return;
+        }else{
+            // removing the error
+            editItemForm['size'].classList.remove('outline-red-500');
+            editItemForm['size'].classList.remove('outline-4');
+
+            // valid styles
+            editItemForm['size'].classList.add('outline-green-500');
+            editItemForm['size'].classList.add('outline-4');
+        }
+
+        // getting the create item tags input
+        const itemTags: string[] = ( (editItemForm['tags'].value === "" || editItemForm['tags'].value === " " )? []: editItemForm['tags'].value.split(',') ).map( (tag: string) => {
+            // stripping the leading spaces
+            return tag.trim();
+        } );
+
+
+        // verifying that the tags is not empty
+        if( itemTags.length === 0 ){
+            // showing the error
+            editItemForm['tags'].classList.add('outline-red-500');
+            editItemForm['tags'].classList.add('outline-4');
+
+            // enabling the submit button
+            editItemPopupSubmitButton.disabled = false;
+
+            // remoinve a orange outline to the create item container
+            editItemContainer.classList.remove('outline-orange-500');
+            editItemContainer.classList.remove('outline-4');
+
+            // remove the createitemcontiert to pulse animation
+            editItemContainer.classList.remove('animate-pulse');
+
+            // returning out of the function
+            return;
+        }else{
+            // removing the error
+            editItemForm['tags'].classList.remove('outline-red-500');
+            editItemForm['tags'].classList.remove('outline-4');
+
+            // valid styles
+            editItemForm['tags'].classList.add('outline-green-500');
+            editItemForm['tags'].classList.add('outline-4');
+        }
+
+        // getting the create item category input
+        const itemCategory : string = editItemForm['category'].value;
+
+        // verifying that the category is not empty
+        if( itemCategory === '' || itemCategory === ' ' ){
+            // showing the error
+            editItemForm['category'].classList.add('outline-red-500');
+            editItemForm['category'].classList.add('outline-4');
+
+            // enabling the submit button
+            editItemPopupSubmitButton.disabled = false;
+
+            // remoinve a orange outline to the create item container
+            editItemContainer.classList.remove('outline-orange-500');
+            editItemContainer.classList.remove('outline-4');
+
+            // remove the createitemcontiert to pulse animation
+            editItemContainer.classList.remove('animate-pulse');
+
+            // returning out of the function
+            return;
+        }else{
+            // removing the error
+            editItemForm['category'].classList.remove('outline-red-500');
+            editItemForm['category'].classList.remove('outline-4');
+
+            // valid styles
+            editItemForm['category'].classList.add('outline-green-500');
+            editItemForm['category'].classList.add('outline-4');
+        } 
+
+        // getting the id of the item
+        const id = editItemForm['ids'].value;
+
+        // getting the actual item object
+        const item = inventoryItemsList.find( (item) => item.id === id );
+
+        const newdata: InventoryItem = {
+            id: id,
+            name: itemName as string,
+            description: itemDescription as string,
+            price: Number(itemPrice),
+            inStock: Boolean(itemStockAvailability),
+            size: itemSize,
+            tags: itemTags as string[],
+            pictureUrl: item?.pictureUrl as string,
+            pictureRef:item?.pictureRef as string,
+            discount_percent: item?.discount_percent as number,
+            category: itemCategory as string
+        };
+
+        // checking if attempting to doc is innecesary
+        const testItemWithoutPictureUrlandRef = {
+            id: id,
+            name: itemName as string,
+            description: itemDescription as string,
+            price: Number(itemPrice),
+            inStock: Boolean(itemStockAvailability),
+            size: itemSize,
+            tags: itemTags as string[],
+            discount_percent: item?.discount_percent as number,
+            category: itemCategory as string
+        };
+
+        // creating a comarparing item with out the picture url and ref
+        const compareItemWithoutPictureUrlandRef = {
+            id: item?.id as string,
+            name: item?.name as string,
+            description: item?.description as string,
+            price: item?.price as number,
+            inStock: item?.inStock as boolean,
+            size: item?.size as string,
+            tags: item?.tags as string[],
+            discount_percent: item?.discount_percent as number,
+            category: item?.category as string
+        };
+        
+        if( (JSON.stringify(testItemWithoutPictureUrlandRef) === JSON.stringify(compareItemWithoutPictureUrlandRef)) && ((editItemImageInput.files as FileList).length === 0) ){
+            // closing the create item popup
+            editItemPopup.classList.add('hidden');
+
+            // removing a orange outline to the create item container
+            editItemContainer.classList.remove('outline-orange-500');
+            editItemContainer.classList.remove('outline-4');
+
+            // remove the createitemcontiert to pulse animation
+            editItemContainer.classList.remove('animate-pulse');
+
+            // disabled
+            editItemPopupSubmitButton.disabled = false;
+
+            // clearing the previwm image
+            editimagePreview.src = '';
+
+            
+            // showing the error 
+            editimagePreview.classList.remove('outline-red-500');
+            editimagePreview.classList.remove('outline-green-500');
+            editimagePreview.classList.remove('outline-4');
+            editimagePreview.classList.remove('outline');
+
+            // valid styles
+            editItemForm['names'].classList.remove('outline-green-500');
+            editItemForm['names'].classList.remove('outline-red-500');
+            editItemForm['names'].classList.remove('outline-4');
+
+            // valid styles
+            editItemForm['description'].classList.remove('outline-green-500');
+            editItemForm['description'].classList.remove('outline-red-500');
+            editItemForm['description'].classList.remove('outline-4');
+
+            // valid styles
+            editItemForm['price'].classList.remove('outline-green-500');
+            editItemForm['price'].classList.remove('outline-red-500');
+            editItemForm['price'].classList.remove('outline-4');
+
+            // valid styles
+            editItemForm['size'].classList.remove('outline-green-500');
+            editItemForm['size'].classList.remove('outline-red-500');
+            editItemForm['size'].classList.remove('outline-4');
+
+            // valid styles
+            editItemForm['category'].classList.remove('outline-green-500');
+            editItemForm['category'].classList.remove('outline-red-500');
+            editItemForm['category'].classList.remove('outline-4');
+
+            // valid styles
+            editItemForm['tags'].classList.remove('outline-green-500');
+            editItemForm['tags'].classList.remove('outline-red-500');
+            editItemForm['tags'].classList.remove('outline-4');
+
+            // clearing the form
+            editItemForm.reset();
+
+            // returning out of the function
+            return;
+        }
+        // console.log('badImage :>> ', badImage);
+        if( badImage ){
+            // returning out of the function
+            return;
+        }else{
+            // creating the inventory item
+            const inventoryItem = await inventoryManager.updateInventoryItem( newdata, (editItemImageInput.files as FileList)[0] );
+        }
+
+
+        // closing the create item popup
+        editItemPopup.classList.add('hidden');
+
+        // removing a orange outline to the create item container
+        editItemContainer.classList.remove('outline-orange-500');
+        editItemContainer.classList.remove('outline-4');
+
+        // remoinve a orange outline to the create item container
+        editItemContainer.classList.remove('outline-orange-500');
+        editItemContainer.classList.remove('outline-4');
+
+        // remove the createitemcontiert to pulse animation
+        editItemContainer.classList.remove('animate-pulse');
+
+        // disabled
+        editItemPopupSubmitButton.disabled = false;
+
+        // clearing the previwm image
+        editimagePreview.src = '';
+
+        
+        // showing the error 
+        editimagePreview.classList.remove('outline-red-500');
+        editimagePreview.classList.remove('outline-green-500');
+        editimagePreview.classList.remove('outline-4');editimagePreview.classList.remove('outline');
+
+        // valid styles
+        editItemForm['names'].classList.remove('outline-green-500');
+        editItemForm['names'].classList.remove('outline-4');
+
+        // valid styles
+        editItemForm['description'].classList.remove('outline-green-500');
+        editItemForm['description'].classList.remove('outline-4');
+
+        // valid styles
+        editItemForm['price'].classList.remove('outline-green-500');
+        editItemForm['price'].classList.remove('outline-4');
+
+        // valid styles
+        editItemForm['size'].classList.remove('outline-green-500');
+        editItemForm['size'].classList.remove('outline-4');
+
+        // valid styles
+        editItemForm['category'].classList.remove('outline-green-500');
+        editItemForm['category'].classList.remove('outline-4');
+
+        // valid styles
+        editItemForm['tags'].classList.remove('outline-green-500');
+        editItemForm['tags'].classList.remove('outline-4');
+
+        // clearing the form
+        editItemForm.reset();
+    });
+    
+    // binding the upload image input to a change event
+    uploadeditImageInput.addEventListener( 'input', event => {
+        // preventing default
+        event.preventDefault();
+
+        // getting the edit item image preview
+        const editItemImagePreview = document.getElementById( "edititem-image-preview" ) as HTMLImageElement;
+
+        // image path
+        const imagePath : string = (uploadeditImageInput.files as FileList)[0].name;
+
+        if (uploadeditImageInput.files && uploadeditImageInput.files[0]) {
+            const fileReader = new FileReader();
+
+            let imgs = new Image();
+
+            imgs.onload = function () {
+                const w = imgs.width;
+                const h = imgs.height; 
+
+                if( !((w > 400 && w < 500) && (h > 400 && h < 500)) ){
+                    // showing the error
+                    editimagePreview.classList.add('outline-red-500');
+                    editimagePreview.classList.add('outline-4');
+                    editimagePreview.classList.add('outline');
+
+                    // enabling the submit button
+                    editItemPopupSubmitButton.disabled = false;
+
+                    // remoinve a orange outline to the edit item container
+                    editItemContainer.classList.remove('outline-orange-500');
+                    editItemContainer.classList.remove('outline-4');
+
+                    // remove the createitemcontiert to pulse animation
+                    editItemContainer.classList.remove('animate-pulse');
+
+                    // unhidding the create item image error
+                    editItemImageError.classList.remove('hidden');
+
+                    // adding the error message
+                    editItemImageError.innerText = "Please select an image with a width and height between 400px and 500px";
+
+                    badImage = true
+
+                    // returning out of the function
+                    return;
+                }else{
+                    // showing the error
+                    editimagePreview.classList.remove('outline-red-500');
+                    editimagePreview.classList.remove('outline-4');
+                    editimagePreview.classList.remove('outline');
+
+                    // removing the error
+                    editItemImageError.classList.add('hidden');
+
+                    // error message
+                    editItemImageError.innerText = "";
+
+                    badImage = false;
+
+                    // valid styles
+                    editimagePreview.classList.add('outline-green-500');
+                    editimagePreview.classList.add('outline-4');
+                    editimagePreview.classList.add('outline');
+                }
+            };
+        
+            fileReader.onload = (e) => {
+                const results = e.target?.result;
+                if (typeof results === 'string') {
+                    editItemImagePreview.src = results;
+
+                    // removing the error
+                    editItemImagePreview.classList.remove('outline-red-500');
+                    editItemImagePreview.classList.remove('outline-4');
+
+                    // valid styles
+                    editItemImagePreview.classList.add('outline-green-500');
+                    editItemImagePreview.classList.add('outline-4');
+
+                    // hidding the create item image error
+                    createItemImageError.classList.add('hidden');
+                }
+
+              imgs.src = URL.createObjectURL( (uploadeditImageInput.files as FileList)[0]);
+            };
+
+            
+            fileReader.readAsDataURL(uploadeditImageInput.files[0]);
+        }
+
+    });
+
+    // binding the create new item popup cancel button to a click event
+    editPopupCancelButton.addEventListener( 'click', event => {
+        // preventing default
+        event.preventDefault();
+
+        // closing the edit admin popup
+        editItemPopup.classList.add('hidden');
+
+        // removing a orange outline to the edit item container
+        editItemContainer.classList.remove('outline-orange-500');
+        editItemContainer.classList.remove('outline-4');
+
+        // remove the edititemcontiert to pulse animation
+        editItemContainer.classList.remove('animate-pulse');
+
+        // disabled
+        editItemPopupSubmitButton.disabled = false;
+
+        // clearing the previwm image
+        editimagePreview.src = '';
+
+        // hidding the create item image error
+        editItemImageError.classList.add('hidden');
+
+        
+        // showing the error 
+        editimagePreview.classList.remove('outline-red-500');
+        editimagePreview.classList.remove('outline-green-500');
+        editimagePreview.classList.remove('outline-4');
+        editimagePreview.classList.remove('outline');
+
+        // valid styles
+        editItemForm['names'].classList.remove('outline-green-500');
+        editItemForm['names'].classList.remove('outline-red-500');
+        editItemForm['names'].classList.remove('outline-4');
+
+        // valid styles
+        editItemForm['description'].classList.remove('outline-green-500');
+        editItemForm['description'].classList.remove('outline-red-500');
+        editItemForm['description'].classList.remove('outline-4');
+
+        // valid styles
+        editItemForm['price'].classList.remove('outline-green-500');
+        editItemForm['price'].classList.remove('outline-red-500');
+        editItemForm['price'].classList.remove('outline-4');
+
+        // valid styles
+        editItemForm['size'].classList.remove('outline-green-500');
+        editItemForm['size'].classList.remove('outline-red-500');
+        editItemForm['size'].classList.remove('outline-4');
+
+        // valid styles
+        editItemForm['category'].classList.remove('outline-green-500');
+        editItemForm['category'].classList.remove('outline-red-500');
+        editItemForm['category'].classList.remove('outline-4');
+
+        // valid styles
+        editItemForm['tags'].classList.remove('outline-green-500');
+        editItemForm['tags'].classList.remove('outline-red-500');
+        editItemForm['tags'].classList.remove('outline-4');
+
+        // clearing the form
+        editItemForm.reset();
+    });
+
     // bindng the submit button to a click event
     createNewItemPopupSubmitButton.addEventListener( 'click', async event => {
         // preventing default
