@@ -2,7 +2,7 @@ import {
   DocumentData,
   Firestore, 
   QuerySnapshot, 
-  Unsubscribe, 
+  Unsubscribe,  
   doc, 
   getDoc,
   increment } from "firebase/firestore";
@@ -203,8 +203,73 @@ export default class InventoryManager<T extends object, M extends object> extend
    * @param docId - ID of the document to be updated.
    * @returns Promise<void>
    */
-  async updateInventoryItem(docId: string, newDocData: Partial<T>): Promise<void> {
-    return await this.updateDoc(newDocData, docId);
+  async updateInventoryItem(olddata: InventoryItem, newdata: InventoryItem, imageObj: File): Promise<void> {
+    // checking if the data has an id
+    if (newdata.id == undefined) {
+      throw new Error('The inventory item does not have an id');
+    }
+
+    // checking if the image has changed
+    if (imageObj != undefined) {
+      let img = new Image();
+
+      img.onload = function () {
+          const w = img.width;
+          const h = img.height;
+
+          if( !((w > 400 && w < 500) && (h > 400 && h < 500)) ){
+
+              // returning out of the function
+              throw new Error('Please select an image with a width and height between 400px and 500px');
+          }
+      };
+
+      // getting the storage ref
+      const oldstorageRef = ref(storage, newdata.pictureRef);
+
+      // deleting the image
+      await deleteObject(oldstorageRef);
+
+      const newstorageRef = ref(storage, `${this.stockDisplayImageFolder}/${newdata.id}/${imageObj.name}`);
+
+      // setting the picture ref
+      newdata.pictureRef = newstorageRef.fullPath;
+
+      // updating the picture ref to the download url
+      newdata.pictureUrl = await this.handleImageUpload(imageObj, newstorageRef);
+    }
+
+    // chekcing if the category has changed
+    if (olddata.category != newdata.category) {
+      // getting the metadata categories
+      const metadata = await this.metadataDocument.getDocumentData() as InventoryMetadata;
+
+      // checking if the category exists
+      if (Object.keys(metadata.product_categories).includes(olddata.category)) {
+        // decrementing the category count
+        --metadata.product_categories[olddata.category];
+      }
+
+      // checking if the category count is 0
+      if (metadata.product_categories[olddata.category] <= 0) {
+        // deleting the category
+        delete metadata.product_categories[olddata.category];
+      }
+
+      // checking if the category exists
+      if (Object.keys(metadata.product_categories).includes(newdata.category)) {
+        // incrementing the category count
+        ++metadata.product_categories[newdata.category];
+      }else{
+        // creating the category
+        metadata.product_categories[newdata.category] = 1;
+      }
+
+      // incrementing the total stock count
+      this.metadataDocument.updateField( {'product_categories': metadata.product_categories} );
+    }
+
+    return await this.updateDoc(newdata, newdata.id);
   }
 
   /**
@@ -213,7 +278,11 @@ export default class InventoryManager<T extends object, M extends object> extend
    * @returns Promise<void>
    */
   async createInventoryItem(data: InventoryItem, imageObj: File): Promise<T> {
-    const storageRef = ref(storage, `${this.stockDisplayImageFolder}/${data.id}/${imageObj.name}`);
+    let docTemp = await this.createDoc(data);
+
+    const storageRef = ref(storage, `${this.stockDisplayImageFolder}/${docTemp.id}/${imageObj.name}`);
+
+    const doc = docTemp as T;
 
     // setting the picture ref
     data.pictureRef = storageRef.fullPath;
@@ -221,7 +290,8 @@ export default class InventoryManager<T extends object, M extends object> extend
     // updating the picture ref to the download url
     data.pictureUrl = await this.handleImageUpload(imageObj, storageRef);
 
-    const doc = await this.createDoc(data) as T;
+    // upating the document with the new picture ref and url
+    await this.updateDoc(data, docTemp.id);
 
     // getting the metadata categories
     const metadata = await this.metadataDocument.getDocumentData() as InventoryMetadata;

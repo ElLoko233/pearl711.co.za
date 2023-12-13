@@ -103,7 +103,58 @@ export default class InventoryItemUIAdmin extends InventoryItemUI {
             // preventing default
             event.preventDefault();
 
-            console.log( element.id );
+            // getting the edit popup
+            const editPopup : HTMLDivElement = document.getElementById('edititem-popup') as HTMLDivElement;
+
+            // getting the id input elememt
+            const idInput : HTMLInputElement = editPopup.querySelector('#edititem-id') as HTMLInputElement;
+
+            // getting the edit item form
+            const editItemForm = document.getElementById( "edititem-form" ) as HTMLFormElement;
+
+            // getting the image preview eleemtn
+            const imagePreview : HTMLImageElement = document.getElementById( "edititem-image-preview" ) as HTMLImageElement;
+
+            // getting the name input element
+            const nameInput : HTMLInputElement = editItemForm.querySelector('#edititem-name') as HTMLInputElement;
+            
+
+            // getting the description input element
+            const descriptionInput : HTMLInputElement = editItemForm.querySelector('#edititem-description') as HTMLInputElement;
+
+            // setting the name input to the name of the item
+            nameInput.value = this.name;
+
+            // setting the description input to the description of the item
+            descriptionInput.value = this.description;
+
+            // setting the price input to the price of the item
+            editItemForm["price"].value = this.price.toString();
+
+            // setting the instock input to the instock of the item
+            const inStockInput = Array.from(editItemForm['inStock'] as HTMLInputElement[]).find( (element) => element.value === this.inStock.toString() ) as HTMLInputElement;
+            inStockInput.checked = true;
+
+            // setting the size input to the size of the item
+            editItemForm["size"].value = this.size;
+
+            // seeting the tags input to the tags of the item
+            editItemForm["tags"].value = this.tags.join(', ');
+
+            // setting the category input to the category of the item
+            editItemForm["category"].value = this.category;
+
+            // setting the image preview to the items image
+            imagePreview.src = this.pictureUrl;
+
+            // adding the id to the input
+            idInput.value = this.id;
+
+            // setting the data for of the edit popup
+            editPopup.dataset.id = this.id;
+
+            // enabling the edit popup
+            editPopup.classList.remove('hidden');
         });
 
         // getting the chekcbox element
