@@ -5,7 +5,7 @@ import {
     storage
 }from "./firebaseComp";
 
-import{ onAuthStateChanged, createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import{ onAuthStateChanged, createUserWithEmailAndPassword, getAuth, sendEmailVerification, signOut } from "firebase/auth";
 
 //  getting the nav bar class
 import NavigationBarUI from "./custom/navbarui";
@@ -1429,10 +1429,10 @@ window.addEventListener( 'DOMContentLoaded', async event => {
             const idTokenResult = await user.getIdTokenResult();
 
             // checking if the user is an admin
-            if( !user.emailVerified ){
-                // redirecting the user to the main page
-                window.location.href = "/";
-            }
+            // if( !user.emailVerified ){
+            //     // redirecting the user to the main page
+            //     window.location.href = "/";
+            // }
 
             // getting the createAdminButton element
             const createAdminButton = document.getElementById('popup-createadmin') as HTMLButtonElement;
@@ -1807,7 +1807,12 @@ window.addEventListener( 'DOMContentLoaded', async event => {
 
         // creating the user
         try{
-            const userCred = await createUserWithEmailAndPassword( auth, email, password );
+            const userCred = createUserWithEmailAndPassword( auth, email, password ).then( (userCred) => {
+                sendEmailVerification( userCred.user );
+
+                signOut( auth );
+            });
+
 
         }catch( error  ){
             // getting the error code

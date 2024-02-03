@@ -119,8 +119,6 @@ window.addEventListener( 'load', event => {
             if( userToken.claims.email_verified ){
                 // redirecting the user to the admin page
                 window.location.href = './';
-            }else{
-                window.location.href = "/public";
             }        
         }else{
             // hiding the login popup skeleton
